@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadoras — Gramado &amp; Canela</title>
+<meta name="description" content="Calcule quanto vão custar as atrações de Gramado e Canela, com preço cheio e preço de plataforma de desconto.">
+<meta name="theme-color" content="#0E211A">
+<meta property="og:title" content="Quanto vai custar Gramado & Canela">
+<meta property="og:description" content="Marque as atrações e veja o total, no preço cheio e no preço com desconto.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E211A; --pine:#1E5945; --pine-soft:#E4EDE8; --hortensia:#5B5FC7;
+  --neve:#F4F6F3; --papel:#FFFFFF; --carvao:#233029; --cinza:#6C7D74;
+  --linha:#DDE4DF; --ambar-soft:#FBF0DF; --radius:16px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--neve); color:var(--carvao);
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+header{background:var(--ink);color:#EEF3F0;padding:44px 0 38px;border-bottom:3px solid var(--pine)}
+header h1{
+  font-family:'Bricolage Grotesque','Inter',sans-serif;font-weight:800;
+  font-size:clamp(30px,7.5vw,50px);line-height:1;letter-spacing:-.025em;margin:0 0 12px;
+}
+header h1 em{font-style:normal;color:#9DE0C0}
+header p{margin:0;color:#A9BEB4;font-size:14.5px;max-width:48ch}
+
+.cartoes{display:grid;gap:12px;margin:26px 0 8px}
+a.cartao{
+  display:block;background:var(--papel);border:1px solid var(--linha);border-radius:var(--radius);
+  padding:20px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s;
+}
+a.cartao:hover{border-color:var(--pine);transform:translateY(-1px)}
+a.cartao:focus-visible{outline:2px solid var(--hortensia);outline-offset:2px}
+.cartao .eyebrow{
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+  color:var(--pine);margin-bottom:6px;
+}
+.cartao h2{
+  font-family:'Bricolage Grotesque','Inter',sans-serif;font-weight:700;
+  font-size:21px;margin:0 0 6px;letter-spacing:-.01em;color:var(--ink);
+}
+.cartao p{margin:0 0 12px;font-size:14px;color:var(--cinza)}
+.cartao .seta{font-size:13.5px;font-weight:600;color:var(--pine)}
+.cartao ul{margin:0 0 12px;padding-left:18px;font-size:13.5px;color:var(--cinza)}
+.cartao li{margin-bottom:2px}
+
+.nota{
+  background:var(--ambar-soft);border:1px solid #EBD9B8;border-radius:var(--radius);
+  padding:15px 17px;font-size:13px;color:#6E4A10;line-height:1.55;margin:18px 0;
+}
+.nota strong{display:block;margin-bottom:3px}
+footer{font-size:12.5px;color:var(--cinza);line-height:1.6;padding:8px 0 44px}
+footer p{margin:0 0 9px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Quanto vai custar<br><em>Gramado &amp; Canela</em></h1>
+    <p>Marque as atrações que quiser e veja o total sair pronto, no preço cheio e no preço das plataformas de desconto.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="cartoes">
+
+    <a class="cartao" href="individual.html">
+      <div class="eyebrow">Para cada pessoa</div>
+      <h2>Minha lista</h2>
+      <p>Cada um monta o próprio roteiro e vê só o próprio gasto. Serve para decidir o que fazer junto com o grupo e o que fazer por conta.</p>
+      <ul>
+        <li>Perfil adulto ou criança</li>
+        <li>Marcar tudo e ir cortando</li>
+        <li>Exporta planilha CSV</li>
+      </ul>
+      <div class="seta">Abrir minha lista &rarr;</div>
+    </a>
+
+    <a class="cartao" href="grupo.html">
+      <div class="eyebrow">Para o organizador</div>
+      <h2>Conta do grupo</h2>
+      <p>Some o custo de todo mundo de uma vez. Ajuste quantos adultos e quantas crianças vão e veja o total fechado da viagem.</p>
+      <ul>
+        <li>Contador de adultos e crianças</li>
+        <li>Total por pessoa e total do grupo</li>
+        <li>Resumo pronto para o WhatsApp</li>
+      </ul>
+      <div class="seta">Abrir conta do grupo &rarr;</div>
+    </a>
+
+  </div>
+
+  <div class="nota">
+    <strong>Os preços são estimativa.</strong>
+    Pesquisados em agosto de 2026 em sites oficiais, Laçador de Ofertas, Prime Gourmet e agências de ingresso. Gramado reajusta tarifa por temporada e o Natal Luz é a mais cara do ano, então confirme antes de comprar — todo valor é editável dentro das calculadoras.
+  </div>
+
+  <footer>
+    <p><strong>Fora da conta:</strong> estacionamento (R$ 20 a R$ 30 em vários parques), bebidas, taxa de serviço, transporte e os espetáculos pagos do Natal Luz.</p>
+    <p>No iPhone, dá para tocar em Compartilhar e depois em Adicionar à Tela de Início. A calculadora abre como aplicativo.</p>
+  </footer>
+</div>
+
+</body>
+</html>

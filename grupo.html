@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de Atrações — Gramado &amp; Canela</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E211A;
+  --pine:#1E5945;
+  --pine-soft:#E4EDE8;
+  --hortensia:#5B5FC7;
+  --hortensia-soft:#ECEDFB;
+  --neve:#F4F6F3;
+  --papel:#FFFFFF;
+  --carvao:#233029;
+  --cinza:#6C7D74;
+  --linha:#DDE4DF;
+  --ambar:#B26A12;
+  --ambar-soft:#FBF0DF;
+  --radius:14px;
+  --barra:118px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--neve);
+  color:var(--carvao);
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:15px;
+  line-height:1.5;
+  padding-bottom:calc(var(--barra) + 24px);
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:940px;margin:0 auto;padding:0 14px}
+
+/* ---------- Cabeçalho ---------- */
+header{
+  background:var(--ink);
+  color:#EEF3F0;
+  padding:26px 0 22px;
+  border-bottom:3px solid var(--pine);
+}
+header h1{
+  font-family:'Bricolage Grotesque','Inter',sans-serif;
+  font-weight:800;
+  font-size:clamp(26px,6vw,40px);
+  line-height:1.02;
+  letter-spacing:-.02em;
+  margin:0 0 8px;
+}
+header h1 em{font-style:normal;color:#9DE0C0}
+header p{margin:0;color:#A9BEB4;font-size:13.5px;max-width:52ch}
+
+/* ---------- Painel do grupo ---------- */
+.painel{
+  background:var(--papel);
+  border:1px solid var(--linha);
+  border-radius:var(--radius);
+  padding:14px;
+  margin:16px 0 12px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  align-items:center;
+}
+.stepper{display:flex;align-items:center;gap:8px}
+.stepper label{font-size:12px;font-weight:600;color:var(--cinza);text-transform:uppercase;letter-spacing:.06em}
+.stepper .ctrl{display:flex;align-items:center;background:var(--neve);border:1px solid var(--linha);border-radius:999px;overflow:hidden}
+.stepper button{
+  width:34px;height:34px;border:0;background:transparent;cursor:pointer;
+  font-size:19px;line-height:1;color:var(--pine);font-family:'IBM Plex Mono',monospace;
+}
+.stepper button:hover{background:var(--pine-soft)}
+.stepper input{
+  width:42px;border:0;background:transparent;text-align:center;
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;color:var(--carvao);
+}
+.stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.stepper input[type=number]{-moz-appearance:textfield}
+.painel .spacer{flex:1}
+.btn-txt{
+  border:1px solid var(--linha);background:var(--papel);border-radius:999px;
+  padding:8px 14px;font-size:13px;font-weight:600;color:var(--pine);cursor:pointer;font-family:inherit;
+}
+.btn-txt:hover{background:var(--pine-soft)}
+
+/* ---------- Filtros ---------- */
+.filtros{display:flex;gap:7px;overflow-x:auto;padding:4px 0 12px;-webkit-overflow-scrolling:touch}
+.filtros::-webkit-scrollbar{display:none}
+.chip{
+  flex:0 0 auto;border:1px solid var(--linha);background:var(--papel);
+  border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;
+  color:var(--cinza);cursor:pointer;white-space:nowrap;font-family:inherit;
+}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.busca{
+  width:100%;padding:11px 14px;border:1px solid var(--linha);border-radius:var(--radius);
+  font-family:inherit;font-size:15px;background:var(--papel);color:var(--carvao);margin-bottom:12px;
+}
+.busca:focus{outline:2px solid var(--hortensia);outline-offset:1px}
+
+/* ---------- Lista ---------- */
+.grupo-titulo{
+  font-family:'Bricolage Grotesque','Inter',sans-serif;font-weight:700;font-size:13px;
+  text-transform:uppercase;letter-spacing:.1em;color:var(--cinza);
+  margin:22px 0 9px;display:flex;align-items:center;gap:10px;
+}
+.grupo-titulo::after{content:"";flex:1;height:1px;background:var(--linha)}
+
+.item{
+  background:var(--papel);border:1px solid var(--linha);border-radius:var(--radius);
+  margin-bottom:9px;overflow:hidden;transition:border-color .15s,box-shadow .15s;
+}
+.item.on{border-color:var(--pine);box-shadow:0 0 0 1px var(--pine)}
+.item.gratis.on{border-color:var(--hortensia);box-shadow:0 0 0 1px var(--hortensia)}
+.linha{display:flex;align-items:flex-start;gap:12px;padding:13px 14px;cursor:pointer}
+.check{
+  flex:0 0 auto;width:24px;height:24px;border:2px solid var(--linha);border-radius:7px;
+  margin-top:2px;display:grid;place-items:center;background:var(--papel);transition:.15s;
+}
+.item.on .check{background:var(--pine);border-color:var(--pine)}
+.item.gratis.on .check{background:var(--hortensia);border-color:var(--hortensia)}
+.check svg{width:14px;height:14px;stroke:#fff;stroke-width:3.2;fill:none;opacity:0;transition:opacity .12s}
+.item.on .check svg{opacity:1}
+.info{flex:1;min-width:0}
+.nome{font-weight:600;font-size:15.5px;line-height:1.25;color:var(--ink)}
+.meta{font-size:12px;color:var(--cinza);margin-top:3px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tag{background:var(--neve);border-radius:5px;padding:1px 6px;font-weight:600}
+.tag.free{background:var(--hortensia-soft);color:var(--hortensia)}
+.precos{flex:0 0 auto;text-align:right;font-family:'IBM Plex Mono',monospace}
+.p-cheio{font-size:12px;color:var(--cinza);text-decoration:line-through}
+.p-desc{font-size:16px;font-weight:600;color:var(--pine);line-height:1.25}
+.p-livre{font-size:14px;font-weight:600;color:var(--hortensia)}
+.p-obs{font-size:10.5px;color:var(--cinza);font-family:'Inter',sans-serif;margin-top:2px}
+
+.editar{
+  border:0;background:transparent;color:var(--cinza);font-family:inherit;font-size:12px;
+  font-weight:600;cursor:pointer;padding:0 14px 12px 50px;text-decoration:underline;text-underline-offset:3px;
+}
+.editar:hover{color:var(--pine)}
+.painel-edit{display:none;padding:0 14px 14px 14px;border-top:1px dashed var(--linha);margin-top:2px}
+.painel-edit.aberto{display:block}
+.grade{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding-top:12px}
+.campo label{display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--cinza);margin-bottom:4px}
+.campo input{
+  width:100%;padding:8px 10px;border:1px solid var(--linha);border-radius:9px;
+  font-family:'IBM Plex Mono',monospace;font-size:14px;background:var(--neve);color:var(--carvao);
+}
+.campo input:focus{outline:2px solid var(--hortensia);outline-offset:1px;background:var(--papel)}
+.nota{font-size:12px;color:var(--cinza);margin-top:11px;line-height:1.45}
+
+/* ---------- Totalizador ---------- */
+.barra{
+  position:fixed;left:0;right:0;bottom:0;z-index:40;
+  background:var(--ink);color:#fff;border-top:3px solid var(--pine);
+  box-shadow:0 -8px 28px rgba(14,33,26,.22);
+}
+.barra .wrap{padding:12px 14px 14px}
+.barra-topo{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:9px}
+.barra-topo .qtd{font-size:12px;color:#9DB3A9;letter-spacing:.04em}
+.barra-topo .econ{font-size:12px;font-weight:600;color:#F0C67C;font-family:'IBM Plex Mono',monospace}
+.totais{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tot{background:rgba(255,255,255,.07);border-radius:11px;padding:9px 11px}
+.tot .rot{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:#9DB3A9;margin-bottom:2px}
+.tot .val{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:clamp(17px,4.6vw,22px);line-height:1.15}
+.tot.destaque{background:var(--pine)}
+.tot .sub{font-size:11px;color:#9DB3A9;margin-top:2px;font-family:'IBM Plex Mono',monospace}
+.tot.destaque .sub{color:#BFE6D3}
+
+/* ---------- Rodapé ---------- */
+.acoes{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 10px}
+.acoes button{
+  flex:1 1 150px;padding:12px;border-radius:var(--radius);border:1px solid var(--linha);
+  background:var(--papel);font-family:inherit;font-size:14px;font-weight:600;color:var(--pine);cursor:pointer;
+}
+.acoes button.principal{background:var(--pine);border-color:var(--pine);color:#fff}
+.acoes button:hover{filter:brightness(.97)}
+footer{font-size:12px;color:var(--cinza);line-height:1.6;padding:6px 0 30px}
+footer strong{color:var(--carvao)}
+.aviso{
+  background:var(--ambar-soft);border:1px solid #EBD9B8;border-radius:var(--radius);
+  padding:12px 14px;font-size:12.5px;color:#6E4A10;line-height:1.5;margin:14px 0 4px;
+}
+.toast{
+  position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--barra) + 18px);
+  background:var(--carvao);color:#fff;padding:10px 18px;border-radius:999px;font-size:13.5px;
+  font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s;z-index:60;
+}
+.toast.on{opacity:1}
+
+@media (max-width:430px){
+  .precos{min-width:88px}
+  .painel{gap:10px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media print{
+  .barra,.acoes,.filtros,.busca,.editar,.painel .btn-txt{display:none}
+  body{padding-bottom:0;background:#fff}
+  .item{break-inside:avoid}
+}
+
+.voltar{display:inline-flex;align-items:center;gap:6px;color:#9DE0C0;text-decoration:none;
+  font-size:13px;font-weight:600;margin-bottom:12px;opacity:.85}
+.voltar:hover{opacity:1;text-decoration:underline}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="voltar" href="./">&larr; Todas as calculadoras</a>
+    <h1>Quanto vai custar<br><em>Gramado &amp; Canela</em></h1>
+    <p>Marque as atrações que o grupo quer fazer. O total soma sozinho, com o preço cheio e com o preço de plataforma de desconto.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="painel">
+    <div class="stepper">
+      <label for="qa">Adultos</label>
+      <div class="ctrl">
+        <button type="button" data-step="qa" data-d="-1" aria-label="Menos um adulto">−</button>
+        <input id="qa" type="number" min="0" max="99" value="10">
+        <button type="button" data-step="qa" data-d="1" aria-label="Mais um adulto">+</button>
+      </div>
+    </div>
+    <div class="stepper">
+      <label for="qc">Crianças</label>
+      <div class="ctrl">
+        <button type="button" data-step="qc" data-d="-1" aria-label="Menos uma criança">−</button>
+        <input id="qc" type="number" min="0" max="99" value="5">
+        <button type="button" data-step="qc" data-d="1" aria-label="Mais uma criança">+</button>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <button class="btn-txt" id="limpar" type="button">Desmarcar tudo</button>
+  </div>
+
+  <input class="busca" id="busca" type="search" placeholder="Buscar atração…" aria-label="Buscar atração">
+
+  <div class="filtros" id="filtros">
+    <button class="chip" data-f="todos" aria-pressed="true" type="button">Todas</button>
+    <button class="chip" data-f="marcadas" aria-pressed="false" type="button">Só marcadas</button>
+    <button class="chip" data-f="Gramado" aria-pressed="false" type="button">Gramado</button>
+    <button class="chip" data-f="Canela" aria-pressed="false" type="button">Canela</button>
+    <button class="chip" data-f="Parque" aria-pressed="false" type="button">Parques</button>
+    <button class="chip" data-f="Comida" aria-pressed="false" type="button">Comer</button>
+    <button class="chip" data-f="Passeio" aria-pressed="false" type="button">Passeios</button>
+    <button class="chip" data-f="gratis" aria-pressed="false" type="button">Grátis</button>
+  </div>
+
+  <div id="lista"></div>
+
+  <div class="aviso">
+    <strong>Como usar os preços.</strong> Os valores vieram de pesquisa em ago/2026 (sites oficiais, Laçador de Ofertas, Prime Gourmet e agências de ingresso). Gramado reajusta tarifa por temporada e o Natal Luz é a mais cara do ano — trate tudo aqui como estimativa e toque em <em>Editar preços</em> em cada item para atualizar com o valor real na hora de fechar.
+  </div>
+
+  <div class="acoes">
+    <button class="principal" id="btn-zap" type="button">Enviar resumo no WhatsApp</button>
+    <button id="btn-copiar" type="button">Copiar resumo</button>
+    <button id="btn-print" type="button">Imprimir / PDF</button>
+  </div>
+
+  <footer>
+    <p><strong>Onde comprar mais barato.</strong> Laçador de Ofertas costuma trazer 15–25% abaixo da bilheteria e aceita cupons acumulativos. Prime Gourmet é assinatura e funciona na lógica de "compre 1, leve 2" em restaurantes — vale muito para grupo par. Tchê Ofertas, Parksnet, Gramado Ticket e Tour Fácil disputam as mesmas atrações; compare antes de fechar. Vários parques ainda dão desconto próprio na compra antecipada pelo site oficial.</p>
+    <p><strong>Fora da conta:</strong> estacionamento (R$ 20 a R$ 30 em vários parques), bebidas nos restaurantes, taxa de serviço, transporte e ingressos dos espetáculos pagos do Natal Luz.</p>
+  </footer>
+</div>
+
+<div class="barra">
+  <div class="wrap">
+    <div class="barra-topo">
+      <span class="qtd" id="contador">Nenhuma atração marcada</span>
+      <span class="econ" id="economia"></span>
+    </div>
+    <div class="totais">
+      <div class="tot">
+        <div class="rot">Preço cheio</div>
+        <div class="val" id="t-cheio">R$ 0</div>
+        <div class="sub" id="s-cheio">grupo</div>
+      </div>
+      <div class="tot destaque">
+        <div class="rot">Com desconto</div>
+        <div class="val" id="t-desc">R$ 0</div>
+        <div class="sub" id="s-desc">grupo</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ------------------------------------------------------------------
+   Base de preços — pesquisa ago/2026.
+   ac = adulto cheio | cc = criança cheia | ad = adulto com desconto | cd = criança com desconto
+   Valores por pessoa, em reais. Tudo editável na interface.
+------------------------------------------------------------------- */
+const ATRACOES = [
+  {id:'catedral', nome:'Catedral de Pedra', cidade:'Canela', cat:'Passeio', gratis:true, nota:'Entrada gratuita. A subida à torre dos sinos é paga à parte (cerca de R$ 25).'},
+  {id:'lagonegro', nome:'Lago Negro', cidade:'Gramado', cat:'Passeio', gratis:true, nota:'Entrada gratuita. Pedalinho de cisne é opcional, cerca de R$ 40 por volta.'},
+
+  {id:'minimundo', nome:'Mini Mundo', cidade:'Gramado', cat:'Parque', ac:108, cc:58, ad:92, cd:49, nota:'Criança de 3 a 15 anos e 60+ pagam o valor reduzido.'},
+  {id:'papainoel', nome:'Vila do Papai Noel (Aldeia do Papai Noel)', cidade:'Gramado', cat:'Parque', ac:78, cc:48, ad:66, cd:41, nota:'Funciona o ano todo; na temporada de Natal Luz a tarifa sobe.'},
+  {id:'snowland', nome:'Snowland', cidade:'Gramado', cat:'Parque', ac:259, cc:179, ad:199, cd:129.50, nota:'R$ 259 no site oficial e R$ 199 no Laçador de Ofertas. Um dos ingressos mais caros da região.'},
+  {id:'dinossauros', nome:'Vale dos Dinossauros', cidade:'Canela', cat:'Parque', ac:99, cc:49.50, ad:84, cd:42, nota:'Está incluso no Passaporte Dreams (R$ 289,90 adulto / R$ 149,90 criança, 8 atrações).'},
+  {id:'florybal', nome:'Terra Mágica Florybal', cidade:'Canela', cat:'Parque', ac:150, cc:75, ad:128, cd:64, nota:'Ingresso inclui shows, brinquedos e estacionamento. Reserve meio dia.'},
+  {id:'space', nome:'Space Adventure', cidade:'Canela', cat:'Parque', ac:129.90, cc:64.95, ad:110, cd:55, nota:'Combo exposição da NASA + planetário. Separados saem por R$ 59,90 e R$ 39,90.'},
+  {id:'caracol', nome:'Parque do Caracol', cidade:'Canela', cat:'Passeio', ac:70, cc:35, ad:59, cd:30, nota:'Valor varia bastante por temporada; estacionamento R$ 30 à parte. O salto de pêndulo é pago separado.'},
+  {id:'bondinhos', nome:'Bondinhos Aéreos (Parques da Serra)', cidade:'Canela', cat:'Passeio', ac:120, cc:60, ad:102, cd:51, nota:'Criança de 6 a 12 anos paga meia. Melhor vista da Cascata do Caracol.'},
+  {id:'monica', nome:'Parque da Mônica (Vila da Mônica)', cidade:'Gramado', cat:'Parque', ac:199, cc:159, ad:159.90, cd:129, nota:'R$ 199 no oficial e R$ 159,90 no Laçador. Fim de semana e alta temporada sobem.'},
+  {id:'alpen', nome:'Alpen Park (trenó)', cidade:'Canela', cat:'Parque', ac:138.90, cc:67.50, ad:118, cd:57, nota:'Passaporte com 6 atrações liberadas, inclusive o trenó alpino. Estacionamento R$ 20.'},
+  {id:'bigland', nome:'Big Land', cidade:'Canela', cat:'Parque', ac:89.90, cc:69.90, ad:76, cd:59, nota:'Adulto a partir de 10 anos; 3 a 9 anos é o valor reduzido; até 2 anos não paga.'},
+  {id:'lugano', nome:'Mundo Lugano', cidade:'Gramado', cat:'Parque', ac:119, cc:119, ad:101, cd:101, nota:'Parque indoor em 3 andares. Há combo com rodízio de pizza por valor maior.'},
+  {id:'acqua', nome:'Acquamotion', cidade:'Gramado', cat:'Parque', ac:179, cc:104.50, ad:149.90, cd:95, nota:'Parque aquático coberto e climatizado. Até 17 anos paga o valor reduzido.'},
+  {id:'nba', nome:'NBA Park', cidade:'Gramado', cat:'Parque', ac:199, cc:124.50, ad:159, cd:110, nota:'Criança de 4 a 11 anos no valor reduzido; 60+ pagam bem menos.'},
+  {id:'skyglass', nome:'Skyglass Canela', cidade:'Canela', cat:'Passeio', ac:165, cc:82.50, ad:139, cd:72.50, nota:'Só a plataforma de vidro. Com o monotrilho Abusado passa de R$ 215.'},
+  {id:'lumni', nome:'Lumni (parque de luzes)', cidade:'Gramado', cat:'Passeio', ac:139, cc:69.50, ad:99, cd:50, nota:'Só à noite, fora do centro. Pré-venda sai por volta de R$ 99. Estacionamento R$ 30.'},
+  {id:'rodacanela', nome:'Roda Canela', cidade:'Canela', cat:'Passeio', ac:80, cc:50, ad:68, cd:43, nota:'Fica no complexo do Mundo a Vapor. Cabine VIP e combo dia+noite custam mais.'},
+  {id:'vapor', nome:'Mundo a Vapor', cidade:'Canela', cat:'Parque', ac:179, cc:89.50, ad:152, cd:76, nota:'Reaberto em 2026 com complexo novo; o valor subiu bastante depois da reforma.'},
+  {id:'egipcio', nome:'Museu Egípcio', cidade:'Canela', cat:'Passeio', ac:60, cc:30, ad:51, cd:26, nota:'Visita guiada, cerca de 1 hora. Até 5 anos não paga; 6 a 16 anos pagam meia.'},
+  {id:'cera', nome:'Dreamland Museu de Cera', cidade:'Gramado', cat:'Passeio', ac:155, cc:77.50, ad:132, cd:66, nota:'Sai muito melhor dentro do Passaporte Dreams, que junta 8 atrações do grupo.'},
+  {id:'motorshow', nome:'Dreams Motor Show', cidade:'Gramado', cat:'Passeio', ac:99, cc:49.50, ad:84, cd:42, nota:'Museu de motos com bar temático. Também entra no Passaporte Dreams.'},
+  {id:'castelinho', nome:'Castelinho do Caracol', cidade:'Canela', cat:'Passeio', ac:20, cc:0, ad:20, cd:0, nota:'Casa de 1915. Até 10 anos não paga. Vale pelo apfelstrudel, cobrado à parte.'},
+  {id:'lejardin', nome:'Le Jardin (parque de lavandas)', cidade:'Gramado', cat:'Passeio', ac:30, cc:15, ad:26, cd:13, nota:'Preço baixo, visita curta. A floração cheia é entre novembro e janeiro.'},
+  {id:'olivas', nome:'Olivas de Gramado', cidade:'Gramado', cat:'Passeio', ac:119, cc:0, ad:101, cd:0, nota:'Criança até 11 anos não paga. Degustação sensorial de azeite é cobrada à parte.'},
+  {id:'jolimont', nome:'Vinícola Jolimont (tour)', cidade:'Canela', cat:'Passeio', ac:189, cc:75, ad:149, cd:60, nota:'R$ 189 na bilheteria e R$ 149 comprando antecipado. Tour Premium fica em R$ 290.'},
+  {id:'pecascata', nome:'Pé da Cascata Explorer', cidade:'Canela', cat:'Passeio', ac:188, cc:94, ad:160, cd:80, nota:'Trilha guiada até a base da cascata, com transporte e o Balanço Infinito inclusos.'},
+  {id:'mariafumaca', nome:'Maria Fumaça + visita à vinícola', cidade:'Bento Gonçalves', cat:'Passeio', ac:400, cc:200, ad:340, cd:170, nota:'O trem sozinho custa a partir de R$ 235. Com transporte saindo de Gramado, passa de R$ 400 e toma o dia todo.'},
+
+  {id:'caradmau', nome:'Pizzaria Cara de Mau', cidade:'Gramado', cat:'Comida', ac:239.90, cc:119.95, ad:203, cd:102, nota:'Rodízio temático pirata, com sessões marcadas. Reserve com antecedência.'},
+  {id:'hector', nome:'Héctor Pizzaria (jantar)', cidade:'Gramado', cat:'Comida', ac:269.90, cc:135, ad:229, cd:115, nota:'R$ 269,90 na sessão com espetáculo; a versão Taverna, sem reserva, sai por R$ 209,90.'},
+  {id:'alice', nome:'Alice e o Chapeleiro (jantar)', cidade:'Gramado', cat:'Comida', ac:279, cc:139.50, ad:237, cd:119, nota:'Menu completo com shows. Bebidas e taxa de serviço não estão inclusas.'},
+  {id:'garfo', nome:'Garfo e Bombacha (almoço com show)', cidade:'Canela', cat:'Comida', ac:185, cc:92.50, ad:157, cd:79, nota:'A Noite Gaúcha, com jantar e espetáculo, chega a R$ 325. No Prime Gourmet vale a regra compre 1 leve 2.'},
+  {id:'grota', nome:'Churrascaria Fundo da Grota', cidade:'Canela', cat:'Comida', ac:159, cc:79.50, ad:135, cd:68, nota:'R$ 159 no jantar com Festa Gaúcha e R$ 129 no almoço sem show. 7 a 11 anos pagam meia.'},
+  {id:'belavista', nome:'Bela Vista Café Colonial', cidade:'Gramado', cat:'Comida', ac:139.90, cc:70, ad:119, cd:60, nota:'O primeiro café colonial do Brasil. Substitui uma refeição inteira, vá com fome.'},
+  {id:'rfvision', nome:'Restaurante Giratório RF Vision', cidade:'Gramado', cat:'Comida', ac:179, cc:89.50, ad:152, cd:76, nota:'Valor da sequência de fondue com show de neve. No almoço, cobra R$ 80 de reserva revertidos em consumo.'},
+  {id:'icebar', nome:'Ice Bar Mundo Gelado', cidade:'Canela', cat:'Comida', ac:99.90, cc:50, ad:74.90, cd:37, nota:'Inclui dois drinks e agasalho térmico. Só à noite; até 7 anos não paga.'}
+];
+
+const brl = v => v.toLocaleString('pt-BR',{style:'currency',currency:'BRL',minimumFractionDigits:2});
+const brl0 = v => v.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+
+const estado = {sel:new Set(), filtro:'todos', busca:'', adultos:10, criancas:5};
+const precos = {};
+ATRACOES.forEach(a => { if(!a.gratis) precos[a.id] = {ac:a.ac, cc:a.cc, ad:a.ad, cd:a.cd}; });
+
+const lista = document.getElementById('lista');
+
+function ordemGrupo(a){ return a.gratis ? 'Gratuitas' : (a.cat === 'Comida' ? 'Comer e beber' : (a.cat === 'Parque' ? 'Parques temáticos' : 'Passeios e museus')); }
+
+function render(){
+  const termo = estado.busca.trim().toLowerCase();
+  const visiveis = ATRACOES.filter(a=>{
+    if(termo && !a.nome.toLowerCase().includes(termo)) return false;
+    const f = estado.filtro;
+    if(f === 'todos') return true;
+    if(f === 'marcadas') return estado.sel.has(a.id);
+    if(f === 'gratis') return !!a.gratis;
+    if(f === 'Gramado' || f === 'Canela') return a.cidade === f;
+    return a.cat === f;
+  });
+
+  if(!visiveis.length){
+    lista.innerHTML = '<p style="color:var(--cinza);padding:24px 4px">Nada por aqui. Ajuste a busca ou escolha outro filtro.</p>';
+    atualizarTotais(); return;
+  }
+
+  const ordem = ['Parques temáticos','Passeios e museus','Comer e beber','Gratuitas'];
+  let html = '';
+  ordem.forEach(g=>{
+    const doGrupo = visiveis.filter(a => ordemGrupo(a) === g);
+    if(!doGrupo.length) return;
+    html += `<div class="grupo-titulo">${g}</div>`;
+    doGrupo.forEach(a=>{
+      const on = estado.sel.has(a.id);
+      const p = precos[a.id];
+      const bloco = a.gratis
+        ? `<div class="p-livre">Grátis</div>`
+        : `<div class="p-cheio">${brl(p.ac)}</div><div class="p-desc">${brl(p.ad)}</div><div class="p-obs">por adulto</div>`;
+      html += `
+      <div class="item ${on?'on':''} ${a.gratis?'gratis':''}" data-id="${a.id}">
+        <div class="linha" data-toggle="${a.id}" role="checkbox" tabindex="0" aria-checked="${on}">
+          <span class="check"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span>
+          <span class="info">
+            <span class="nome">${a.nome}</span>
+            <span class="meta">
+              <span class="tag">${a.cidade}</span>
+              ${a.gratis?'<span class="tag free">sem custo</span>':`<span class="tag">criança ${brl0(p.cd)}</span>`}
+            </span>
+          </span>
+          <span class="precos">${bloco}</span>
+        </div>
+        ${a.gratis ? `<div class="nota" style="padding:0 14px 13px 50px;margin-top:-4px">${a.nota}</div>` :
+        `<button class="editar" type="button" data-edit="${a.id}">Editar preços</button>
+        <div class="painel-edit" id="ed-${a.id}">
+          <div class="grade">
+            <div class="campo"><label>Adulto cheio</label><input type="number" step="0.01" min="0" data-p="${a.id}:ac" value="${p.ac}"></div>
+            <div class="campo"><label>Adulto c/ desconto</label><input type="number" step="0.01" min="0" data-p="${a.id}:ad" value="${p.ad}"></div>
+            <div class="campo"><label>Criança cheia</label><input type="number" step="0.01" min="0" data-p="${a.id}:cc" value="${p.cc}"></div>
+            <div class="campo"><label>Criança c/ desconto</label><input type="number" step="0.01" min="0" data-p="${a.id}:cd" value="${p.cd}"></div>
+          </div>
+          <p class="nota">${a.nota}</p>
+        </div>`}
+      </div>`;
+    });
+  });
+  lista.innerHTML = html;
+  atualizarTotais();
+}
+
+function totais(){
+  let cheio = 0, desc = 0, ppaCheio = 0, ppaDesc = 0, ppcCheio = 0, ppcDesc = 0, pagas = 0, livres = 0;
+  estado.sel.forEach(id=>{
+    const a = ATRACOES.find(x=>x.id===id);
+    if(!a) return;
+    if(a.gratis){ livres++; return; }
+    pagas++;
+    const p = precos[id];
+    ppaCheio += p.ac; ppaDesc += p.ad; ppcCheio += p.cc; ppcDesc += p.cd;
+    cheio += p.ac*estado.adultos + p.cc*estado.criancas;
+    desc  += p.ad*estado.adultos + p.cd*estado.criancas;
+  });
+  return {cheio, desc, ppaCheio, ppaDesc, ppcCheio, ppcDesc, pagas, livres};
+}
+
+function atualizarTotais(){
+  const t = totais();
+  document.getElementById('t-cheio').textContent = brl0(t.cheio);
+  document.getElementById('t-desc').textContent  = brl0(t.desc);
+  document.getElementById('s-cheio').textContent = `${brl0(t.ppaCheio)} por adulto`;
+  document.getElementById('s-desc').textContent  = `${brl0(t.ppaDesc)} por adulto`;
+
+  const n = t.pagas + t.livres;
+  document.getElementById('contador').textContent = n === 0
+    ? 'Nenhuma atração marcada'
+    : `${n} marcada${n>1?'s':''}${t.livres?` · ${t.livres} grátis`:''} · ${estado.adultos} adultos e ${estado.criancas} crianças`;
+
+  const economia = t.cheio - t.desc;
+  document.getElementById('economia').textContent = economia > 0 ? `economia de ${brl0(economia)}` : '';
+  atualizarHash();
+}
+
+/* ---------- Interações ---------- */
+lista.addEventListener('click', e=>{
+  const linha = e.target.closest('[data-toggle]');
+  if(linha){ alternar(linha.dataset.toggle); return; }
+  const btn = e.target.closest('[data-edit]');
+  if(btn){
+    const painel = document.getElementById('ed-'+btn.dataset.edit);
+    const aberto = painel.classList.toggle('aberto');
+    btn.textContent = aberto ? 'Fechar' : 'Editar preços';
+  }
+});
+lista.addEventListener('keydown', e=>{
+  const linha = e.target.closest('[data-toggle]');
+  if(linha && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); alternar(linha.dataset.toggle); }
+});
+lista.addEventListener('input', e=>{
+  const alvo = e.target.dataset.p;
+  if(!alvo) return;
+  const [id, campo] = alvo.split(':');
+  const v = parseFloat(e.target.value);
+  precos[id][campo] = isNaN(v) ? 0 : v;
+  const item = lista.querySelector(`.item[data-id="${id}"] .precos`);
+  if(item){
+    item.innerHTML = `<div class="p-cheio">${brl(precos[id].ac)}</div><div class="p-desc">${brl(precos[id].ad)}</div><div class="p-obs">por adulto</div>`;
+  }
+  const tagC = lista.querySelector(`.item[data-id="${id}"] .meta .tag:last-child`);
+  if(tagC) tagC.textContent = `criança ${brl0(precos[id].cd)}`;
+  atualizarTotais();
+});
+
+function alternar(id){
+  estado.sel.has(id) ? estado.sel.delete(id) : estado.sel.add(id);
+  const item = lista.querySelector(`.item[data-id="${id}"]`);
+  if(item){
+    item.classList.toggle('on', estado.sel.has(id));
+    item.querySelector('[data-toggle]').setAttribute('aria-checked', estado.sel.has(id));
+  }
+  if(estado.filtro === 'marcadas') render(); else atualizarTotais();
+}
+
+document.getElementById('filtros').addEventListener('click', e=>{
+  const chip = e.target.closest('.chip'); if(!chip) return;
+  estado.filtro = chip.dataset.f;
+  document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed', c === chip));
+  render();
+});
+document.getElementById('busca').addEventListener('input', e=>{ estado.busca = e.target.value; render(); });
+document.getElementById('limpar').addEventListener('click', ()=>{ estado.sel.clear(); render(); aviso('Seleção limpa'); });
+
+document.querySelectorAll('[data-step]').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    const input = document.getElementById(b.dataset.step);
+    input.value = Math.max(0, (parseInt(input.value)||0) + parseInt(b.dataset.d));
+    input.dispatchEvent(new Event('input'));
+  });
+});
+['qa','qc'].forEach(idc=>{
+  document.getElementById(idc).addEventListener('input', e=>{
+    const v = Math.max(0, parseInt(e.target.value)||0);
+    if(idc === 'qa') estado.adultos = v; else estado.criancas = v;
+    atualizarTotais();
+  });
+});
+
+/* ---------- Resumo ---------- */
+function resumo(){
+  const t = totais();
+  if(!estado.sel.size) return 'Nenhuma atração marcada ainda na calculadora de Gramado e Canela.';
+  let txt = `*Roteiro Gramado & Canela*\n${estado.adultos} adultos e ${estado.criancas} crianças\n\n`;
+  ['Parques temáticos','Passeios e museus','Comer e beber','Gratuitas'].forEach(g=>{
+    const itens = ATRACOES.filter(a => estado.sel.has(a.id) && ordemGrupo(a) === g);
+    if(!itens.length) return;
+    txt += `*${g}*\n`;
+    itens.forEach(a=>{
+      txt += a.gratis ? `• ${a.nome} — grátis\n` : `• ${a.nome} — ${brl(precos[a.id].ad)} por adulto\n`;
+    });
+    txt += '\n';
+  });
+  txt += `*Por adulto:* ${brl(t.ppaDesc)} com desconto (cheio ${brl(t.ppaCheio)})\n`;
+  if(estado.criancas > 0) txt += `*Por criança:* ${brl(t.ppcDesc)} com desconto (cheio ${brl(t.ppcCheio)})\n`;
+  txt += `*Total do grupo:* ${brl(t.desc)} com desconto — cheio daria ${brl(t.cheio)}\n`;
+  txt += `*Economia:* ${brl(t.cheio - t.desc)}\n\nValores estimados, sem bebidas, estacionamento e transporte.`;
+  return txt;
+}
+document.getElementById('btn-zap').addEventListener('click', ()=>{
+  window.open('https://wa.me/?text=' + encodeURIComponent(resumo()), '_blank');
+});
+document.getElementById('btn-copiar').addEventListener('click', async ()=>{
+  try{ await navigator.clipboard.writeText(resumo()); aviso('Resumo copiado'); }
+  catch{ aviso('Não deu para copiar aqui'); }
+});
+document.getElementById('btn-print').addEventListener('click', ()=> window.print());
+
+let timer;
+function aviso(msg){
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.classList.add('on');
+  clearTimeout(timer); timer = setTimeout(()=>el.classList.remove('on'), 1900);
+}
+
+/* ---------- Seleção no link, para compartilhar ---------- */
+function atualizarHash(){
+  const h = `${estado.adultos}-${estado.criancas}~${[...estado.sel].join(',')}`;
+  history.replaceState(null, '', '#' + h);
+}
+(function lerHash(){
+  const h = decodeURIComponent(location.hash.replace('#',''));
+  if(!h) return;
+  const [pessoas, ids] = h.split('~');
+  if(pessoas){
+    const [a,c] = pessoas.split('-').map(n=>parseInt(n));
+    if(!isNaN(a)){ estado.adultos = a; document.getElementById('qa').value = a; }
+    if(!isNaN(c)){ estado.criancas = c; document.getElementById('qc').value = c; }
+  }
+  if(ids) ids.split(',').filter(Boolean).forEach(i => estado.sel.add(i));
+})();
+
+render();
+</script>
+</body>
+</html>
