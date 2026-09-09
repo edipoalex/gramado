@@ -1,49 +1,41 @@
-# Calculadoras de atrações — Gramado & Canela
+# Gramado & Canela — roteiro e calculadoras
 
-Site estático, sem build e sem dependência. Três arquivos:
+Site estático, sem build e sem dependência. No ar em:
+
+**https://edipoalex.github.io/gramado/**
 
 | Arquivo | O que é |
 |---|---|
-| `index.html` | Página inicial, com link para as duas calculadoras |
+| `index.html` | Home, com os links para o roteiro e para as duas calculadoras |
+| `roteiro.html` | Roteiro dia a dia da viagem, 26/10 a 04/11/2027 |
 | `individual.html` | Cada pessoa monta a própria lista e vê o próprio gasto |
 | `grupo.html` | Soma o custo de todo mundo, com contador de adultos e crianças |
 
-## Publicar no GitHub Pages
+Todas as páginas internas voltam para a home pelo link `← Início` no topo.
 
-### Pelo navegador
-
-1. Em github.com, clique em **New repository**. Nome sugerido: `gramado`. Marque **Public** e crie.
-2. Na tela do repositório vazio, clique em **uploading an existing file**.
-3. Arraste os três `.html` (não arraste a pasta — arraste os arquivos de dentro dela).
-4. Clique em **Commit changes**.
-5. Vá em **Settings → Pages**. Em *Source*, escolha **Deploy from a branch**. Em *Branch*, escolha **main** e a pasta **/ (root)**. Clique em **Save**.
-6. Espere de 1 a 2 minutos e recarregue a página de Settings → Pages. O link aparece no topo:
-
-```
-https://SEU-USUARIO.github.io/gramado/
-```
-
-### Pelo terminal
+## Atualizar o site
 
 ```bash
-git init
-git add index.html individual.html grupo.html
-git commit -m "Calculadoras de atrações de Gramado e Canela"
-git branch -M main
-git remote add origin https://github.com/SEU-USUARIO/gramado.git
-git push -u origin main
+git add -A
+git commit -m "descrição da mudança"
+git push
 ```
 
-Depois ative em **Settings → Pages**, com *Deploy from a branch*, branch `main`, pasta `/ (root)`.
+O GitHub Pages reconstrói sozinho em cerca de um minuto. A configuração é *Deploy from a branch*, branch `main`, pasta `/ (root)`.
 
-## Atualizar os preços depois
+## Atualizar os preços
 
 Os valores ficam no array `ATRACOES`, dentro do `<script>` de cada calculadora.
 
 Atenção no `individual.html`: a lista também está escrita direto no HTML, dentro de `<div id="lista">`, para a página funcionar mesmo sem JavaScript. Ao editar o array, esse trecho fica desatualizado até a página carregar e reescrevê-lo. Quem abrir com JavaScript ligado — ou seja, todo mundo no navegador — vê sempre o valor novo.
 
+## Atualizar o roteiro
+
+O `roteiro.html` é HTML escrito à mão, sem script. Cada dia é um `<article class="dia ...">`, onde a classe define a cor da borda: `gramado`, `canela`, `bento`, `semcarro` ou `estrada`. Dentro, cada item é um `<li class="it ...">` com `att` (atração), `meal` (refeição), `drive` (deslocamento) ou `livre`.
+
 ## Detalhes de implementação
 
-- Zero dependência de runtime. A única requisição externa é o Google Fonts, e a página degrada para fontes do sistema se ele não carregar.
-- A seleção é gravada no fragmento da URL (`#adulto~snowland,minimundo`), então dá para mandar um link já com o roteiro montado. Em `file://` isso falha em silêncio, porque a origem é nula.
+- Zero dependência de runtime. A única requisição externa é o Google Fonts, e as páginas degradam para fontes do sistema se ele não carregar.
+- Nas calculadoras, a seleção é gravada no fragmento da URL (`#adulto~snowland,minimundo`), então dá para mandar um link já com o roteiro montado. Em `file://` isso falha em silêncio, porque a origem é nula.
+- O `roteiro.html` tem estilo de impressão: os dias não quebram no meio da página e os links de perfil somem.
 - Nenhum dado sai do dispositivo. Não há backend, cookie nem analytics.

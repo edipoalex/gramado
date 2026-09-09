@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Calculadoras — Gramado &amp; Canela</title>
-<meta name="description" content="Calcule quanto vão custar as atrações de Gramado e Canela, com preço cheio e preço de plataforma de desconto.">
+<title>Gramado &amp; Canela — roteiro e calculadoras</title>
+<meta name="description" content="Roteiro dia a dia da viagem a Gramado e Canela e calculadoras de quanto vão custar as atrações.">
 <meta name="theme-color" content="#0E211A">
-<meta property="og:title" content="Quanto vai custar Gramado & Canela">
-<meta property="og:description" content="Marque as atrações e veja o total, no preço cheio e no preço com desconto.">
+<meta property="og:title" content="Gramado &amp; Canela — roteiro e calculadoras">
+<meta property="og:description" content="O roteiro dia a dia da viagem, mais as calculadoras de quanto vão custar as atrações.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +34,15 @@ header h1{
 header h1 em{font-style:normal;color:#9DE0C0}
 header p{margin:0;color:#A9BEB4;font-size:14.5px;max-width:48ch}
 
-.cartoes{display:grid;gap:12px;margin:26px 0 8px}
+h2.sec{font-family:'Bricolage Grotesque','Inter',sans-serif;font-weight:700;font-size:13px;
+  text-transform:uppercase;letter-spacing:.1em;color:var(--cinza);margin:26px 0 10px;
+  display:flex;align-items:center;gap:10px}
+h2.sec::after{content:"";flex:1;height:1px;background:var(--linha)}
+.cartoes{display:grid;gap:12px;margin:0 0 8px}
+a.cartao.destaque{border-left:5px solid var(--pine)}
+.cartao .periodo{display:inline-block;margin-bottom:10px;background:var(--pine-soft);
+  border-radius:999px;padding:3px 11px;font-family:'IBM Plex Mono',monospace;
+  font-size:12px;font-weight:600;color:var(--pine)}
 a.cartao{
   display:block;background:var(--papel);border:1px solid var(--linha);border-radius:var(--radius);
   padding:20px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s;
@@ -68,12 +76,31 @@ footer p{margin:0 0 9px}
 
 <header>
   <div class="wrap">
-    <h1>Quanto vai custar<br><em>Gramado &amp; Canela</em></h1>
-    <p>Marque as atrações que quiser e veja o total sair pronto, no preço cheio e no preço das plataformas de desconto.</p>
+    <h1>Nossa viagem a<br><em>Gramado &amp; Canela</em></h1>
+    <p>O roteiro fechado dia a dia e as calculadoras para saber quanto cada atração vai custar, no preço cheio e no preço das plataformas de desconto.</p>
   </div>
 </header>
 
 <div class="wrap">
+  <h2 class="sec">O plano</h2>
+  <div class="cartoes">
+
+    <a class="cartao destaque" href="roteiro.html">
+      <div class="eyebrow">Para o grupo</div>
+      <h2>Roteiro dia a dia</h2>
+      <span class="periodo">26/10 a 04/11/2027 · 9 noites</span>
+      <p>Dez dias na Serra Gaúcha, montados a partir da votação do grupo. Manhã, tarde e noite de cada dia, com o perfil oficial de cada atração.</p>
+      <ul>
+        <li>Horários e tempo de cada parada</li>
+        <li>Base do dia: Gramado, Canela ou estrada</li>
+        <li>O que confirmar antes de fechar</li>
+      </ul>
+      <div class="seta">Abrir roteiro &rarr;</div>
+    </a>
+
+  </div>
+
+  <h2 class="sec">As contas</h2>
   <div class="cartoes">
 
     <a class="cartao" href="individual.html">
