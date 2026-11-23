@@ -69,7 +69,14 @@ header.topo h1 em{font-style:normal;color:#9DE0C0}
 .selos{display:flex;flex-wrap:wrap;gap:8px}
 .selo{display:inline-block;background:rgba(255,255,255,.1);border-radius:999px;padding:5px 13px;
   font-family:var(--mono);font-size:13px;font-weight:600;color:#BFE6D3}
-.selo.contagem{background:#9DE0C0;color:#0E211A}
+.regressiva{margin-top:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 14px 10px}
+.reg-topo{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.reg-topo b{font-family:var(--mono);font-size:30px;line-height:1;color:#9DE0C0;font-weight:600}
+.reg-topo span{font-size:15px;color:#DCEAE3;font-weight:600}
+.reg-barra{height:12px;margin:10px 0 6px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden}
+.reg-barra span{display:block;height:100%;width:100%;border-radius:999px;background:linear-gradient(90deg,#6CCB9F,#9DE0C0);transition:width 1.2s ease-out}
+.reg-legenda{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:#A9BEB4}
+.reg-legenda span:last-child{color:#DCEAE3;font-weight:600}
 
 /* ---------- Abas ---------- */
 .abas{position:sticky;top:0;z-index:30;background:var(--topo);padding:0 0 10px;
@@ -328,7 +335,11 @@ footer.rodape{font-size:13px;color:var(--cinza);padding:10px 0 20px;line-height:
     <div class="selos">
       <span class="selo">25/10 a 04/11/2027</span>
       <span class="selo">10 noites · 9 pessoas</span>
-      <span class="selo contagem" id="contagem" hidden></span>
+    </div>
+    <div class="regressiva" id="regressiva" hidden>
+      <div class="reg-topo"><b id="reg-num"></b><span id="reg-rot"></span></div>
+      <div class="reg-barra" id="reg-barra" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span id="reg-fill"></span></div>
+      <div class="reg-legenda"><span id="reg-esq"></span><span id="reg-dir"></span></div>
     </div>
   </div>
 </header>
@@ -726,20 +737,40 @@ function ler(){ try{ return JSON.parse(localStorage.getItem(CHAVE)) || null; }ca
 function gravar(obj){ try{ localStorage.setItem(CHAVE, JSON.stringify(obj)); }catch(e){} }
 
 /* ---------- "hoje" ---------- */
-function hojeISO(){ const t = new Date(); return t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0'); }
+function hojeISO(){ const q = new URLSearchParams(location.search).get('hoje'); if(q && /^\d{4}-\d{2}-\d{2}$/.test(q)) return q; const t = new Date(); return t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0'); }
 const HOJE = hojeISO();
 const DIA_DE_HOJE = DIAS.find(d => d.data === HOJE) ? HOJE : null;
 
+/* Contagem regressiva: a barra fica cheia até 1 ano antes e esvazia até o embarque.
+   Durante a viagem, ela enche conforme os dias passam. Depois, some. */
 (function contagem(){
-  const el = document.getElementById('contagem');
-  const ini = dataDe(DIAS[0].data), fim = dataDe(DIAS[DIAS.length-1].data);
-  const hoje = dataDe(HOJE);
+  const caixa = document.getElementById('regressiva');
+  const ini = dataDe(DIAS[0].data), fim = dataDe(DIAS[DIAS.length-1].data), hoje = dataDe(HOJE);
   const dias = Math.round((ini - hoje) / 864e5);
-  if(dias > 1) el.textContent = `Faltam ${dias} dias`;
-  else if(dias === 1) el.textContent = 'É amanhã!';
-  else if(hoje <= fim) el.textContent = `Dia ${DIAS.findIndex(d=>d.data===HOJE)+1} de ${DIAS.length}`;
-  else return;
-  el.hidden = false;
+  const JANELA = 365;
+  const dtIni = `${SEM3[ini.getDay()]}, ${ddmm(DIAS[0].data)}`;
+  let num, rot, pct, esq, dir;
+  if(dias > 0){
+    num = dias; rot = dias === 1 ? 'dia para a viagem. É amanhã!' : 'dias para a viagem';
+    pct = Math.min(dias, JANELA) / JANELA * 100;
+    esq = 'contagem do último ano'; dir = `✈ embarque ${dtIni}`;
+  } else if(hoje <= fim){
+    const n = DIAS.findIndex(d => d.data === HOJE) + 1;
+    num = `Dia ${n}`; rot = `de ${DIAS.length} da viagem`;
+    pct = n / DIAS.length * 100;
+    esq = ddmm(DIAS[0].data); dir = `volta ${ddmm(DIAS[DIAS.length-1].data)}`;
+  } else return;
+  document.getElementById('reg-num').textContent = num;
+  document.getElementById('reg-rot').textContent = rot;
+  document.getElementById('reg-esq').textContent = esq;
+  document.getElementById('reg-dir').textContent = dir;
+  const barra = document.getElementById('reg-barra'), fill = document.getElementById('reg-fill');
+  barra.setAttribute('aria-valuenow', Math.round(pct));
+  barra.setAttribute('aria-label', `${num} ${rot}`);
+  caixa.hidden = false;
+  /* anima de cheia até o valor de hoje (ou de vazia, durante a viagem) */
+  fill.style.width = dias > 0 ? '100%' : '0%';
+  requestAnimationFrame(() => requestAnimationFrame(() => { fill.style.width = pct.toFixed(1) + '%'; }));
 })();
 
 /* =============================== ROTEIRO =============================== */

@@ -43,5 +43,6 @@ A atração que não aparece em nenhum dia do roteiro vai sozinha para "Fora do 
 - Na calculadora, as escolhas e os preços editados ficam guardados só no aparelho de quem mexeu, no `localStorage`. Nada vai para servidor, e não há cookie nem analytics.
 - O tema segue o claro ou escuro do celular. O botão no topo troca entre Automático, Claro e Escuro, e a escolha fica guardada no aparelho. Na impressão, a página sai sempre no tema claro.
 - Na aba Gastos, o que está **confirmado** (já pago) aparece em verde, e o que é **estimado** aparece em âmbar, com o sinal ≈ e borda tracejada. As cores e o tema vêm de variáveis no `:root` do CSS.
+- No topo, uma barra faz a contagem regressiva: fica cheia até 1 ano antes do embarque e esvazia até 25/10/2027. Durante a viagem, ela enche conforme os dias passam, e depois da volta some. Para ver como fica em outra data, abra o site com `?hoje=2027-10-27` no endereço.
 - Durante a viagem, a página mostra "Dia X de 11", destaca o dia de hoje e abre direto nele.
 - O roteiro tem estilo de impressão: os dias não quebram no meio da página e as abas somem.
