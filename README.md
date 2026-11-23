@@ -32,6 +32,7 @@ Tudo que muda está no começo do `<script>` do `index.html`, em três listas:
 
 - **`ATRACOES`**: o preço de cada atração, e em `ig` o perfil oficial no Instagram (conferido em 23/11/2026). `ad` e `cd` são os preços com desconto de adulto e criança, e `ac` e `cc` os preços cheios. Mudando aqui, mudam juntos o roteiro, o custo de cada dia, a aba Gastos e a calculadora.
 - **`DIAS`**: o roteiro. Cada item tem horário (`h`), tipo (`att`, `meal`, `gratis`, `drive`, `voo` ou `livre`), nome, local e informação. `calc` liga o item a uma atração da lista de preços. `mapa` é o texto buscado no Google Maps.
+- **`SUGESTOES`**: atrações fora do roteiro, para o grupo avaliar. Aparecem na seção "Sugestões para avaliar", no fim da aba Roteiro. Os dias listados em `dias` ganham um aviso apontando para elas. Para incluir uma sugestão no roteiro, mova o item para `DIAS` e apague a sugestão daqui.
 - **`FAMILIAS`**: quantos adultos e crianças tem cada família e quanto já pagou de hospedagem e passagens.
 
 A atração que não aparece em nenhum dia do roteiro vai sozinha para "Fora do roteiro" na calculadora, com o motivo escrito em `fora`.

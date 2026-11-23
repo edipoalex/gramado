@@ -153,6 +153,23 @@ h2.sec::after{content:"";flex:1;height:1px;background:var(--linha)}
 .dia-nota{margin:6px 16px 14px;padding:10px 12px;background:var(--neve);border-radius:10px;
   font-size:14px;color:var(--carvao);line-height:1.5}
 
+/* ---------- Sugestões ---------- */
+#sugestoes,.sug{scroll-margin-top:130px}
+.sug-intro{font-size:15px;color:var(--carvao);margin:-2px 0 12px}
+.sug{background:var(--papel);border:1.5px dashed var(--hortensia);border-radius:var(--radius);padding:14px 16px;margin-bottom:12px}
+.sug-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.sug-selo{background:var(--hortensia-soft);color:var(--hortensia);border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700}
+.sug h3{margin:0;font-family:var(--titulo);font-size:18px;color:var(--ink);width:100%}
+.sug dl{margin:8px 0 0;font-size:14.5px}
+.sug dt{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--cinza);margin-top:8px}
+.sug dd{margin:2px 0 0;color:var(--carvao)}
+.sug .chips{margin-top:10px}
+.dica-dia{display:flex;align-items:center;gap:8px;margin:0 16px 14px;padding:9px 12px;border-radius:10px;
+  border:1.5px dashed var(--hortensia);background:var(--hortensia-soft);color:var(--hortensia);font-size:14px;font-weight:600;text-decoration:none}
+.dica-dia:hover{filter:brightness(.97)}
+.faixa a.ideias{justify-content:center;color:var(--hortensia);border-style:dashed;border-color:var(--hortensia)}
+.faixa a.ideias b{font-size:13px}
+
 /* ---------- Caixas ---------- */
 .caixa{background:var(--papel);border:1px solid var(--linha);border-radius:var(--radius);padding:16px;margin-bottom:12px}
 .caixa h3{margin:0 0 10px;font-family:var(--titulo);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--cinza)}
@@ -336,6 +353,10 @@ footer.rodape{font-size:13px;color:var(--cinza);padding:10px 0 20px;line-height:
     </div>
     <div id="dias"></div>
 
+    <h2 class="sec" id="sugestoes">Sugestões para avaliar</h2>
+    <p class="sug-intro">Estas atrações <b>não estão no roteiro</b>. São recomendações para os horários livres. O grupo decide se quer incluir alguma. Preços e horários são estimativas: confirme antes de reservar.</p>
+    <div id="lista-sug"></div>
+
     <h2 class="sec">Antes de viajar</h2>
     <div class="caixa">
       <h3>Para confirmar</h3>
@@ -378,7 +399,7 @@ footer.rodape{font-size:13px;color:var(--cinza);padding:10px 0 20px;line-height:
     <div class="caixa">
       <h3>O que já está pago</h3>
       <ul>
-        <li><b>Hospedagem:</b> Laghetto Gramado, 10 noites, 1 apartamento por família, café da manhã incluso. Negociada de R$ 12.350 para R$ 8.180, mais R$ 822 da diária extra. A diária por quarto caiu 34% e ainda ganhamos uma noite.</li>
+        <li><b>Hospedagem:</b> Laghetto Gramado, 10 noites, 1 apartamento por família, café da manhã incluso. A cotação do Pedras Altas era de R$ 12.350; trocando para o Laghetto Gramado, fechamos em R$ 8.180, mais R$ 822 da diária extra. A diária por quarto caiu 34% e ainda ganhamos uma noite.</li>
         <li><b>Passagens:</b> Recife ↔ Porto Alegre pela Azul. R$ 683 a ida e R$ 685 a volta por pessoa, antes dos 10% do cartão. A Família 2 contratou ainda uma bagagem despachada, por R$ 195. A Azul chegou a pedir R$ 1.460 só pela ida entre as duas compras — esperar quatro dias economizou R$ 2.797 nos bilhetes da Família 2.</li>
         <li><b>Pontos Azul usados:</b> 20.000 no total, entre as duas compras.</li>
       </ul>
@@ -507,13 +528,14 @@ const ATRACOES = [
 
 const DIAS = [
   {"data": "2027-10-25", "cor": "estrada", "base": "Estrada + Gramado",
-   nota:"Rota já testada em 2025, na mesma ordem: praça e labirinto, Aldeia do Imigrante, almoço no caminho, mirante e hotel. O Lumni abre nesta segunda pelo calendário oficial e fecha em 26/10, por isso fica nesta noite. Falta confirmar a Aldeia do Imigrante na segunda-feira. O voo é de madrugada: quem for dirigir deve tentar dormir no avião, porque são cerca de 4h de estrada e paradas até Gramado.",
+   nota:"Rota já testada em 2025, na mesma ordem, agora sem o Outlet, que passou para a volta em 04/11: praça e labirinto, Aldeia do Imigrante, almoço no caminho, mirante e hotel. O Lumni abre nesta segunda pelo calendário oficial e fecha em 26/10, por isso fica nesta noite. Falta confirmar a Aldeia do Imigrante na segunda-feira. O voo é de madrugada: quem for dirigir deve tentar dormir no avião, porque são cerca de 4h de estrada e paradas até Gramado.",
    blocos:[
     {t:"Madrugada", itens:[
      {"h": "02:30", "tipo": "voo", "nome": "Voo Recife → Porto Alegre", "local": "Azul", "info": "REC 02:30 → POA 07:00"}]},
     {t:"Manhã", itens:[
      {"h": "07:00", "tipo": "drive", "nome": "Chegada em Porto Alegre e retirada do carro", "local": "Porto Alegre", "info": "bagagem e locadora, cerca de 1h"},
-     {"h": "08:00", "tipo": "drive", "nome": "Saída de Porto Alegre → Outlet Premium", "local": "Nova Santa Rita", "info": "2h30, incluindo deslocamento e compras rápidas", "mapa": "Outlet Premium Porto Alegre Nova Santa Rita"},
+     {"h": "08:00", "tipo": "drive", "nome": "Saída de Porto Alegre → Nova Petrópolis", "local": "Estrada", "info": "~1h30, direto do aeroporto"},
+     {"h": "09:30", "tipo": "meal", "nome": "Café da manhã em Nova Petrópolis", "local": "Nova Petrópolis", "info": "1h, para recuperar do voo de madrugada", "confirmar": true},
      {"h": "11:00", "tipo": "gratis", "nome": "Praça das Flores e Labirinto Verde", "local": "Nova Petrópolis", "info": "1h, ~30min de deslocamento do Outlet", "mapa": "Labirinto Verde Nova Petrópolis"}]},
     {t:"Tarde", itens:[
      {"h": "12:15", "tipo": "att", "nome": "Parque Aldeia do Imigrante e Casa do Colono", "local": "Nova Petrópolis", "info": "1h45, museu vivo da imigração alemã. Ingresso entre R$ 20 e R$ 34 em 2025", "mapa": "Parque Aldeia do Imigrante Nova Petrópolis", "ig": "parquealdeiadoimigrante"},
@@ -615,14 +637,14 @@ const DIAS = [
     {t:"Noite", itens:[
      {"h": "19:30", "tipo": "meal", "nome": "Chalezinho", "local": "Gramado", "info": "1h30, rodízio de fondue suíço", "confirmar": true, "mapa": "Chalezinho Gramado", "ig": "chalezinhogramado"}]}]},
   {"data": "2027-11-04", "cor": "estrada", "base": "Estrada",
-   nota:"Mesma estratégia da volta de 2025: parada para almoçar no caminho em vez de comer no aeroporto. Com o voo às 22:30, sobram cerca de 4h em Porto Alegre à tarde. Dá para sair de Gramado mais tarde ou encaixar um passeio na capital. A chegada em Recife é às 02:30 de sexta, 05/11.",
+   nota:"Mesma estratégia da volta de 2025: parada para almoçar no caminho em vez de comer no aeroporto. O Outlet ficou para a volta: com o voo só às 22:30, dá para comprar sem pressa e devolver o carro às 20h. A chegada em Recife é às 02:30 de sexta, 05/11.",
    blocos:[
     {t:"Manhã", itens:[
      {"h": "09:00", "tipo": "drive", "nome": "Check-out até 12h e saída de Gramado", "local": "", "info": "Gramado"}]},
     {t:"Tarde", itens:[
      {"h": "11:30", "tipo": "meal", "nome": "Almoço em Nova Petrópolis", "local": "Nova Petrópolis", "info": "1h30, colonial", "confirmar": true},
-     {"h": "13:30", "tipo": "drive", "nome": "Estrada até POA", "local": "Estrada", "info": "~2h30, chegada por volta das 16h"},
-     {"h": "16:00", "tipo": "livre", "nome": "Livre em Porto Alegre", "local": "Porto Alegre", "info": "cerca de 4h antes de devolver o carro"}]},
+     {"h": "13:30", "tipo": "drive", "nome": "Estrada até o Outlet Premium", "local": "Estrada", "info": "~2h, já perto do aeroporto"},
+     {"h": "15:30", "tipo": "att", "nome": "Outlet Premium Porto Alegre", "local": "Nova Santa Rita", "info": "até ~19h30, compras sem pressa. Fica a cerca de 30 min do aeroporto", "mapa": "Outlet Premium Porto Alegre Nova Santa Rita"}]},
     {t:"Noite", itens:[
      {"h": "20:00", "tipo": "drive", "nome": "Devolução do carro e check-in no aeroporto", "local": "Porto Alegre", "info": "2h30 antes do voo"},
      {"h": "22:30", "tipo": "voo", "nome": "Voo Porto Alegre → Recife", "local": "Azul", "info": "POA 22:30 → REC 02:30 de 05/11"}]}]}
@@ -632,6 +654,46 @@ const FAMILIAS = [
   {nome:'Família 1', adultos:2, criancas:3, hospedagem:4501.00, passagens:6147.00},
   {nome:'Família 2', adultos:4, criancas:0, hospedagem:4501.00, passagens:5119.80}
 ];
+/* SUGESTOES: ideias que NÃO estão no roteiro, para o grupo avaliar nos horários livres.
+   dias = datas em que a sugestão se encaixa (o dia mostra um aviso apontando para ela). */
+const SUGESTOES = [
+  {id:'natal-gratis', nome:'Natal Luz: programação gratuita', local:'Gramado', dias:['2027-10-29'],
+   quando:'A partir de quinta, 28/10, à noite. Melhor encaixe: sexta, 29/10, que está livre depois do café colonial.',
+   porque:'O festival transforma a cidade: decoração, Vila de Natal na Praça das Etnias e apresentações gratuitas na Rua Coberta. Fica a pé do hotel e as crianças adoram.',
+   custo:'Grátis', atencao:'Abertura prevista para 28/10/2027, a quarta quinta-feira de outubro. Confirmar a programação quando a Gramadotur divulgar.',
+   mapa:'Praça das Etnias Gramado'},
+  {id:'natal-show', nome:'Natal Luz: Nativitaten ou Grande Desfile', local:'Gramado', dias:['2027-10-29'],
+   quando:'Sexta, 29/10, à noite, provável primeiro dia de espetáculos.',
+   porque:'Os dois espetáculos mais procurados do festival. O Nativitaten é uma ópera ao ar livre no Lago Joaquina Rita Bier, apresentada desde 2001. O Grande Desfile acontece em área coberta, no Expogramado.',
+   custo:'Em 2026, de R$ 210 a R$ 420 por pessoa, conforme o lote', atencao:'É o item mais caro da lista. Os ingressos esgotam: comprar assim que abrir a venda.',
+   mapa:'Lago Joaquina Rita Bier Gramado'},
+  {id:'caminhos-pedra', nome:'Caminhos de Pedra', local:'Bento Gonçalves', dias:['2027-10-31'],
+   quando:'Domingo, 31/10, no almoço, no lugar do “almoço em Bento”.',
+   porque:'Estrada rural com casas de pedra do século XIX da imigração italiana, cantinas e a Casa di Pasto da Salton para almoçar com vinhos. Uma das experiências culturais mais elogiadas de Bento.',
+   custo:'A estrada é livre; almoço e degustações à parte', atencao:'Cada parada tem horário próprio: confirmar quem abre no domingo e se o pacote da Maria Fumaça já inclui almoço. Saindo às 16h, dá tempo para o Héctor às 19:30.',
+   mapa:'Caminhos de Pedra Bento Gonçalves'},
+  {id:'vale-quilombo', nome:'Tour cultural no Vale do Quilombo', local:'Gramado', dias:['2027-11-01','2027-11-03'],
+   quando:'Segunda, 01/11, manhã livre. Se não houver saída na segunda, quarta, 03/11, à tarde.',
+   porque:'Visita a famílias de origem italiana e alemã no interior de Gramado, com degustação de produtos coloniais. Mostra a Serra de verdade, longe dos parques.',
+   custo:'Passeio guiado, consultar valor', atencao:'Confirmar se há saída na segunda-feira.',
+   mapa:'Vale do Quilombo Gramado'},
+  {id:'sperry', nome:'Ecoparque Sperry', local:'Canela', dias:['2027-11-03'],
+   quando:'Quarta, 03/11, manhã livre.',
+   porque:'Trilha na mata e mirante sobre a Cachoeira da Usina, de 45 m. Natureza sem multidão, a uns 8 km de Gramado, mais perto que o centro de Canela.',
+   custo:'Consultar', atencao:'Abre de terça a domingo, das 9h às 17h: não serve para a segunda, 01/11. Não é permitido nadar.',
+   mapa:'Ecoparque Sperry Canela'},
+  {id:'ninho-aguias', nome:'Ninho das Águias', local:'Nova Petrópolis', dias:['2027-11-04'],
+   quando:'Quinta, 04/11, de manhã, depois do check-out e antes do almoço em Nova Petrópolis.',
+   porque:'Mirante a cerca de 700 m de altitude, com vista de 270° para o vale do Rio Caí e rampa de parapente. Parada curta, já no caminho de volta.',
+   custo:'Baixo (confirmar)', atencao:'Com neblina a vista some: vale olhar o tempo no dia.',
+   mapa:'Parque Ninho das Águias Nova Petrópolis'},
+  {id:'ravanello', nome:'Vinícola Ravanello (alternativa)', local:'Gramado', dias:['2027-11-02'],
+   quando:'Terça, 02/11, no lugar da Jolimont, se o grupo preferir não ir a Canela no dia sem carro.',
+   porque:'Vinícola dentro de Gramado, com visita guiada e degustação. Mesmo programa, com menos deslocamento.',
+   custo:'Consultar', atencao:'Só com agendamento prévio, por telefone ou WhatsApp.',
+   mapa:'Vinícola Ravanello Gramado'}
+];
+
 const NOTA_HOSPEDAGEM = 'Laghetto Gramado, 10 noites, café incluso';
 const NOTA_PASSAGENS  = 'Ida e volta, com os 10% do cartão Azul';
 const NOTA_PASSAGENS_F2 = 'Inclui R$ 195 de bagagem despachada';
@@ -730,15 +792,33 @@ function renderRoteiro(){
       </header>
       ${blocos}
       ${d.nota ? `<p class="dia-nota">${esc(d.nota)}</p>` : ''}
+      ${SUGESTOES.filter(s => s.dias.includes(d.data)).map(s => `<a class="dica-dia" href="#sug-${s.id}"><span aria-hidden="true">✦</span>Sugestão para este dia: ${esc(s.nome)}</a>`).join('')}
     </article>`);
   });
+  faixa.push('<a href="#sugestoes" class="ideias"><i>ver</i><b>Ideias</b></a>');
   document.getElementById('faixa').innerHTML = faixa.join('');
+  renderSugestoes();
   document.getElementById('dias').innerHTML = html.join('');
+}
+
+function renderSugestoes(){
+  document.getElementById('lista-sug').innerHTML = SUGESTOES.map(s => `
+    <article class="sug" id="sug-${s.id}">
+      <div class="sug-top"><span class="sug-selo">Sugestão</span><span class="tag">${esc(s.local)}</span><h3>${esc(s.nome)}</h3></div>
+      <dl>
+        <dt>Por que vale</dt><dd>${esc(s.porque)}</dd>
+        <dt>Quando encaixa</dt><dd>${esc(s.quando)}</dd>
+        <dt>Custo</dt><dd>${esc(s.custo)}</dd>
+        <dt>Atenção</dt><dd>${esc(s.atencao)}</dd>
+      </dl>
+      <span class="chips"><a class="mapa" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.mapa)}" target="_blank" rel="noopener">${PIN}Mapa</a>
+        ${s.dias.map(dd => `<a class="mapa" href="#dia-${dd}">Ver o dia ${ddmm(dd)}</a>`).join('')}</span>
+    </article>`).join('');
 }
 
 /* Destaca na faixa o dia que está na tela */
 function acompanharDia(){
-  const links = [...document.querySelectorAll('#faixa a')];
+  const links = [...document.querySelectorAll('#faixa a[data-dia]')];
   const cards = [...document.querySelectorAll('.dia')];
   let atual = null;
   const limite = 150;
@@ -990,7 +1070,7 @@ const ABAS = ['roteiro','gastos','calculadora'];
 function abaDoHash(){
   const h = location.hash.slice(1);
   if(ABAS.includes(h)) return {aba:h};
-  if(h.startsWith('dia-')) return {aba:'roteiro', dia:h};
+  if(h.startsWith('dia-') || h.startsWith('sug')) return {aba:'roteiro', dia:h};
   return {aba:'roteiro'};
 }
 let abaAtual = null;
