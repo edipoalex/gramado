@@ -2,143 +2,1014 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gramado &amp; Canela — roteiro e calculadoras</title>
-<meta name="description" content="Roteiro dia a dia da viagem a Gramado e Canela e calculadoras de quanto vão custar as atrações.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gramado &amp; Canela — 25/10 a 04/11/2027</title>
+<meta name="description" content="Roteiro dia a dia, gastos da viagem e calculadora de atrações de Gramado e Canela.">
 <meta name="theme-color" content="#0E211A">
-<meta property="og:title" content="Gramado &amp; Canela — roteiro e calculadoras">
-<meta property="og:description" content="O roteiro dia a dia da viagem, mais as calculadoras de quanto vão custar as atrações.">
+<script>try{var t=localStorage.getItem("gramado2027-tema");if(t==="claro"||t==="escuro")document.documentElement.dataset.tema=t;}catch(e){}</script>
+<meta property="og:title" content="Gramado &amp; Canela — 25/10 a 04/11/2027">
+<meta property="og:description" content="Roteiro dia a dia, gastos da viagem e calculadora de atrações.">
 <meta property="og:type" content="website">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Gramado 2027">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E211A'/%3E%3Cpath d='M32 12 L50 44 H14 Z' fill='%239DE0C0'/%3E%3Cpath d='M32 24 L44 46 H20 Z' fill='%231E5945'/%3E%3Crect x='29' y='44' width='6' height='8' fill='%239DE0C0'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#0E211A; --pine:#1E5945; --pine-soft:#E4EDE8; --hortensia:#5B5FC7;
-  --neve:#F4F6F3; --papel:#FFFFFF; --carvao:#233029; --cinza:#6C7D74;
-  --linha:#DDE4DF; --ambar-soft:#FBF0DF; --radius:16px;
+  --topo:#0E211A; --ink:#0E211A; --pine:#1E5945; --pine-fundo:#1E5945; --pine-soft:#E4EDE8;
+  --hortensia:#5B5FC7; --hortensia-fundo:#5B5FC7; --hortensia-soft:#ECEDFB;
+  --neve:#F4F6F3; --papel:#FFFFFF; --carvao:#233029; --cinza:#5F7068; --linha:#DDE4DF;
+  --ambar:#A35F0E; --ambar-soft:#FBF0DF; --ambar-borda:#EBD9B8; --ambar-texto:#5E3E0C;
+  --neutro-soft:#ECEFED; --check-borda:#C5D0CA; --sombra:rgba(14,33,26,.18);
+  color-scheme:light;
+  --radius:14px;
+  --mono:'IBM Plex Mono',ui-monospace,monospace; --titulo:'Bricolage Grotesque','Inter',sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-tema="claro"]){
+  --topo:#08130F; --ink:#EEF4F0; --pine:#6CCB9F; --pine-fundo:#1E5945; --pine-soft:#183A2C;
+  --hortensia:#A9ACF7; --hortensia-fundo:#5B5FC7; --hortensia-soft:#25274A;
+  --neve:#0E1814; --papel:#16231D; --carvao:#D5E1DA; --cinza:#94A79D; --linha:#2A3B33;
+  --ambar:#E8AA5C; --ambar-soft:#2E2410; --ambar-borda:#5A4422; --ambar-texto:#F2D6AC;
+  --neutro-soft:#22302A; --check-borda:#4A5D53; --sombra:rgba(0,0,0,.45);
+  color-scheme:dark;
+}}
+:root[data-tema="escuro"]{
+  --topo:#08130F; --ink:#EEF4F0; --pine:#6CCB9F; --pine-fundo:#1E5945; --pine-soft:#183A2C;
+  --hortensia:#A9ACF7; --hortensia-fundo:#5B5FC7; --hortensia-soft:#25274A;
+  --neve:#0E1814; --papel:#16231D; --carvao:#D5E1DA; --cinza:#94A79D; --linha:#2A3B33;
+  --ambar:#E8AA5C; --ambar-soft:#2E2410; --ambar-borda:#5A4422; --ambar-texto:#F2D6AC;
+  --neutro-soft:#22302A; --check-borda:#4A5D53; --sombra:rgba(0,0,0,.45);
+  color-scheme:dark;
 }
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 html,body{margin:0;padding:0}
-body{
-  background:var(--neve); color:var(--carvao);
+body{background:var(--neve);color:var(--carvao);
   font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
-  font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased;
-}
-.wrap{max-width:720px;margin:0 auto;padding:0 16px}
-header{background:var(--ink);color:#EEF3F0;padding:44px 0 38px;border-bottom:3px solid var(--pine)}
-header h1{
-  font-family:'Bricolage Grotesque','Inter',sans-serif;font-weight:800;
-  font-size:clamp(30px,7.5vw,50px);line-height:1;letter-spacing:-.025em;margin:0 0 12px;
-}
-header h1 em{font-style:normal;color:#9DE0C0}
-header p{margin:0;color:#A9BEB4;font-size:14.5px;max-width:48ch}
+  font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:40px}
+body.com-barra{padding-bottom:170px}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+button{font-family:inherit}
+a{color:var(--pine)}
+[hidden]{display:none!important}
 
-h2.sec{font-family:'Bricolage Grotesque','Inter',sans-serif;font-weight:700;font-size:13px;
-  text-transform:uppercase;letter-spacing:.1em;color:var(--cinza);margin:26px 0 10px;
-  display:flex;align-items:center;gap:10px}
+/* ---------- Cabeçalho ---------- */
+header.topo{background:var(--topo);color:#EEF3F0;padding:26px 0 22px}
+header.topo h1{font-family:var(--titulo);font-weight:800;font-size:clamp(28px,7vw,42px);
+  line-height:1.02;letter-spacing:-.02em;margin:0 0 10px}
+header.topo h1 em{font-style:normal;color:#9DE0C0}
+.topo-linha{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.tema{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.08);color:#DCEAE3;border-radius:999px;padding:8px 13px;font-size:13px;font-weight:600;cursor:pointer;margin-top:4px}
+.tema:hover{background:rgba(255,255,255,.16)}
+.tema:focus-visible{outline:2px solid #9DE0C0;outline-offset:2px}
+.tema svg{width:16px;height:16px}
+.selos{display:flex;flex-wrap:wrap;gap:8px}
+.selo{display:inline-block;background:rgba(255,255,255,.1);border-radius:999px;padding:5px 13px;
+  font-family:var(--mono);font-size:13px;font-weight:600;color:#BFE6D3}
+.selo.contagem{background:#9DE0C0;color:#0E211A}
+
+/* ---------- Abas ---------- */
+.abas{position:sticky;top:0;z-index:30;background:var(--topo);padding:0 0 10px;
+  box-shadow:0 6px 16px var(--sombra)}
+.abas .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.abas a{display:block;text-align:center;padding:11px 6px;border-radius:12px;text-decoration:none;
+  font-size:15px;font-weight:600;color:#C9DAD2;background:rgba(255,255,255,.07)}
+.abas a[aria-current="page"]{background:#fff;color:#0E211A}
+.abas a:focus-visible{outline:2px solid #9DE0C0;outline-offset:2px}
+
+/* ---------- Faixa de dias ---------- */
+.faixa{position:sticky;top:56px;z-index:25;background:var(--neve);border-bottom:1px solid var(--linha)}
+.faixa .wrap{display:flex;gap:6px;overflow-x:auto;padding:10px 16px;scrollbar-width:none}
+.faixa .wrap::-webkit-scrollbar{display:none}
+.faixa a{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;min-width:50px;
+  padding:6px 8px;border-radius:12px;border:1px solid var(--linha);background:var(--papel);
+  text-decoration:none;color:var(--carvao);line-height:1.1}
+.faixa a b{font-family:var(--mono);font-size:16px}
+.faixa a i{font-style:normal;font-size:11px;color:var(--cinza);text-transform:uppercase;letter-spacing:.04em}
+.faixa a.ativo{background:var(--pine-fundo);border-color:var(--pine-fundo);color:#fff}
+.faixa a.ativo i{color:#9DE0C0}
+.faixa a.hoje{border-color:var(--hortensia);box-shadow:0 0 0 1px var(--hortensia)}
+
+h2.sec{font-family:var(--titulo);font-weight:700;font-size:13px;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--cinza);margin:26px 0 12px;display:flex;align-items:center;gap:10px}
 h2.sec::after{content:"";flex:1;height:1px;background:var(--linha)}
-.cartoes{display:grid;gap:12px;margin:0 0 8px}
-a.cartao.destaque{border-left:5px solid var(--pine)}
-.cartao .periodo{display:inline-block;margin-bottom:10px;background:var(--pine-soft);
-  border-radius:999px;padding:3px 11px;font-family:'IBM Plex Mono',monospace;
-  font-size:12px;font-weight:600;color:var(--pine)}
-a.cartao{
-  display:block;background:var(--papel);border:1px solid var(--linha);border-radius:var(--radius);
-  padding:20px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s;
-}
-a.cartao:hover{border-color:var(--pine);transform:translateY(-1px)}
-a.cartao:focus-visible{outline:2px solid var(--hortensia);outline-offset:2px}
-.cartao .eyebrow{
-  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;
-  color:var(--pine);margin-bottom:6px;
-}
-.cartao h2{
-  font-family:'Bricolage Grotesque','Inter',sans-serif;font-weight:700;
-  font-size:21px;margin:0 0 6px;letter-spacing:-.01em;color:var(--ink);
-}
-.cartao p{margin:0 0 12px;font-size:14px;color:var(--cinza)}
-.cartao .seta{font-size:13.5px;font-weight:600;color:var(--pine)}
-.cartao ul{margin:0 0 12px;padding-left:18px;font-size:13.5px;color:var(--cinza)}
-.cartao li{margin-bottom:2px}
+.legenda{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--cinza);margin:14px 0 4px}
+.legenda b{color:var(--ink)}
 
-.nota{
-  background:var(--ambar-soft);border:1px solid #EBD9B8;border-radius:var(--radius);
-  padding:15px 17px;font-size:13px;color:#6E4A10;line-height:1.55;margin:18px 0;
+/* ---------- Dia ---------- */
+.dia{background:var(--papel);border:1px solid var(--linha);border-radius:var(--radius);
+  margin-bottom:14px;overflow:hidden;border-left:6px solid var(--linha);scroll-margin-top:130px}
+.dia.gramado{border-left-color:var(--pine)}
+.dia.canela{border-left-color:var(--hortensia)}
+.dia.bento,.dia.semcarro{border-left-color:var(--ambar)}
+.dia.estrada{border-left-color:#9AA8A1}
+.dia.e-hoje{box-shadow:0 0 0 3px var(--hortensia)}
+.dia-head{padding:14px 16px 12px;background:var(--neve);border-bottom:1px solid var(--linha)}
+.dia-titulo{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.dia-titulo h3{margin:0;font-family:var(--titulo);font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.dia-titulo .n{font-size:12px;font-weight:600;color:var(--cinza)}
+.dia-sub{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+.base{background:var(--pine-soft);color:var(--pine);border-radius:999px;padding:3px 11px;font-size:13px;font-weight:600}
+.dia.canela .base{background:var(--hortensia-soft);color:var(--hortensia)}
+.dia.bento .base,.dia.semcarro .base{background:var(--ambar-soft);color:var(--ambar)}
+.dia.estrada .base{background:var(--neutro-soft);color:var(--cinza)}
+.custo-dia{font-size:13px;color:var(--cinza)}
+.custo-dia b{font-family:var(--mono);color:var(--pine);font-size:14px}
+.selo-hoje{background:var(--hortensia-fundo);color:#fff;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700}
+
+.bloco{padding:8px 16px 2px}
+.bloco h4{margin:6px 0 4px;font-family:var(--titulo);font-size:12px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.12em;color:var(--cinza)}
+.bloco ul{list-style:none;margin:0;padding:0}
+.it{display:grid;grid-template-columns:50px 1fr auto;gap:4px 10px;padding:10px 0;border-top:1px dashed var(--linha)}
+.it:first-child{border-top:0}
+.hora{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--pine);padding-top:1px}
+.it.drive .hora,.it.livre .hora,.it.voo .hora{color:var(--cinza)}
+.nome{display:block;font-weight:600;font-size:16px;color:var(--ink);line-height:1.3}
+.it.drive .nome,.it.livre .nome{font-weight:500;color:var(--carvao)}
+.ic{display:inline-block;width:1.1em;color:var(--pine)}
+.it.meal .ic{color:var(--ambar)} .it.gratis .ic{color:var(--hortensia)}
+.it.drive .ic,.it.livre .ic,.it.voo .ic{color:var(--cinza)}
+.info{display:block;font-size:14px;color:var(--cinza);margin-top:2px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center}
+.tag{display:inline-block;background:var(--neve);border-radius:6px;padding:2px 8px;font-weight:600;font-size:12px;color:var(--carvao)}
+.tag.prime{background:var(--hortensia-soft);color:var(--hortensia)}
+.mapa{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:var(--pine);
+  text-decoration:none;border:1px solid var(--linha);border-radius:999px;padding:2px 10px;background:var(--papel)}
+.mapa:hover{background:var(--pine-soft)}
+.mapa svg{width:13px;height:13px}
+.precos{text-align:right;display:flex;flex-direction:column;gap:2px;min-width:78px}
+.pr{font-family:var(--mono);font-size:14px;color:var(--ink);white-space:nowrap;font-weight:600}
+.pr.cr{font-size:12.5px;color:var(--cinza);font-weight:500}
+.pr small{display:block;font-family:'Inter',sans-serif;font-size:11px;font-weight:400;color:var(--cinza);line-height:1.1}
+.gratis-tag{font-size:13px;font-weight:600;color:var(--hortensia);white-space:nowrap}
+.na{font-size:12.5px;color:var(--ambar);white-space:nowrap;font-weight:600}
+.dia-nota{margin:6px 16px 14px;padding:10px 12px;background:var(--neve);border-radius:10px;
+  font-size:14px;color:var(--carvao);line-height:1.5}
+
+/* ---------- Caixas ---------- */
+.caixa{background:var(--papel);border:1px solid var(--linha);border-radius:var(--radius);padding:16px;margin-bottom:12px}
+.caixa h3{margin:0 0 10px;font-family:var(--titulo);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--cinza)}
+.caixa ul{margin:0;padding-left:20px;font-size:15px;line-height:1.6}
+.caixa li{margin-bottom:6px}
+.caixa p{margin:0 0 10px;font-size:15px}
+.aviso{background:var(--ambar-soft);border:1px solid var(--ambar-borda);border-radius:var(--radius);
+  padding:14px 16px;font-size:15px;color:var(--ambar-texto);line-height:1.5;margin:4px 0 14px}
+.aviso b{display:block;margin-bottom:4px}
+
+/* ---------- Gastos ---------- */
+.familias{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-bottom:14px}
+.fam{background:var(--papel);border:1px solid var(--linha);border-radius:var(--radius);overflow:hidden}
+.fam.grupo{border-color:var(--pine);box-shadow:0 0 0 1px var(--pine)}
+.fam-head{padding:13px 16px;border-bottom:1px solid var(--linha)}
+.fam.grupo .fam-head{background:var(--pine-fundo);color:#fff;border-color:var(--pine-fundo)}
+.fam-head b{display:block;font-family:var(--titulo);font-size:18px}
+.fam-head span{font-size:13px;color:var(--cinza)}
+.fam.grupo .fam-head span{color:#BFE6D3}
+.fam dl{margin:0;padding:6px 16px}
+.fam .lin{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px dashed var(--linha);font-size:15px}
+.fam .lin:first-child{border-top:0}
+.fam dd{margin:0;font-family:var(--mono);font-weight:600;white-space:nowrap}
+.fam dt small{display:block;font-size:12px;color:var(--cinza)}
+.st{font-size:11px;font-weight:700;border-radius:999px;padding:1px 7px;margin-left:4px;vertical-align:1px}
+.st.ok{background:var(--pine-soft);color:var(--pine)}
+.st.est{background:var(--ambar-soft);color:var(--ambar)}
+.fam-tot{display:flex;justify-content:space-between;align-items:baseline;padding:12px 16px;background:var(--neve);border-top:1px solid var(--linha)}
+.fam-tot b{font-family:var(--mono);font-size:20px;color:var(--ink)}
+.fam-tot span{font-size:13px;color:var(--cinza)}
+.legenda-gastos{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:14px;color:var(--carvao);margin:-2px 0 14px}
+.legenda-gastos span{display:inline-flex;align-items:center;gap:7px}
+.ponto{display:inline-block;width:11px;height:11px;border-radius:3px;flex:0 0 auto}
+.ok .ponto,.legenda-gastos .ok{background:var(--pine)}
+.est .ponto,.legenda-gastos .est{background:var(--ambar)}
+.parte{margin:10px 12px 0;border-radius:11px;border:1px solid var(--linha);overflow:hidden}
+.parte.ok{border-color:var(--pine-soft)}
+.parte.est{border:1px dashed var(--ambar)}
+.parte-tit{display:flex;align-items:center;gap:8px;padding:8px 12px;font-size:13px;font-weight:700}
+.parte.ok .parte-tit{background:var(--pine-soft);color:var(--pine)}
+.parte.est .parte-tit{background:var(--ambar-soft);color:var(--ambar)}
+.parte-tit b{margin-left:auto;font-family:var(--mono);font-size:14px;white-space:nowrap}
+.parte dl{padding:2px 12px}
+.parte.est dd{color:var(--ambar)}
+.proporcao{display:flex;height:10px;margin:14px 16px 4px;border-radius:999px;overflow:hidden;background:var(--ambar-soft)}
+.p-ok{background:var(--pine)}
+.p-est{flex:1;background:repeating-linear-gradient(45deg,var(--ambar) 0 4px,var(--ambar-soft) 4px 8px)}
+.proporcao-leg{display:flex;justify-content:space-between;margin:0 16px 10px;font-size:12px;font-weight:600}
+.proporcao-leg span:first-child{color:var(--pine)}
+.proporcao-leg span:last-child{color:var(--ambar)}
+.fam-pp{padding:0 16px 12px;background:var(--neve);text-align:right;font-size:13px;color:var(--cinza)}
+.fam-pp b{font-family:var(--mono);color:var(--pine)}
+.det{font-size:13px;color:var(--cinza);margin:-4px 0 14px}
+
+/* ---------- Calculadora ---------- */
+.painel{background:var(--papel);border:1px solid var(--linha);border-radius:var(--radius);padding:14px 16px;margin:18px 0 12px}
+.painel h3{margin:0 0 10px;font-size:15px;font-weight:600;color:var(--ink)}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.preset{border:1px solid var(--linha);background:var(--neve);border-radius:999px;padding:8px 14px;
+  font-size:14px;font-weight:600;color:var(--carvao);cursor:pointer}
+.preset[aria-pressed="true"]{background:var(--pine-fundo);border-color:var(--pine-fundo);color:#fff}
+.steppers{display:flex;flex-wrap:wrap;gap:12px 22px}
+.stepper{display:flex;align-items:center;gap:10px}
+.stepper label{font-size:14px;font-weight:600;color:var(--cinza);min-width:66px}
+.ctrl{display:flex;align-items:center;background:var(--neve);border:1px solid var(--linha);border-radius:999px}
+.ctrl button{width:44px;height:44px;border:0;background:transparent;cursor:pointer;font-size:22px;line-height:1;color:var(--pine);border-radius:999px}
+.ctrl button:hover{background:var(--pine-soft)}
+.ctrl output{min-width:34px;text-align:center;font-family:var(--mono);font-weight:600;font-size:18px}
+.acoes-sel{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.btn{border:1px solid var(--linha);background:var(--papel);border-radius:999px;padding:10px 16px;
+  font-size:14px;font-weight:600;color:var(--pine);cursor:pointer}
+.btn:hover{background:var(--pine-soft)}
+.btn.principal{background:var(--pine-fundo);border-color:var(--pine-fundo);color:#fff}
+.busca{width:100%;padding:13px 16px;border:1px solid var(--linha);border-radius:var(--radius);
+  font-family:inherit;font-size:16px;background:var(--papel);color:var(--carvao);margin-bottom:6px}
+.busca:focus,.campo input:focus{outline:2px solid var(--hortensia);outline-offset:1px}
+.grupo-titulo{font-family:var(--titulo);font-weight:700;font-size:13px;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--cinza);margin:20px 0 8px;display:flex;align-items:center;gap:10px}
+.grupo-titulo::after{content:"";flex:1;height:1px;background:var(--linha)}
+.item{background:var(--papel);border:1px solid var(--linha);border-radius:var(--radius);margin-bottom:8px;overflow:hidden}
+.item.on{border-color:var(--pine);box-shadow:0 0 0 1px var(--pine)}
+.linha{display:flex;align-items:flex-start;gap:12px;padding:13px 14px;cursor:pointer}
+.check{flex:0 0 auto;width:26px;height:26px;border:2px solid var(--check-borda);border-radius:8px;margin-top:1px;
+  display:grid;place-items:center;background:var(--papel)}
+.item.on .check{background:var(--pine-fundo);border-color:var(--pine-fundo)}
+.check svg{width:15px;height:15px;stroke:#fff;stroke-width:3.2;fill:none;opacity:0}
+.item.on .check svg{opacity:1}
+.linha .meio{flex:1;min-width:0}
+.linha .nome{font-size:16px}
+.ind{display:inline-block;margin-top:5px;font-size:12px;font-weight:700;border-radius:999px;padding:2px 9px}
+.ind.no{background:var(--pine-soft);color:var(--pine)}
+.ind.fora{background:var(--neutro-soft);color:var(--cinza)}
+.cheio{font-size:11.5px;color:var(--cinza);text-decoration:line-through;font-family:var(--mono)}
+.editar{border:0;background:transparent;color:var(--cinza);font-size:13px;font-weight:600;cursor:pointer;
+  padding:0 14px 12px 52px;text-decoration:underline;text-underline-offset:3px}
+.editar:hover{color:var(--pine)}
+.editar.mudou::after{content:" · preço alterado";color:var(--ambar);text-decoration:none}
+.edicao{padding:0 14px 14px;border-top:1px dashed var(--linha)}
+.grade{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding-top:12px}
+.campo label{display:block;font-size:12px;font-weight:600;color:var(--cinza);margin-bottom:4px}
+.campo input{width:100%;padding:10px;border:1px solid var(--linha);border-radius:10px;font-family:var(--mono);font-size:16px;background:var(--neve);color:var(--carvao)}
+.nota-item{font-size:13px;color:var(--cinza);margin:10px 0 0;line-height:1.45}
+.vazio{color:var(--cinza);padding:24px 4px}
+.compartilhar{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:18px 0 8px}
+.compartilhar .btn{padding:13px;border-radius:var(--radius);font-size:15px}
+
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--topo);color:#fff;
+  border-top:3px solid var(--pine-fundo);box-shadow:0 -8px 28px var(--sombra);padding-bottom:env(safe-area-inset-bottom)}
+.barra .wrap{padding:11px 16px 13px}
+.barra .q{font-size:13px;color:#A9BEB4}
+.barra .tot{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:2px 0 4px}
+.barra .tot b{font-family:var(--mono);font-size:clamp(24px,7vw,30px);font-weight:600;line-height:1.1}
+.barra .tot span{font-size:12px;color:#9DE0C0;text-align:right}
+.barra .pp{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13px;color:#C9DAD2}
+.barra .pp b{font-family:var(--mono);color:#fff}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:190px;background:var(--topo);color:#fff;border:1px solid rgba(255,255,255,.15);
+  padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s;z-index:60}
+.toast.on{opacity:1}
+
+footer.rodape{font-size:13px;color:var(--cinza);padding:10px 0 20px;line-height:1.6}
+
+@media (max-width:420px){
+  .it{grid-template-columns:44px 1fr}
+  .it .precos{grid-column:2;text-align:left;flex-direction:row;flex-wrap:wrap;gap:2px 12px;min-width:0}
+  .pr small{display:inline;margin-left:4px}
 }
-.nota strong{display:block;margin-bottom:3px}
-footer{font-size:12.5px;color:var(--cinza);line-height:1.6;padding:8px 0 44px}
-footer p{margin:0 0 9px}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media print{
+  .abas,.faixa,.barra,.mapa,.compartilhar,.acoes-sel,.busca,.editar,.presets,.toast{display:none!important}
+  :root,:root[data-tema]{
+  --topo:#0E211A; --ink:#0E211A; --pine:#1E5945; --pine-fundo:#1E5945; --pine-soft:#E4EDE8;
+  --hortensia:#5B5FC7; --hortensia-fundo:#5B5FC7; --hortensia-soft:#ECEDFB;
+  --neve:#F4F6F3; --papel:#FFFFFF; --carvao:#233029; --cinza:#5F7068; --linha:#DDE4DF;
+  --ambar:#A35F0E; --ambar-soft:#FBF0DF; --ambar-borda:#EBD9B8; --ambar-texto:#5E3E0C;
+  --neutro-soft:#ECEFED; --check-borda:#C5D0CA; --sombra:rgba(14,33,26,.18);
+  color-scheme:light;
+  }
+  body,body.com-barra{padding:0;background:#fff}
+  .tema{display:none!important}
+  .dia,.fam,.item{break-inside:avoid}
+  [data-aba]{display:block!important}
+}
 </style>
 </head>
 <body>
 
-<header>
+<header class="topo">
   <div class="wrap">
-    <h1>Nossa viagem a<br><em>Gramado &amp; Canela</em></h1>
-    <p>O roteiro fechado dia a dia e as calculadoras para saber quanto cada atração vai custar, no preço cheio e no preço das plataformas de desconto.</p>
+    <div class="topo-linha">
+      <h1>Nossa viagem a<br><em>Gramado &amp; Canela</em></h1>
+      <button class="tema" type="button" id="tema" aria-label="Trocar entre tema automático, claro e escuro">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+        <span id="tema-rot">Automático</span>
+      </button>
+    </div>
+    <div class="selos">
+      <span class="selo">25/10 a 04/11/2027</span>
+      <span class="selo">10 noites · 9 pessoas</span>
+      <span class="selo contagem" id="contagem" hidden></span>
+    </div>
   </div>
 </header>
 
-<div class="wrap">
-  <h2 class="sec">O plano</h2>
-  <div class="cartoes">
-
-    <a class="cartao destaque" href="roteiro.html">
-      <div class="eyebrow">Para o grupo</div>
-      <h2>Roteiro dia a dia</h2>
-      <span class="periodo">26/10 a 04/11/2027 · 9 noites</span>
-      <p>Dez dias na Serra Gaúcha, montados a partir da votação do grupo. Manhã, tarde e noite de cada dia, com o perfil oficial de cada atração.</p>
-      <ul>
-        <li>Horários e tempo de cada parada</li>
-        <li>Base do dia: Gramado, Canela ou estrada</li>
-        <li>O que confirmar antes de fechar</li>
-      </ul>
-      <div class="seta">Abrir roteiro &rarr;</div>
-    </a>
-
+<nav class="abas" aria-label="Seções">
+  <div class="wrap">
+    <a href="#roteiro" data-ir="roteiro">Roteiro</a>
+    <a href="#gastos" data-ir="gastos">Gastos</a>
+    <a href="#calculadora" data-ir="calculadora">Calculadora</a>
   </div>
+</nav>
 
-  <h2 class="sec">As contas</h2>
-  <div class="cartoes">
+<noscript><div class="wrap"><p class="aviso"><b>Esta página precisa de JavaScript.</b>Ative o JavaScript no navegador para ver o roteiro e os gastos.</p></div></noscript>
 
-    <a class="cartao" href="individual.html">
-      <div class="eyebrow">Para cada pessoa</div>
-      <h2>Minha lista</h2>
-      <p>Cada um monta o próprio roteiro e vê só o próprio gasto. Serve para decidir o que fazer junto com o grupo e o que fazer por conta.</p>
+<!-- =============================== ROTEIRO =============================== -->
+<section data-aba="roteiro">
+  <div class="faixa" aria-label="Ir para o dia"><div class="wrap" id="faixa"></div></div>
+  <div class="wrap">
+    <div class="legenda">
+      <span><b>●</b> atração</span><span><b>◆</b> refeição</span><span><b>○</b> grátis</span>
+      <span><b>▸</b> deslocamento</span><span><b>✈</b> voo</span>
+    </div>
+    <div id="dias"></div>
+
+    <h2 class="sec">Antes de viajar</h2>
+    <div class="caixa">
+      <h3>Para confirmar</h3>
       <ul>
-        <li>Perfil adulto ou criança</li>
-        <li>Marcar tudo e ir cortando</li>
-        <li>Exporta planilha CSV</li>
+        <li>Os dias de operação da <b>Maria Fumaça</b>. O passeio toma o dia inteiro, e o roteiro se reorganiza em torno dele.</li>
+        <li>O funcionamento nas segundas-feiras: <b>Aldeia do Imigrante</b> em 25/10 e <b>Le Jardin</b> em 01/11.</li>
+        <li>As reservas dos jantares temáticos: <b>Alice e o Chapeleiro, Cara de Mau, Héctor e Garfo e Bombacha</b>. Trabalham com sessões marcadas e lotam em alta temporada.</li>
+        <li>O feriado de Finados, em 02/11, deixa de sábado a terça mais cheios. Reserve cedo o que cai nesses dias.</li>
       </ul>
-      <div class="seta">Abrir minha lista &rarr;</div>
-    </a>
+    </div>
+    <div class="caixa">
+      <h3>Bebida e volante</h3>
+      <p>Três programas têm álcool: a Vinícola Jolimont em 02/11, que já vem com transporte da empresa de turismo; o Ice Bar em 28/10, que inclui dois drinks; e a degustação de vinhos do passeio de Maria Fumaça em 31/10, com duas horas de estrada na volta. Combine antes quem dirige.</p>
+    </div>
+    <div class="caixa">
+      <h3>Fora do roteiro</h3>
+      <p><b>Não coube:</b> Pé da Cascata Explorer. Cabe na tarde livre de 03/11, mas seria uma quarta ida a Canela no último dia.</p>
+      <p><b>Retirado pelo grupo:</b> Skyglass Canela.</p>
+      <p style="margin:0"><b>Reprovados na pesquisa:</b> Museu de Cera, Castelinho Caracol, Acquamotion, Dreams Motor Show, Big Land, Mundo a Vapor, Vale dos Dinossauros, Space Adventure, Museu Egípcio e NBA Park.</p>
+    </div>
+    <footer class="rodape">
+      <p><b>PRIME</b> marca os restaurantes e atrações cobertos pelo Prime Gourmet, que funciona na lógica compre 1 leve 2. Com 6 adultos no grupo, vale conferir quais seguem ativos em 2027.</p>
+      <p>Preços com desconto de plataforma, pesquisados em agosto de 2026. Trate como estimativa e confirme antes de comprar.</p>
+    </footer>
+  </div>
+</section>
 
-    <a class="cartao" href="grupo.html">
-      <div class="eyebrow">Para o organizador</div>
-      <h2>Conta do grupo</h2>
-      <p>Some o custo de todo mundo de uma vez. Ajuste quantos adultos e quantas crianças vão e veja o total fechado da viagem.</p>
+<!-- =============================== GASTOS =============================== -->
+<section data-aba="gastos">
+  <div class="wrap">
+    <h2 class="sec">Quanto custa a viagem</h2>
+    <div class="legenda-gastos">
+      <span><i class="ponto ok"></i><b>Confirmado</b>: valor real, já pago</span>
+      <span><i class="ponto est"></i><b>Estimado (≈)</b>: previsão, ainda pode mudar</span>
+    </div>
+    <div class="familias" id="familias"></div>
+    <div class="aviso" id="aviso-gastos"></div>
+    <div class="caixa">
+      <h3>O que já está pago</h3>
       <ul>
-        <li>Contador de adultos e crianças</li>
-        <li>Total por pessoa e total do grupo</li>
-        <li>Resumo pronto para o WhatsApp</li>
+        <li><b>Hospedagem:</b> Laghetto Pedras Altas, 10 noites, 1 apartamento por família, café da manhã incluso. Negociada de R$ 12.350 para R$ 8.180, mais R$ 822 da diária extra. A diária por quarto caiu 34% e ainda ganhamos uma noite.</li>
+        <li><b>Passagens:</b> Recife ↔ Porto Alegre pela Azul. R$ 683 a ida e R$ 685 a volta por pessoa, antes dos 10% do cartão. A Família 2 contratou ainda uma bagagem despachada, por R$ 195. A Azul chegou a pedir R$ 1.460 só pela ida entre as duas compras — esperar quatro dias economizou R$ 2.797 nos bilhetes da Família 2.</li>
+        <li><b>Pontos Azul usados:</b> 20.000 no total, entre as duas compras.</li>
       </ul>
-      <div class="seta">Abrir conta do grupo &rarr;</div>
-    </a>
-
+    </div>
+    <div class="caixa">
+      <h3>Fora desta conta</h3>
+      <ul>
+        <li>Estacionamento no hotel — 50% de desconto concedido, mas a rede nunca informou o valor cheio da diária</li>
+        <li>Combustível e pedágio entre Porto Alegre, Gramado, Canela e Bento Gonçalves</li>
+        <li>Refeições marcadas como "a confirmar", e bebidas nos jantares temáticos</li>
+        <li>Taxa de serviço nos restaurantes</li>
+        <li>Compras — Outlet Premium, chocolates, vinhos, lembranças</li>
+        <li>Ingresso do Parque Aldeia do Imigrante, entre R$ 20 e R$ 34 por pessoa em 2025</li>
+      </ul>
+    </div>
+    <p class="det">Quer simular outro cenário, cortando ou somando atrações? Use a aba <a href="#calculadora">Calculadora</a>.</p>
   </div>
+</section>
 
-  <div class="nota">
-    <strong>Os preços são estimativa.</strong>
-    Pesquisados em agosto de 2026 em sites oficiais, Laçador de Ofertas, Prime Gourmet e agências de ingresso. Gramado reajusta tarifa por temporada e o Natal Luz é a mais cara do ano, então confirme antes de comprar — todo valor é editável dentro das calculadoras.
+<!-- =============================== CALCULADORA =============================== -->
+<section data-aba="calculadora">
+  <div class="wrap">
+    <div class="painel">
+      <h3>Para quem é a conta?</h3>
+      <div class="presets" id="presets">
+        <button class="preset" type="button" data-a="6" data-c="3">Grupo todo</button>
+        <button class="preset" type="button" data-a="2" data-c="3">Família 1</button>
+        <button class="preset" type="button" data-a="4" data-c="0">Família 2</button>
+        <button class="preset" type="button" data-a="1" data-c="0">Só eu (adulto)</button>
+        <button class="preset" type="button" data-a="0" data-c="1">Só 1 criança</button>
+      </div>
+      <div class="steppers">
+        <div class="stepper"><label>Adultos</label>
+          <div class="ctrl"><button type="button" data-passo="a" data-d="-1" aria-label="Menos um adulto">−</button><output id="qa" aria-live="polite">6</output><button type="button" data-passo="a" data-d="1" aria-label="Mais um adulto">+</button></div>
+        </div>
+        <div class="stepper"><label>Crianças</label>
+          <div class="ctrl"><button type="button" data-passo="c" data-d="-1" aria-label="Menos uma criança">−</button><output id="qc" aria-live="polite">3</output><button type="button" data-passo="c" data-d="1" aria-label="Mais uma criança">+</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="acoes-sel">
+      <button class="btn" type="button" id="marcar-roteiro">Marcar só o roteiro</button>
+      <button class="btn" type="button" id="desmarcar">Desmarcar tudo</button>
+    </div>
+    <input class="busca" id="busca" type="search" placeholder="Buscar atração…" aria-label="Buscar atração" autocomplete="off">
+    <div id="lista"></div>
+
+    <div class="compartilhar">
+      <button class="btn principal" type="button" id="btn-zap">Enviar no WhatsApp</button>
+      <button class="btn" type="button" id="btn-copiar">Copiar resumo</button>
+    </div>
+    <footer class="rodape">
+      <p>Toque numa atração para marcar ou desmarcar. O total no rodapé soma sozinho. Suas escolhas e preços editados ficam guardados só neste aparelho.</p>
+      <p><b>Fora da conta:</b> estacionamento (R$ 20 a R$ 30 em vários parques), bebidas, taxa de serviço e transporte.</p>
+    </footer>
   </div>
+  <div class="barra" id="barra">
+    <div class="wrap">
+      <div class="q" id="b-qtd"></div>
+      <div class="tot"><b id="b-total">R$ 0</b><span id="b-cheio"></span></div>
+      <div class="pp" id="b-pp"></div>
+    </div>
+  </div>
+</section>
 
-  <footer>
-    <p><strong>Fora da conta:</strong> estacionamento (R$ 20 a R$ 30 em vários parques), bebidas, taxa de serviço, transporte e os espetáculos pagos do Natal Luz.</p>
-    <p>No iPhone, dá para tocar em Compartilhar e depois em Adicionar à Tela de Início. A calculadora abre como aplicativo.</p>
-  </footer>
-</div>
+<div class="toast" id="toast" role="status"></div>
 
+<script>
+/* ======================================================================
+   DADOS — tudo que muda na viagem mora aqui.
+
+   ATRACOES: preços por pessoa, em reais (pesquisa ago/2026).
+     ac = adulto cheio | cc = criança cheia | ad = adulto com desconto | cd = criança com desconto
+     fora = motivo de estar fora do roteiro (só para as que não estão nele)
+
+   DIAS: o roteiro. Cada item tem:
+     h = horário | tipo = att, meal, gratis, drive, voo ou livre | nome | local | info
+     calc = id em ATRACOES (o preço do item e o custo do dia vêm daí)
+     mapa = texto buscado no Google Maps | prime = coberto pelo Prime Gourmet
+     confirmar = preço ainda não definido
+
+   FAMILIAS: quem é quem, e o que já foi pago.
+   ====================================================================== */
+const ATRACOES = [
+  {id:'catedral', nome:'Catedral de Pedra', cidade:'Canela', cat:'Passeio', gratis:true, nota:'Entrada gratuita. A subida à torre dos sinos é paga à parte (cerca de R$ 25).'},
+  {id:'lagonegro', nome:'Lago Negro', cidade:'Gramado', cat:'Passeio', gratis:true, nota:'Entrada gratuita. Pedalinho de cisne é opcional, cerca de R$ 40 por volta.'},
+
+  {id:'minimundo', nome:'Mini Mundo', cidade:'Gramado', cat:'Parque', ac:108, cc:58, ad:92, cd:49, nota:'Criança de 3 a 15 anos e 60+ pagam o valor reduzido.'},
+  {id:'papainoel', nome:'Vila do Papai Noel (Aldeia do Papai Noel)', cidade:'Gramado', cat:'Parque', ac:78, cc:48, ad:66, cd:41, nota:'Funciona o ano todo; na temporada de Natal Luz a tarifa sobe.'},
+  {id:'snowland', nome:'Snowland', cidade:'Gramado', cat:'Parque', ac:259, cc:179, ad:199, cd:129.50, nota:'R$ 259 no site oficial e R$ 199 no Laçador de Ofertas. Um dos ingressos mais caros da região.'},
+  {id:'dinossauros', fora:'Reprovado na pesquisa', nome:'Vale dos Dinossauros', cidade:'Canela', cat:'Parque', ac:99, cc:49.50, ad:84, cd:42, nota:'Está incluso no Passaporte Dreams (R$ 289,90 adulto / R$ 149,90 criança, 8 atrações).'},
+  {id:'florybal', nome:'Terra Mágica Florybal', cidade:'Canela', cat:'Parque', ac:150, cc:75, ad:128, cd:64, nota:'Ingresso inclui shows, brinquedos e estacionamento. Reserve meio dia.'},
+  {id:'space', fora:'Reprovado na pesquisa', nome:'Space Adventure', cidade:'Canela', cat:'Parque', ac:129.90, cc:64.95, ad:110, cd:55, nota:'Combo exposição da NASA + planetário. Separados saem por R$ 59,90 e R$ 39,90.'},
+  {id:'caracol', nome:'Parque do Caracol', cidade:'Canela', cat:'Passeio', ac:70, cc:35, ad:59, cd:30, nota:'Valor varia bastante por temporada; estacionamento R$ 30 à parte. O salto de pêndulo é pago separado.'},
+  {id:'bondinhos', nome:'Bondinhos Aéreos (Parques da Serra)', cidade:'Canela', cat:'Passeio', ac:120, cc:60, ad:102, cd:51, nota:'Criança de 6 a 12 anos paga meia. Melhor vista da Cascata do Caracol.'},
+  {id:'monica', nome:'Parque da Mônica (Vila da Mônica)', cidade:'Gramado', cat:'Parque', ac:199, cc:159, ad:159.90, cd:129, nota:'R$ 199 no oficial e R$ 159,90 no Laçador. Fim de semana e alta temporada sobem.'},
+  {id:'alpen', nome:'Alpen Park (trenó)', cidade:'Canela', cat:'Parque', ac:138.90, cc:67.50, ad:118, cd:57, nota:'Passaporte com 6 atrações liberadas, inclusive o trenó alpino. Estacionamento R$ 20.'},
+  {id:'bigland', fora:'Reprovado na pesquisa', nome:'Big Land', cidade:'Canela', cat:'Parque', ac:89.90, cc:69.90, ad:76, cd:59, nota:'Adulto a partir de 10 anos; 3 a 9 anos é o valor reduzido; até 2 anos não paga.'},
+  {id:'lugano', nome:'Mundo Lugano', cidade:'Gramado', cat:'Parque', ac:119, cc:119, ad:101, cd:101, nota:'Parque indoor em 3 andares. Há combo com rodízio de pizza por valor maior.'},
+  {id:'acqua', fora:'Reprovado na pesquisa', nome:'Acquamotion', cidade:'Gramado', cat:'Parque', ac:179, cc:104.50, ad:149.90, cd:95, nota:'Parque aquático coberto e climatizado. Até 17 anos paga o valor reduzido.'},
+  {id:'nba', fora:'Reprovado na pesquisa', nome:'NBA Park', cidade:'Gramado', cat:'Parque', ac:199, cc:124.50, ad:159, cd:110, nota:'Criança de 4 a 11 anos no valor reduzido; 60+ pagam bem menos.'},
+  {id:'skyglass', fora:'Retirado pelo grupo', nome:'Skyglass Canela', cidade:'Canela', cat:'Passeio', ac:165, cc:82.50, ad:139, cd:72.50, nota:'Só a plataforma de vidro. Com o monotrilho Abusado passa de R$ 215.'},
+  {id:'lumni', nome:'Lumni (parque de luzes)', cidade:'Gramado', cat:'Passeio', ac:139, cc:69.50, ad:99, cd:50, nota:'Só à noite, fora do centro. Pré-venda sai por volta de R$ 99. Estacionamento R$ 30.'},
+  {id:'rodacanela', nome:'Roda Canela', cidade:'Canela', cat:'Passeio', ac:80, cc:50, ad:68, cd:43, nota:'Fica no complexo do Mundo a Vapor. Cabine VIP e combo dia+noite custam mais.'},
+  {id:'vapor', fora:'Reprovado na pesquisa', nome:'Mundo a Vapor', cidade:'Canela', cat:'Parque', ac:179, cc:89.50, ad:152, cd:76, nota:'Reaberto em 2026 com complexo novo; o valor subiu bastante depois da reforma.'},
+  {id:'egipcio', fora:'Reprovado na pesquisa', nome:'Museu Egípcio', cidade:'Canela', cat:'Passeio', ac:60, cc:30, ad:51, cd:26, nota:'Visita guiada, cerca de 1 hora. Até 5 anos não paga; 6 a 16 anos pagam meia.'},
+  {id:'cera', fora:'Reprovado na pesquisa', nome:'Dreamland Museu de Cera', cidade:'Gramado', cat:'Passeio', ac:155, cc:77.50, ad:132, cd:66, nota:'Sai muito melhor dentro do Passaporte Dreams, que junta 8 atrações do grupo.'},
+  {id:'motorshow', fora:'Reprovado na pesquisa', nome:'Dreams Motor Show', cidade:'Gramado', cat:'Passeio', ac:99, cc:49.50, ad:84, cd:42, nota:'Museu de motos com bar temático. Também entra no Passaporte Dreams.'},
+  {id:'castelinho', fora:'Reprovado na pesquisa', nome:'Castelinho do Caracol', cidade:'Canela', cat:'Passeio', ac:20, cc:0, ad:20, cd:0, nota:'Casa de 1915. Até 10 anos não paga. Vale pelo apfelstrudel, cobrado à parte.'},
+  {id:'lejardin', nome:'Le Jardin (parque de lavandas)', cidade:'Gramado', cat:'Passeio', ac:30, cc:15, ad:26, cd:13, nota:'Preço baixo, visita curta. A floração cheia é entre novembro e janeiro.'},
+  {id:'olivas', nome:'Olivas de Gramado', cidade:'Gramado', cat:'Passeio', ac:119, cc:0, ad:101, cd:0, nota:'Criança até 11 anos não paga. Degustação sensorial de azeite é cobrada à parte.'},
+  {id:'jolimont', nome:'Vinícola Jolimont (tour)', cidade:'Canela', cat:'Passeio', ac:189, cc:75, ad:149, cd:60, nota:'R$ 189 na bilheteria e R$ 149 comprando antecipado. Tour Premium fica em R$ 290.'},
+  {id:'pecascata', fora:'Não coube no roteiro', nome:'Pé da Cascata Explorer', cidade:'Canela', cat:'Passeio', ac:188, cc:94, ad:160, cd:80, nota:'Trilha guiada até a base da cascata, com transporte e o Balanço Infinito inclusos.'},
+  {id:'mariafumaca', nome:'Maria Fumaça + visita à vinícola', cidade:'Bento Gonçalves', cat:'Passeio', ac:400, cc:200, ad:340, cd:170, nota:'O trem sozinho custa a partir de R$ 235. Com transporte saindo de Gramado, passa de R$ 400 e toma o dia todo.'},
+
+  {id:'caradmau', nome:'Pizzaria Cara de Mau', cidade:'Gramado', cat:'Comida', ac:239.90, cc:119.95, ad:203, cd:102, nota:'Rodízio temático pirata, com sessões marcadas. Reserve com antecedência.'},
+  {id:'hector', nome:'Héctor Pizzaria (jantar)', cidade:'Gramado', cat:'Comida', ac:269.90, cc:135, ad:229, cd:115, nota:'R$ 269,90 na sessão com espetáculo; a versão Taverna, sem reserva, sai por R$ 209,90.'},
+  {id:'alice', nome:'Alice e o Chapeleiro (jantar)', cidade:'Gramado', cat:'Comida', ac:279, cc:139.50, ad:237, cd:119, nota:'Menu completo com shows. Bebidas e taxa de serviço não estão inclusas.'},
+  {id:'garfo', nome:'Garfo e Bombacha (almoço com show)', cidade:'Canela', cat:'Comida', ac:185, cc:92.50, ad:157, cd:79, nota:'A Noite Gaúcha, com jantar e espetáculo, chega a R$ 325. No Prime Gourmet vale a regra compre 1 leve 2.'},
+  {id:'grota', nome:'Churrascaria Fundo da Grota', cidade:'Canela', cat:'Comida', ac:159, cc:79.50, ad:135, cd:68, nota:'R$ 159 no jantar com Festa Gaúcha e R$ 129 no almoço sem show. 7 a 11 anos pagam meia.'},
+  {id:'belavista', nome:'Bela Vista Café Colonial', cidade:'Gramado', cat:'Comida', ac:139.90, cc:70, ad:119, cd:60, nota:'O primeiro café colonial do Brasil. Substitui uma refeição inteira, vá com fome.'},
+  {id:'rfvision', nome:'Restaurante Giratório RF Vision', cidade:'Gramado', cat:'Comida', ac:179, cc:89.50, ad:152, cd:76, nota:'Valor da sequência de fondue com show de neve. No almoço, cobra R$ 80 de reserva revertidos em consumo.'},
+  {id:'icebar', nome:'Ice Bar Mundo Gelado', cidade:'Canela', cat:'Comida', ac:99.90, cc:50, ad:74.90, cd:37, nota:'Inclui dois drinks e agasalho térmico. Só à noite; até 7 anos não paga.'}
+];
+
+const DIAS = [
+  {"data": "2027-10-25", "cor": "estrada", "base": "Estrada + Gramado",
+   nota:"Rota já testada em 2025, na mesma ordem: praça e labirinto, Aldeia do Imigrante, almoço no caminho, mirante e hotel. O Lumni abre nesta segunda pelo calendário oficial e fecha em 26/10, por isso fica nesta noite. Falta confirmar a Aldeia do Imigrante na segunda-feira. O voo é de madrugada: quem for dirigir deve tentar dormir no avião, porque são cerca de 4h de estrada e paradas até Gramado.",
+   blocos:[
+    {t:"Madrugada", itens:[
+     {"h": "02:30", "tipo": "voo", "nome": "Voo Recife → Porto Alegre", "local": "Azul", "info": "REC 02:30 → POA 07:00"}]},
+    {t:"Manhã", itens:[
+     {"h": "07:00", "tipo": "drive", "nome": "Chegada em Porto Alegre e retirada do carro", "local": "Porto Alegre", "info": "bagagem e locadora, cerca de 1h"},
+     {"h": "08:00", "tipo": "drive", "nome": "Saída de Porto Alegre → Outlet Premium", "local": "Nova Santa Rita", "info": "2h30, incluindo deslocamento e compras rápidas", "mapa": "Outlet Premium Porto Alegre Nova Santa Rita"},
+     {"h": "11:00", "tipo": "gratis", "nome": "Praça das Flores e Labirinto Verde", "local": "Nova Petrópolis", "info": "1h, ~30min de deslocamento do Outlet", "mapa": "Labirinto Verde Nova Petrópolis"}]},
+    {t:"Tarde", itens:[
+     {"h": "12:15", "tipo": "att", "nome": "Parque Aldeia do Imigrante e Casa do Colono", "local": "Nova Petrópolis", "info": "1h45, museu vivo da imigração alemã. Ingresso entre R$ 20 e R$ 34 em 2025", "mapa": "Parque Aldeia do Imigrante Nova Petrópolis"},
+     {"h": "14:15", "tipo": "meal", "nome": "Almoço no caminho", "local": "Rota Romântica", "info": "1h15", "confirmar": true},
+     {"h": "15:45", "tipo": "gratis", "nome": "Mirante da Torre", "local": "Nova Petrópolis", "info": "30min, parada rápida", "mapa": "Mirante da Torre Nova Petrópolis"},
+     {"h": "16:45", "tipo": "drive", "nome": "Chegada a Gramado e check-in no Pedras Altas", "local": "", "info": "Gramado", "mapa": "Laghetto Pedras Altas Gramado"}]},
+    {t:"Noite", itens:[
+     {"h": "18:30", "tipo": "att", "nome": "Lumni", "local": "Gramado", "info": "1h30, parque de luzes", "prime": true, "calc": "lumni", "mapa": "Lumni Gramado"}]}]},
+  {"data": "2027-10-26", "cor": "gramado", "base": "Gramado",
+   nota:"Primeiro dia inteiro na Serra, sem pegar estrada depois da viagem da véspera. O Parque da Mônica veio de 01/11, que cai no feriado prolongado de Finados.",
+   blocos:[
+    {t:"Manhã", itens:[
+     {"h": "09:00", "tipo": "att", "nome": "Parque da Mônica", "local": "Gramado", "info": "3h, parque coberto. Terça comum, com menos fila que no feriado", "calc": "monica", "mapa": "Parque da Mônica Gramado"}]},
+    {t:"Tarde", itens:[
+     {"h": "13:00", "tipo": "meal", "nome": "Almoço no centro", "local": "Gramado", "info": "1h30", "confirmar": true},
+     {"h": "15:00", "tipo": "gratis", "nome": "Centro a pé: Rua Coberta, Rua Torta e chocolaterias", "local": "Gramado", "info": "2h30, passeio leve de ambientação", "mapa": "Rua Coberta Gramado"}]},
+    {t:"Noite", itens:[
+     {"h": "", "tipo": "livre", "nome": "Livre", "local": "Gramado", "info": "Jantar no centro, por conta de cada família"}]}]},
+  {"data": "2027-10-27", "cor": "gramado", "base": "Gramado",
+   nota:"Tudo em Gramado e a poucos minutos do hotel. O Quintanilha fica na mesma avenida do Mini Mundo.",
+   blocos:[
+    {t:"Manhã", itens:[
+     {"h": "09:00", "tipo": "att", "nome": "Mini Mundo", "local": "Gramado", "info": "1h30, miniaturas interativas", "calc": "minimundo", "mapa": "Mini Mundo Gramado"},
+     {"h": "11:00", "tipo": "att", "nome": "Vila do Papai Noel", "local": "Gramado", "info": "1h30, ~10min de deslocamento", "calc": "papainoel", "mapa": "Vila do Papai Noel Gramado"}]},
+    {t:"Tarde", itens:[
+     {"h": "13:00", "tipo": "meal", "nome": "Almoço Restaurante Quintanilha", "local": "Gramado", "info": "1h30, buffet livre, Av. Borges de Medeiros 1595, a 500m do Mini Mundo", "confirmar": true, "mapa": "Restaurante Quintanilha Gramado"},
+     {"h": "15:30", "tipo": "gratis", "nome": "Lago Negro", "local": "Gramado", "info": "1h30, caminhada leve e pedalinho", "calc": "lagonegro", "mapa": "Lago Negro Gramado"}]},
+    {t:"Noite", itens:[
+     {"h": "19:30", "tipo": "att", "nome": "Pizzaria Cara de Mau", "local": "Gramado", "info": "1h30, jantar temático com show de piratas", "prime": true, "calc": "caradmau", "mapa": "Pizzaria Cara de Mau Gramado"}]}]},
+  {"data": "2027-10-28", "cor": "canela", "base": "Canela",
+   nota:"Dia gaúcho, todo em Canela. Depois do churrasco com show no almoço, a noite fica só com o Ice Bar. Combine antes quem dirige na volta.",
+   blocos:[
+    {t:"Manhã", itens:[
+     {"h": "09:00", "tipo": "att", "nome": "Parque do Caracol", "local": "Canela", "info": "1h30, trilhas acessíveis. ~30min de deslocamento", "calc": "caracol", "mapa": "Parque do Caracol Canela"},
+     {"h": "10:45", "tipo": "att", "nome": "Bondinhos Aéreos", "local": "Canela", "info": "45min, mesmo complexo do Caracol", "calc": "bondinhos", "mapa": "Bondinhos Aéreos Parques da Serra Canela"}]},
+    {t:"Tarde", itens:[
+     {"h": "12:00", "tipo": "att", "nome": "Almoço Garfo e Bombacha", "local": "Canela", "info": "1h30, churrasco gaúcho com show", "prime": true, "calc": "garfo", "mapa": "Garfo e Bombacha Canela"},
+     {"h": "15:00", "tipo": "gratis", "nome": "Catedral de Pedra", "local": "Canela", "info": "1h, visita rápida", "calc": "catedral", "mapa": "Catedral de Pedra Canela"},
+     {"h": "16:30", "tipo": "att", "nome": "Roda Canela", "local": "Canela", "info": "1h30, ~10min de deslocamento", "calc": "rodacanela", "mapa": "Roda Canela Canela"}]},
+    {t:"Noite", itens:[
+     {"h": "19:30", "tipo": "att", "nome": "Ice Bar Mundo Gelado", "local": "Canela", "info": "1h, inclui 2 drinks e agasalho térmico", "calc": "icebar", "mapa": "Ice Bar Mundo Gelado Canela"}]}]},
+  {"data": "2027-10-29", "cor": "gramado", "base": "Gramado",
+   nota:"O café colonial precisa de uma noite sem jantar marcado. Vá com fome: substitui uma refeição inteira.",
+   blocos:[
+    {t:"Manhã", itens:[
+     {"h": "09:00", "tipo": "att", "nome": "Snowland", "local": "Gramado", "info": "2h30, neve artificial, inclui entrada e filas", "prime": true, "calc": "snowland", "mapa": "Snowland Gramado"}]},
+    {t:"Tarde", itens:[
+     {"h": "14:00", "tipo": "att", "nome": "Olivas de Gramado", "local": "Gramado", "info": "1h30, olival e loja", "calc": "olivas", "mapa": "Olivas de Gramado Gramado"},
+     {"h": "17:00", "tipo": "att", "nome": "Café Colonial Bela Vista", "local": "Gramado", "info": "1h30, substitui o jantar", "calc": "belavista", "mapa": "Bela Vista Café Colonial Gramado"}]},
+    {t:"Noite", itens:[
+     {"h": "", "tipo": "livre", "nome": "Livre", "local": "", "info": "O café colonial já faz as vezes do jantar"}]}]},
+  {"data": "2027-10-30", "cor": "canela", "base": "Canela",
+   nota:"Dia mais pesado em comida: carne no almoço e churrasco no jantar. Se pesar, o almoço vira algo leve e o 1835 passa para o jantar, saindo o Fundo da Grota.",
+   blocos:[
+    {t:"Manhã", itens:[
+     {"h": "09:30", "tipo": "att", "nome": "Terra Mágica Florybal", "local": "Canela", "info": "2h, mundo fantástico e simuladores leves", "calc": "florybal", "mapa": "Terra Mágica Florybal Canela"}]},
+    {t:"Tarde", itens:[
+     {"h": "12:30", "tipo": "meal", "nome": "Almoço 1835 Carne e Brasa", "local": "Canela", "info": "2h, Rua das Flores 222, complexo Kempinski Laje de Pedra. Reservas (54) 3699-1818", "confirmar": true, "mapa": "1835 Carne e Brasa Canela"},
+     {"h": "15:30", "tipo": "att", "nome": "Alpen Park", "local": "Canela", "info": "1h30, trenó e passaporte com 6 atrações", "calc": "alpen", "mapa": "Alpen Park Canela"}]},
+    {t:"Noite", itens:[
+     {"h": "19:00", "tipo": "att", "nome": "Fundo da Grota", "local": "Canela", "info": "1h30, jantar com Festa Gaúcha", "prime": true, "calc": "grota", "mapa": "Churrascaria Fundo da Grota Canela"}]}]},
+  {"data": "2027-10-31", "cor": "bento", "base": "Bento Gonçalves",
+   nota:"Dia inteiro fora. Confirmar os dias de operação do trem antes de fixar a data. Há degustação de vinhos: combine quem dirige na volta.",
+   blocos:[
+    {t:"Manhã", itens:[
+     {"h": "07:30", "tipo": "drive", "nome": "Deslocamento até Bento Gonçalves", "local": "Estrada", "info": "~2h"},
+     {"h": "10:00", "tipo": "att", "nome": "Maria Fumaça", "local": "Bento Gonçalves", "info": "3h, tour familiar e compra de vinhos", "calc": "mariafumaca", "mapa": "Maria Fumaça Bento Gonçalves estação"}]},
+    {t:"Tarde", itens:[
+     {"h": "13:30", "tipo": "meal", "nome": "Almoço em Bento", "local": "Bento Gonçalves", "info": "1h30", "confirmar": true},
+     {"h": "15:30", "tipo": "drive", "nome": "Retorno a Gramado", "local": "Estrada", "info": "~2h"}]},
+    {t:"Noite", itens:[
+     {"h": "19:30", "tipo": "att", "nome": "Héctor Pizzaria", "local": "Gramado", "info": "1h30, jantar descontraído", "calc": "hector", "mapa": "Héctor Pizzaria Gramado"}]}]},
+  {"data": "2027-11-01", "cor": "gramado", "base": "Gramado",
+   nota:"Dia mais leve, véspera de Finados. Segunda-feira: confirmar o funcionamento do Le Jardin e reservar o Alice e o Chapeleiro com antecedência.",
+   blocos:[
+    {t:"Manhã", itens:[
+     {"h": "", "tipo": "livre", "nome": "Livre", "local": "Gramado", "info": "Manhã de descanso no feriado prolongado. O Parque da Mônica passou para 26/10"}]},
+    {t:"Tarde", itens:[
+     {"h": "13:00", "tipo": "meal", "nome": "Almoço", "local": "Gramado", "info": "1h30", "confirmar": true},
+     {"h": "15:00", "tipo": "att", "nome": "Le Jardin", "local": "Gramado", "info": "1h30, jardim de lavandas", "calc": "lejardin", "mapa": "Le Jardin Gramado"}]},
+    {t:"Noite", itens:[
+     {"h": "19:00", "tipo": "att", "nome": "Alice e o Chapeleiro", "local": "Gramado", "info": "1h30, jantar temático aprovado pelas crianças", "calc": "alice", "mapa": "Alice e o Chapeleiro Gramado"}]}]},
+  {"data": "2027-11-02", "cor": "semcarro", "base": "Gramado · sem carro",
+   nota:"Dia sem carro, por causa da degustação. O passeio vem com transporte e a tarde é a pé no centro. Para o jantar, use táxi ou aplicativo.",
+   blocos:[
+    {t:"Manhã", itens:[
+     {"h": "09:00", "tipo": "att", "nome": "Vinícola Jolimont", "local": "Canela", "info": "4h, com empresa de turismo. Rota completa, transporte incluído, ninguém dirige", "calc": "jolimont", "mapa": "Vinícola Jolimont Canela"}]},
+    {t:"Tarde", itens:[
+     {"h": "15:00", "tipo": "att", "nome": "Mundo Lugano", "local": "Gramado", "info": "1h30, parque indoor e chocolates, no centro, a pé do hotel", "calc": "lugano", "mapa": "Mundo Lugano Gramado"}]},
+    {t:"Noite", itens:[
+     {"h": "19:00", "tipo": "att", "nome": "Restaurante Giratório RF Vision", "local": "Gramado", "info": "1h30, fondue com show de neve. Ir de táxi ou aplicativo", "calc": "rfvision", "mapa": "Restaurante Giratório RF Vision Gramado"}]}]},
+  {"data": "2027-11-03", "cor": "gramado", "base": "Gramado",
+   nota:"Último dia inteiro, deixado leve de propósito. É a folga do roteiro: se algo furar antes por chuva, remaneja para cá.",
+   blocos:[
+    {t:"Manhã", itens:[
+     {"h": "", "tipo": "livre", "nome": "Livre", "local": "Gramado", "info": "Compras na Rua Coberta e na Av. Borges de Medeiros, a pé do hotel"}]},
+    {t:"Tarde", itens:[
+     {"h": "", "tipo": "livre", "nome": "Livre", "local": "Gramado", "info": "Descanso, piscina do hotel, ou encaixe do Pé da Cascata — mas seria uma quarta ida a Canela"}]},
+    {t:"Noite", itens:[
+     {"h": "19:30", "tipo": "meal", "nome": "Chalezinho", "local": "Gramado", "info": "1h30, rodízio de fondue suíço", "confirmar": true, "mapa": "Chalezinho Gramado"}]}]},
+  {"data": "2027-11-04", "cor": "estrada", "base": "Estrada",
+   nota:"Mesma estratégia da volta de 2025: parada para almoçar no caminho em vez de comer no aeroporto. Com o voo às 22:30, sobram cerca de 4h em Porto Alegre à tarde. Dá para sair de Gramado mais tarde ou encaixar um passeio na capital. A chegada em Recife é às 02:30 de sexta, 05/11.",
+   blocos:[
+    {t:"Manhã", itens:[
+     {"h": "09:00", "tipo": "drive", "nome": "Check-out até 12h e saída de Gramado", "local": "", "info": "Gramado"}]},
+    {t:"Tarde", itens:[
+     {"h": "11:30", "tipo": "meal", "nome": "Almoço em Nova Petrópolis", "local": "Nova Petrópolis", "info": "1h30, colonial", "confirmar": true},
+     {"h": "13:30", "tipo": "drive", "nome": "Estrada até POA", "local": "Estrada", "info": "~2h30, chegada por volta das 16h"},
+     {"h": "16:00", "tipo": "livre", "nome": "Livre em Porto Alegre", "local": "Porto Alegre", "info": "cerca de 4h antes de devolver o carro"}]},
+    {t:"Noite", itens:[
+     {"h": "20:00", "tipo": "drive", "nome": "Devolução do carro e check-in no aeroporto", "local": "Porto Alegre", "info": "2h30 antes do voo"},
+     {"h": "22:30", "tipo": "voo", "nome": "Voo Porto Alegre → Recife", "local": "Azul", "info": "POA 22:30 → REC 02:30 de 05/11"}]}]}
+];
+
+const FAMILIAS = [
+  {nome:'Família 1', adultos:2, criancas:3, hospedagem:4501.00, passagens:6147.00},
+  {nome:'Família 2', adultos:4, criancas:0, hospedagem:4501.00, passagens:5119.80}
+];
+const NOTA_HOSPEDAGEM = 'Laghetto Pedras Altas, 10 noites, café incluso';
+const NOTA_PASSAGENS  = 'Ida e volta, com os 10% do cartão Azul';
+const NOTA_PASSAGENS_F2 = 'Inclui R$ 195 de bagagem despachada';
+
+/* ====================================================================== */
+
+const POR_ID = Object.fromEntries(ATRACOES.map(a => [a.id, a]));
+const TOTAL_ADULTOS  = FAMILIAS.reduce((s,f)=>s+f.adultos, 0);
+const TOTAL_CRIANCAS = FAMILIAS.reduce((s,f)=>s+f.criancas, 0);
+const SEMANA = ['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
+const SEM3 = ['dom','seg','ter','qua','qui','sex','sáb'];
+const MESES = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+
+const brl  = v => v.toLocaleString('pt-BR',{style:'currency',currency:'BRL',minimumFractionDigits:2});
+const brl0 = v => v.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+const esc  = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const semAcento = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const dataDe = iso => { const [y,m,d] = iso.split('-').map(Number); return new Date(y, m-1, d); };
+const ddmm = iso => iso.slice(8,10) + '/' + iso.slice(5,7);
+
+/* Onde cada atração aparece no roteiro: id -> data */
+const NO_ROTEIRO = {};
+DIAS.forEach(d => d.blocos.forEach(b => b.itens.forEach(i => { if(i.calc) NO_ROTEIRO[i.calc] = d.data; })));
+
+/* Custo de um item para N adultos e M crianças, com os preços base (desconto) */
+function custoBase(id, a, c){ const p = POR_ID[id]; return p && !p.gratis ? p.ad*a + p.cd*c : 0; }
+
+/* ---------- armazenamento local, tolerante a falha ---------- */
+const CHAVE = 'gramado2027-calc-v1';
+function ler(){ try{ return JSON.parse(localStorage.getItem(CHAVE)) || null; }catch(e){ return null; } }
+function gravar(obj){ try{ localStorage.setItem(CHAVE, JSON.stringify(obj)); }catch(e){} }
+
+/* ---------- "hoje" ---------- */
+function hojeISO(){ const t = new Date(); return t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0'); }
+const HOJE = hojeISO();
+const DIA_DE_HOJE = DIAS.find(d => d.data === HOJE) ? HOJE : null;
+
+(function contagem(){
+  const el = document.getElementById('contagem');
+  const ini = dataDe(DIAS[0].data), fim = dataDe(DIAS[DIAS.length-1].data);
+  const hoje = dataDe(HOJE);
+  const dias = Math.round((ini - hoje) / 864e5);
+  if(dias > 1) el.textContent = `Faltam ${dias} dias`;
+  else if(dias === 1) el.textContent = 'É amanhã!';
+  else if(hoje <= fim) el.textContent = `Dia ${DIAS.findIndex(d=>d.data===HOJE)+1} de ${DIAS.length}`;
+  else return;
+  el.hidden = false;
+})();
+
+/* =============================== ROTEIRO =============================== */
+const ICONE = {att:'●', meal:'◆', gratis:'○', drive:'▸', voo:'✈', livre:'—'};
+const PIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
+
+function renderRoteiro(){
+  const faixa = [], html = [];
+  DIAS.forEach((d, n) => {
+    const dt = dataDe(d.data);
+    const custo = d.blocos.reduce((s,b)=>s+b.itens.reduce((t,i)=>t+(i.calc?custoBase(i.calc,TOTAL_ADULTOS,TOTAL_CRIANCAS):0),0),0);
+    const ehHoje = d.data === DIA_DE_HOJE;
+    faixa.push(`<a href="#dia-${d.data}" data-dia="${d.data}" class="${ehHoje?'hoje':''}"><i>${SEM3[dt.getDay()]}</i><b>${dt.getDate()}</b></a>`);
+    let blocos = '';
+    d.blocos.forEach(b => {
+      blocos += `<div class="bloco"><h4>${esc(b.t)}</h4><ul>`;
+      b.itens.forEach(i => {
+        const p = i.calc ? POR_ID[i.calc] : null;
+        let preco = '';
+        if(p && p.gratis || i.tipo === 'gratis') preco = '<span class="gratis-tag">Grátis</span>';
+        else if(p) preco = `<span class="pr">${brl(p.ad)}<small>adulto</small></span><span class="pr cr">${brl(p.cd)}<small>criança</small></span>`;
+        else if(i.confirmar) preco = '<span class="na">a confirmar</span>';
+        const chips = [];
+        if(i.local) chips.push(`<span class="tag">${esc(i.local)}</span>`);
+        if(i.prime) chips.push('<span class="tag prime">PRIME</span>');
+        if(i.mapa) chips.push(`<a class="mapa" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(i.mapa)}" target="_blank" rel="noopener">${PIN}Mapa</a>`);
+        blocos += `<li class="it ${i.tipo}">
+          <span class="hora">${i.h || '—'}</span>
+          <span class="corpo"><span class="nome"><span class="ic" aria-hidden="true">${ICONE[i.tipo]||'●'}</span>${esc(i.nome)}</span>
+            ${i.info ? `<span class="info">${esc(i.info)}</span>` : ''}
+            ${chips.length ? `<span class="chips">${chips.join('')}</span>` : ''}</span>
+          ${preco ? `<span class="precos">${preco}</span>` : '<span></span>'}
+        </li>`;
+      });
+      blocos += '</ul></div>';
+    });
+    html.push(`<article class="dia ${d.cor}${ehHoje?' e-hoje':''}" id="dia-${d.data}">
+      <header class="dia-head">
+        <div class="dia-titulo"><h3>${SEMANA[dt.getDay()][0].toUpperCase()+SEMANA[dt.getDay()].slice(1)}, ${dt.getDate()} de ${MESES[dt.getMonth()]}</h3><span class="n">dia ${n+1} de ${DIAS.length}</span></div>
+        <div class="dia-sub">
+          <span class="base">${esc(d.base)}</span>
+          ${ehHoje ? '<span class="selo-hoje">Hoje</span>' : ''}
+          <span class="custo-dia">${custo > 0 ? `Ingressos do grupo: <b>${brl0(custo)}</b>` : 'Sem ingressos'}</span>
+        </div>
+      </header>
+      ${blocos}
+      ${d.nota ? `<p class="dia-nota">${esc(d.nota)}</p>` : ''}
+    </article>`);
+  });
+  document.getElementById('faixa').innerHTML = faixa.join('');
+  document.getElementById('dias').innerHTML = html.join('');
+}
+
+/* Destaca na faixa o dia que está na tela */
+function acompanharDia(){
+  const links = [...document.querySelectorAll('#faixa a')];
+  const cards = [...document.querySelectorAll('.dia')];
+  let atual = null;
+  const limite = 150;
+  for(const c of cards){ if(c.getBoundingClientRect().top - limite <= 0) atual = c.id.slice(4); else break; }
+  if(!atual) atual = DIAS[0].data;
+  links.forEach(a => {
+    const on = a.dataset.dia === atual;
+    if(on && !a.classList.contains('ativo')) a.scrollIntoView({block:'nearest', inline:'center'});
+    a.classList.toggle('ativo', on);
+  });
+}
+
+/* =============================== GASTOS =============================== */
+function renderGastos(){
+  const idsRoteiro = Object.keys(NO_ROTEIRO);
+  const linhas = FAMILIAS.map(f => {
+    const atr = idsRoteiro.reduce((s,id)=>s+custoBase(id, f.adultos, f.criancas), 0);
+    const total = f.hospedagem + f.passagens + atr;
+    return {...f, atr, total, pessoas: f.adultos + f.criancas};
+  });
+  const g = linhas.reduce((s,f)=>({hospedagem:s.hospedagem+f.hospedagem, passagens:s.passagens+f.passagens, atr:s.atr+f.atr, total:s.total+f.total, pessoas:s.pessoas+f.pessoas}), {hospedagem:0,passagens:0,atr:0,total:0,pessoas:0});
+  const pessoas = (a,c) => [a ? `${a} adulto${a>1?'s':''}` : '', c ? `${c} criança${c>1?'s':''}` : ''].filter(Boolean).join(' + ');
+  const card = (titulo, sub, x, grupo, notaPass) => `
+    <div class="fam${grupo?' grupo':''}">
+      <div class="fam-head"><b>${titulo}</b><span>${sub}</span></div>
+      <div class="parte ok">
+        <div class="parte-tit"><span class="ponto"></span>Confirmado · já pago<b>${brl(x.hospedagem + x.passagens)}</b></div>
+        <dl>
+          <div class="lin"><dt>Hospedagem${grupo?'':`<small>${NOTA_HOSPEDAGEM}</small>`}</dt><dd>${brl(x.hospedagem)}</dd></div>
+          <div class="lin"><dt>Passagens${grupo?'':`<small>${notaPass}</small>`}</dt><dd>${brl(x.passagens)}</dd></div>
+        </dl>
+      </div>
+      <div class="parte est">
+        <div class="parte-tit"><span class="ponto"></span>Estimado · ainda pode mudar</div>
+        <dl>
+          <div class="lin"><dt>Atrações do roteiro${grupo?'':'<small>As 25 do roteiro, preços de ago/2026 com desconto</small>'}</dt><dd>≈ ${brl(x.atr)}</dd></div>
+        </dl>
+      </div>
+      <div class="proporcao" role="img" aria-label="${Math.round((x.hospedagem + x.passagens) / x.total * 100)}% confirmado e ${100 - Math.round((x.hospedagem + x.passagens) / x.total * 100)}% estimado">
+        <span class="p-ok" style="width:${((x.hospedagem + x.passagens) / x.total * 100).toFixed(1)}%"></span><span class="p-est"></span>
+      </div>
+      <div class="proporcao-leg"><span>${Math.round((x.hospedagem + x.passagens) / x.total * 100)}% confirmado</span><span>${100 - Math.round((x.hospedagem + x.passagens) / x.total * 100)}% estimado</span></div>
+      <div class="fam-tot"><span>Total previsto</span><b>≈ ${brl(x.total)}</b></div>
+      <div class="fam-pp">por pessoa <b>≈ ${brl(x.total / x.pessoas)}</b></div>
+    </div>`;
+  document.getElementById('familias').innerHTML =
+    card('Grupo todo', `${g.pessoas} pessoas`, g, true) +
+    linhas.map((f,i) => card(f.nome, pessoas(f.adultos, f.criancas), f, false, i===1 ? NOTA_PASSAGENS + '. ' + NOTA_PASSAGENS_F2 : NOTA_PASSAGENS)).join('');
+
+  /* Os três itens que mais pesam no grupo */
+  const caros = idsRoteiro.map(id => ({id, v: custoBase(id, TOTAL_ADULTOS, TOTAL_CRIANCAS)})).sort((a,b)=>b.v-a.v).slice(0,3);
+  const economia = caros.reduce((s,c)=>s+c.v, 0);
+  const fixo = g.hospedagem + g.passagens;
+  const nomes = caros.map(c => `${POR_ID[c.id].nome.split(' (')[0]} (${brl0(POR_ID[c.id].ad)} por adulto)`);
+  document.getElementById('aviso-gastos').innerHTML = (g.atr > fixo
+    ? `<b>As atrações custam mais que hospedagem e passagens somadas.</b>São ${brl0(g.atr)} contra ${brl0(fixo)}. `
+    : `<b>Onde dá para economizar.</b>`) +
+    `Os três itens mais caros do roteiro são ${nomes[0]}, ${nomes[1]} e ${nomes[2]}. Juntos, custam cerca de ${brl0(economia)} ao grupo. Vale revisar a lista juntos antes de reservar os jantares temáticos.`;
+}
+
+/* =============================== CALCULADORA =============================== */
+const salvo = ler() || {};
+const estado = {
+  a: Number.isInteger(salvo.a) ? salvo.a : TOTAL_ADULTOS,
+  c: Number.isInteger(salvo.c) ? salvo.c : TOTAL_CRIANCAS,
+  sel: new Set(Array.isArray(salvo.sel) ? salvo.sel.filter(id => POR_ID[id]) : Object.keys(NO_ROTEIRO)),
+  precos: {},
+  busca: '',
+  aberto: null
+};
+ATRACOES.forEach(a => { if(!a.gratis) estado.precos[a.id] = {ac:a.ac, cc:a.cc, ad:a.ad, cd:a.cd}; });
+if(salvo.precos) for(const id in salvo.precos){ if(estado.precos[id]) Object.assign(estado.precos[id], salvo.precos[id]); }
+
+function salvar(){
+  const mudados = {};
+  for(const id in estado.precos){
+    const p = estado.precos[id], o = POR_ID[id];
+    if(p.ac!==o.ac || p.cc!==o.cc || p.ad!==o.ad || p.cd!==o.cd) mudados[id] = p;
+  }
+  gravar({a:estado.a, c:estado.c, sel:[...estado.sel], precos:mudados});
+}
+function precoMudou(id){ const p = estado.precos[id], o = POR_ID[id]; return p && (p.ac!==o.ac || p.cc!==o.cc || p.ad!==o.ad || p.cd!==o.cd); }
+
+function indicador(a){
+  const d = NO_ROTEIRO[a.id];
+  if(d){ const dt = dataDe(d); return `<span class="ind no">No roteiro · ${SEM3[dt.getDay()]} ${ddmm(d)}</span>`; }
+  return `<span class="ind fora">${esc(a.fora || 'Fora do roteiro')}</span>`;
+}
+
+function itemHTML(a){
+  const on = estado.sel.has(a.id), p = estado.precos[a.id];
+  const preco = a.gratis
+    ? '<span class="gratis-tag">Grátis</span>'
+    : `<span class="cheio">${brl(p.ac)}</span><span class="pr">${brl(p.ad)}<small>adulto</small></span><span class="pr cr">${brl(p.cd)}<small>criança</small></span>`;
+  const edicao = a.gratis ? '' : `
+    <button class="editar${precoMudou(a.id)?' mudou':''}" type="button" data-editar="${a.id}" aria-expanded="${estado.aberto===a.id}">${estado.aberto===a.id?'Fechar':'Editar preço'}</button>
+    <div class="edicao" ${estado.aberto===a.id?'':'hidden'}>
+      <div class="grade">
+        <div class="campo"><label>Adulto com desconto</label><input inputmode="decimal" data-p="${a.id}:ad" value="${p.ad}"></div>
+        <div class="campo"><label>Criança com desconto</label><input inputmode="decimal" data-p="${a.id}:cd" value="${p.cd}"></div>
+        <div class="campo"><label>Adulto cheio</label><input inputmode="decimal" data-p="${a.id}:ac" value="${p.ac}"></div>
+        <div class="campo"><label>Criança cheio</label><input inputmode="decimal" data-p="${a.id}:cc" value="${p.cc}"></div>
+      </div>
+      <p class="nota-item">${esc(a.nota)}</p>
+      ${precoMudou(a.id)?`<button class="btn" type="button" data-restaurar="${a.id}" style="margin-top:10px">Voltar ao preço original</button>`:''}
+    </div>`;
+  return `<div class="item${on?' on':''}" data-id="${a.id}">
+    <div class="linha" role="checkbox" tabindex="0" aria-checked="${on}" data-alternar="${a.id}">
+      <span class="check"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span>
+      <span class="meio"><span class="nome">${esc(a.nome)}</span>${indicador(a)}${a.gratis?`<span class="info">${esc(a.nota)}</span>`:''}</span>
+      <span class="precos">${preco}</span>
+    </div>${edicao}
+  </div>`;
+}
+
+function renderLista(){
+  const termo = semAcento(estado.busca.trim());
+  const passa = a => !termo || semAcento(a.nome + ' ' + a.cidade).includes(termo);
+  let html = '';
+  DIAS.forEach(d => {
+    const ids = [];
+    d.blocos.forEach(b => b.itens.forEach(i => { if(i.calc && passa(POR_ID[i.calc])) ids.push(i.calc); }));
+    if(!ids.length) return;
+    const dt = dataDe(d.data);
+    html += `<div class="grupo-titulo">${SEM3[dt.getDay()]} ${ddmm(d.data)} · ${esc(d.base)}</div>` + ids.map(id => itemHTML(POR_ID[id])).join('');
+  });
+  const fora = ATRACOES.filter(a => !NO_ROTEIRO[a.id] && passa(a));
+  if(fora.length) html += '<div class="grupo-titulo">Fora do roteiro</div>' + fora.map(itemHTML).join('');
+  document.getElementById('lista').innerHTML = html || '<p class="vazio">Nenhuma atração com esse nome.</p>';
+}
+
+function totais(){
+  let ad=0, cd=0, ac=0, cc=0, n=0, nr=0;
+  estado.sel.forEach(id => {
+    const a = POR_ID[id]; if(!a) return;
+    n++; if(NO_ROTEIRO[id]) nr++;
+    if(a.gratis) return;
+    const p = estado.precos[id];
+    ad += p.ad; cd += p.cd; ac += p.ac; cc += p.cc;
+  });
+  return {n, nr, ad, cd, total: ad*estado.a + cd*estado.c, cheio: ac*estado.a + cc*estado.c};
+}
+
+function atualizarTotais(){
+  const t = totais();
+  document.getElementById('qa').textContent = estado.a;
+  document.getElementById('qc').textContent = estado.c;
+  const quem = [estado.a ? `${estado.a} adulto${estado.a>1?'s':''}` : '', estado.c ? `${estado.c} criança${estado.c>1?'s':''}` : ''].filter(Boolean).join(' e ') || 'ninguém';
+  const fora = t.n - t.nr;
+  document.getElementById('b-qtd').textContent = t.n
+    ? `${t.n} atraç${t.n>1?'ões':'ão'}${fora?` (${fora} fora do roteiro)`:''} · ${quem}`
+    : `Nenhuma atração marcada · ${quem}`;
+  document.getElementById('b-total').textContent = brl0(t.total);
+  document.getElementById('b-cheio').textContent = t.cheio > t.total ? `sem desconto: ${brl0(t.cheio)}` : '';
+  const pp = [];
+  if(estado.a) pp.push(`por adulto <b>${brl0(t.ad)}</b>`);
+  if(estado.c) pp.push(`por criança <b>${brl0(t.cd)}</b>`);
+  document.getElementById('b-pp').innerHTML = pp.join('');
+  document.querySelectorAll('.preset').forEach(b => b.setAttribute('aria-pressed', +b.dataset.a===estado.a && +b.dataset.c===estado.c));
+  salvar();
+}
+
+function alternar(id){
+  estado.sel.has(id) ? estado.sel.delete(id) : estado.sel.add(id);
+  const el = document.querySelector(`.item[data-id="${id}"]`);
+  if(el){ el.classList.toggle('on', estado.sel.has(id)); el.querySelector('.linha').setAttribute('aria-checked', estado.sel.has(id)); }
+  atualizarTotais();
+}
+
+const lista = document.getElementById('lista');
+lista.addEventListener('click', e => {
+  const ed = e.target.closest('[data-editar]');
+  if(ed){ estado.aberto = estado.aberto === ed.dataset.editar ? null : ed.dataset.editar; renderLista(); return; }
+  const rs = e.target.closest('[data-restaurar]');
+  if(rs){ const o = POR_ID[rs.dataset.restaurar]; estado.precos[o.id] = {ac:o.ac, cc:o.cc, ad:o.ad, cd:o.cd}; renderLista(); atualizarTotais(); aviso('Preço original de volta'); return; }
+  const lin = e.target.closest('[data-alternar]');
+  if(lin) alternar(lin.dataset.alternar);
+});
+lista.addEventListener('keydown', e => {
+  const lin = e.target.closest('[data-alternar]');
+  if(lin && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); alternar(lin.dataset.alternar); }
+});
+lista.addEventListener('input', e => {
+  const alvo = e.target.dataset.p; if(!alvo) return;
+  const [id, campo] = alvo.split(':');
+  const v = parseFloat(e.target.value.replace(/\./g,'').replace(',', '.'));
+  estado.precos[id][campo] = isNaN(v) ? 0 : v;
+  const card = e.target.closest('.item');
+  const p = estado.precos[id];
+  card.querySelector('.precos').innerHTML = `<span class="cheio">${brl(p.ac)}</span><span class="pr">${brl(p.ad)}<small>adulto</small></span><span class="pr cr">${brl(p.cd)}<small>criança</small></span>`;
+  card.querySelector('.editar').classList.toggle('mudou', precoMudou(id));
+  atualizarTotais();
+});
+lista.addEventListener('change', e => { if(e.target.dataset.p) renderLista(); });
+
+document.getElementById('presets').addEventListener('click', e => {
+  const b = e.target.closest('.preset'); if(!b) return;
+  estado.a = +b.dataset.a; estado.c = +b.dataset.c; atualizarTotais();
+});
+document.querySelectorAll('[data-passo]').forEach(b => b.addEventListener('click', () => {
+  const k = b.dataset.passo; estado[k] = Math.min(30, Math.max(0, estado[k] + (+b.dataset.d))); atualizarTotais();
+}));
+document.getElementById('busca').addEventListener('input', e => { estado.busca = e.target.value; renderLista(); });
+document.getElementById('marcar-roteiro').addEventListener('click', () => { estado.sel = new Set(Object.keys(NO_ROTEIRO)); renderLista(); atualizarTotais(); aviso('Marcadas as atrações do roteiro'); });
+document.getElementById('desmarcar').addEventListener('click', () => { estado.sel.clear(); renderLista(); atualizarTotais(); aviso('Tudo desmarcado'); });
+
+function resumo(){
+  const t = totais();
+  if(!t.n) return 'Nenhuma atração marcada na calculadora de Gramado e Canela.';
+  const quem = [estado.a ? `${estado.a} adulto${estado.a>1?'s':''}` : '', estado.c ? `${estado.c} criança${estado.c>1?'s':''}` : ''].filter(Boolean).join(' e ');
+  let txt = `*Gramado & Canela 2027*\n${quem}\n\n`;
+  const ordem = ATRACOES.filter(a => estado.sel.has(a.id)).sort((x,y) => (NO_ROTEIRO[x.id]||'9') < (NO_ROTEIRO[y.id]||'9') ? -1 : 1);
+  ordem.forEach(a => {
+    const d = NO_ROTEIRO[a.id] ? ddmm(NO_ROTEIRO[a.id]) + ' ' : '';
+    txt += a.gratis ? `• ${d}${a.nome} — grátis\n` : `• ${d}${a.nome} — ${brl(estado.precos[a.id].ad)} adulto\n`;
+  });
+  txt += `\n*Total:* ${brl(t.total)}`;
+  if(t.cheio > t.total) txt += ` (sem desconto seria ${brl(t.cheio)})`;
+  if(estado.a) txt += `\n*Por adulto:* ${brl(t.ad)}`;
+  if(estado.c) txt += `\n*Por criança:* ${brl(t.cd)}`;
+  return txt + '\n\nValores estimados, sem bebidas, estacionamento e transporte.\n' + location.href.split('#')[0] + '#calculadora';
+}
+document.getElementById('btn-zap').addEventListener('click', () => window.open('https://wa.me/?text=' + encodeURIComponent(resumo()), '_blank', 'noopener'));
+document.getElementById('btn-copiar').addEventListener('click', async () => {
+  try{ await navigator.clipboard.writeText(resumo()); aviso('Resumo copiado'); }catch(e){ aviso('Não deu para copiar aqui'); }
+});
+
+/* ---------- tema: automático (segue o celular), claro ou escuro ---------- */
+const TEMAS = ['auto','claro','escuro'], ROT_TEMA = {auto:'Automático', claro:'Claro', escuro:'Escuro'};
+function aplicarTema(t){
+  if(t === 'auto') delete document.documentElement.dataset.tema; else document.documentElement.dataset.tema = t;
+  document.getElementById('tema-rot').textContent = ROT_TEMA[t];
+  try{ if(t === 'auto') localStorage.removeItem('gramado2027-tema'); else localStorage.setItem('gramado2027-tema', t); }catch(e){}
+}
+document.getElementById('tema').addEventListener('click', () => {
+  const atual = document.documentElement.dataset.tema || 'auto';
+  const prox = TEMAS[(TEMAS.indexOf(atual) + 1) % TEMAS.length];
+  aplicarTema(prox); aviso('Tema: ' + ROT_TEMA[prox].toLowerCase());
+});
+document.getElementById('tema-rot').textContent = ROT_TEMA[document.documentElement.dataset.tema || 'auto'];
+
+let timer;
+function aviso(msg){ const el = document.getElementById('toast'); el.textContent = msg; el.classList.add('on'); clearTimeout(timer); timer = setTimeout(()=>el.classList.remove('on'), 1900); }
+
+/* =============================== ABAS =============================== */
+const ABAS = ['roteiro','gastos','calculadora'];
+function abaDoHash(){
+  const h = location.hash.slice(1);
+  if(ABAS.includes(h)) return {aba:h};
+  if(h.startsWith('dia-')) return {aba:'roteiro', dia:h};
+  return {aba:'roteiro'};
+}
+let abaAtual = null;
+function mostrar(){
+  const {aba, dia} = abaDoHash();
+  document.querySelectorAll('[data-aba]').forEach(s => s.hidden = s.dataset.aba !== aba);
+  document.querySelectorAll('[data-ir]').forEach(a => { if(a.dataset.ir === aba) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
+  document.body.classList.toggle('com-barra', aba === 'calculadora');
+  if(dia){ const el = document.getElementById(dia); if(el) el.scrollIntoView({block:'start'}); }
+  else if(aba !== abaAtual) window.scrollTo(0, 0);
+  if(aba === 'roteiro') acompanharDia();
+  abaAtual = aba;
+}
+
+/* Clicar num dia da faixa rola sem trocar o histórico do botão voltar a cada toque */
+document.getElementById('faixa').addEventListener('click', e => {
+  const a = e.target.closest('a[data-dia]'); if(!a) return;
+  e.preventDefault();
+  document.getElementById('dia-' + a.dataset.dia).scrollIntoView({block:'start'});
+  history.replaceState(null, '', '#dia-' + a.dataset.dia);
+});
+window.addEventListener('hashchange', mostrar);
+window.addEventListener('scroll', () => { if(abaAtual === 'roteiro') acompanharDia(); }, {passive:true});
+
+renderRoteiro();
+renderGastos();
+renderLista();
+atualizarTotais();
+if(!location.hash && DIA_DE_HOJE) history.replaceState(null, '', '#dia-' + DIA_DE_HOJE);
+mostrar();
+</script>
 </body>
 </html>
