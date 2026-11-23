@@ -528,14 +528,13 @@ const ATRACOES = [
 
 const DIAS = [
   {"data": "2027-10-25", "cor": "estrada", "base": "Estrada + Gramado",
-   nota:"Rota já testada em 2025, na mesma ordem, agora sem o Outlet, que passou para a volta em 04/11: praça e labirinto, Aldeia do Imigrante, almoço no caminho, mirante e hotel. O Lumni abre nesta segunda pelo calendário oficial e fecha em 26/10, por isso fica nesta noite. Falta confirmar a Aldeia do Imigrante na segunda-feira. O voo é de madrugada: quem for dirigir deve tentar dormir no avião, porque são cerca de 4h de estrada e paradas até Gramado.",
+   nota:"Rota já testada em 2025, na mesma ordem: praça e labirinto, Aldeia do Imigrante, almoço no caminho, mirante e hotel. O Lumni abre nesta segunda pelo calendário oficial e fecha em 26/10, por isso fica nesta noite. Falta confirmar a Aldeia do Imigrante na segunda-feira. O voo é de madrugada: quem for dirigir deve tentar dormir no avião, porque são cerca de 4h de estrada e paradas até Gramado.",
    blocos:[
     {t:"Madrugada", itens:[
      {"h": "02:30", "tipo": "voo", "nome": "Voo Recife → Porto Alegre", "local": "Azul", "info": "REC 02:30 → POA 07:00"}]},
     {t:"Manhã", itens:[
      {"h": "07:00", "tipo": "drive", "nome": "Chegada em Porto Alegre e retirada do carro", "local": "Porto Alegre", "info": "bagagem e locadora, cerca de 1h"},
-     {"h": "08:00", "tipo": "drive", "nome": "Saída de Porto Alegre → Nova Petrópolis", "local": "Estrada", "info": "~1h30, direto do aeroporto"},
-     {"h": "09:30", "tipo": "meal", "nome": "Café da manhã em Nova Petrópolis", "local": "Nova Petrópolis", "info": "1h, para recuperar do voo de madrugada", "confirmar": true},
+     {"h": "08:00", "tipo": "drive", "nome": "Saída de Porto Alegre → Outlet Premium", "local": "Nova Santa Rita", "info": "2h30, incluindo deslocamento e compras rápidas", "mapa": "Outlet Premium Porto Alegre Nova Santa Rita"},
      {"h": "11:00", "tipo": "gratis", "nome": "Praça das Flores e Labirinto Verde", "local": "Nova Petrópolis", "info": "1h, ~30min de deslocamento do Outlet", "mapa": "Labirinto Verde Nova Petrópolis"}]},
     {t:"Tarde", itens:[
      {"h": "12:15", "tipo": "att", "nome": "Parque Aldeia do Imigrante e Casa do Colono", "local": "Nova Petrópolis", "info": "1h45, museu vivo da imigração alemã. Ingresso entre R$ 20 e R$ 34 em 2025", "mapa": "Parque Aldeia do Imigrante Nova Petrópolis", "ig": "parquealdeiadoimigrante"},
@@ -637,14 +636,14 @@ const DIAS = [
     {t:"Noite", itens:[
      {"h": "19:30", "tipo": "meal", "nome": "Chalezinho", "local": "Gramado", "info": "1h30, rodízio de fondue suíço", "confirmar": true, "mapa": "Chalezinho Gramado", "ig": "chalezinhogramado"}]}]},
   {"data": "2027-11-04", "cor": "estrada", "base": "Estrada",
-   nota:"Mesma estratégia da volta de 2025: parada para almoçar no caminho em vez de comer no aeroporto. O Outlet ficou para a volta: com o voo só às 22:30, dá para comprar sem pressa e devolver o carro às 20h. A chegada em Recife é às 02:30 de sexta, 05/11.",
+   nota:"Mesma estratégia da volta de 2025: parada para almoçar no caminho em vez de comer no aeroporto. Com o voo às 22:30, sobram cerca de 4h em Porto Alegre à tarde. Dá para sair de Gramado mais tarde ou encaixar um passeio na capital. A chegada em Recife é às 02:30 de sexta, 05/11.",
    blocos:[
     {t:"Manhã", itens:[
      {"h": "09:00", "tipo": "drive", "nome": "Check-out até 12h e saída de Gramado", "local": "", "info": "Gramado"}]},
     {t:"Tarde", itens:[
      {"h": "11:30", "tipo": "meal", "nome": "Almoço em Nova Petrópolis", "local": "Nova Petrópolis", "info": "1h30, colonial", "confirmar": true},
-     {"h": "13:30", "tipo": "drive", "nome": "Estrada até o Outlet Premium", "local": "Estrada", "info": "~2h, já perto do aeroporto"},
-     {"h": "15:30", "tipo": "att", "nome": "Outlet Premium Porto Alegre", "local": "Nova Santa Rita", "info": "até ~19h30, compras sem pressa. Fica a cerca de 30 min do aeroporto", "mapa": "Outlet Premium Porto Alegre Nova Santa Rita"}]},
+     {"h": "13:30", "tipo": "drive", "nome": "Estrada até POA", "local": "Estrada", "info": "~2h30, chegada por volta das 16h"},
+     {"h": "16:00", "tipo": "livre", "nome": "Livre em Porto Alegre", "local": "Porto Alegre", "info": "cerca de 4h antes de devolver o carro"}]},
     {t:"Noite", itens:[
      {"h": "20:00", "tipo": "drive", "nome": "Devolução do carro e check-in no aeroporto", "local": "Porto Alegre", "info": "2h30 antes do voo"},
      {"h": "22:30", "tipo": "voo", "nome": "Voo Porto Alegre → Recife", "local": "Azul", "info": "POA 22:30 → REC 02:30 de 05/11"}]}]}
