@@ -30,7 +30,7 @@ O GitHub Pages reconstrói sozinho em cerca de um minuto. A configuração é *D
 
 Tudo que muda está no começo do `<script>` do `index.html`, em três listas:
 
-- **`ATRACOES`**: o preço de cada atração. `ad` e `cd` são os preços com desconto de adulto e criança, e `ac` e `cc` os preços cheios. Mudando aqui, mudam juntos o roteiro, o custo de cada dia, a aba Gastos e a calculadora.
+- **`ATRACOES`**: o preço de cada atração, e em `ig` o perfil oficial no Instagram (conferido em 23/11/2026). `ad` e `cd` são os preços com desconto de adulto e criança, e `ac` e `cc` os preços cheios. Mudando aqui, mudam juntos o roteiro, o custo de cada dia, a aba Gastos e a calculadora.
 - **`DIAS`**: o roteiro. Cada item tem horário (`h`), tipo (`att`, `meal`, `gratis`, `drive`, `voo` ou `livre`), nome, local e informação. `calc` liga o item a uma atração da lista de preços. `mapa` é o texto buscado no Google Maps.
 - **`FAMILIAS`**: quantos adultos e crianças tem cada família e quanto já pagou de hospedagem e passagens.
 

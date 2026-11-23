@@ -141,6 +141,9 @@ h2.sec::after{content:"";flex:1;height:1px;background:var(--linha)}
   text-decoration:none;border:1px solid var(--linha);border-radius:999px;padding:2px 10px;background:var(--papel)}
 .mapa:hover{background:var(--pine-soft)}
 .mapa svg{width:13px;height:13px}
+.mapa.ig{color:#B1307A}
+:root[data-tema="escuro"] .mapa.ig{color:#F08AC2}
+@media (prefers-color-scheme:dark){:root:not([data-tema="claro"]) .mapa.ig{color:#F08AC2}}
 .precos{text-align:right;display:flex;flex-direction:column;gap:2px;min-width:78px}
 .pr{font-family:var(--mono);font-size:14px;color:var(--ink);white-space:nowrap;font-weight:600}
 .pr.cr{font-size:12.5px;color:var(--cinza);font-weight:500}
@@ -355,6 +358,7 @@ footer.rodape{font-size:13px;color:var(--cinza);padding:10px 0 20px;line-height:
     </div>
     <footer class="rodape">
       <p><b>PRIME</b> marca os restaurantes e atrações cobertos pelo Prime Gourmet, que funciona na lógica compre 1 leve 2. Com 6 adultos no grupo, vale conferir quais seguem ativos em 2027.</p>
+      <p>Os perfis do Instagram foram conferidos em 23/11/2026, a partir da pesquisa do grupo. Perfil falso de atração é comum na Serra: na dúvida, use o link daqui.</p>
       <p>Preços com desconto de plataforma, pesquisados em agosto de 2026. Trate como estimativa e confirme antes de comprar.</p>
     </footer>
   </div>
@@ -459,45 +463,45 @@ footer.rodape{font-size:13px;color:var(--cinza);padding:10px 0 20px;line-height:
    FAMILIAS: quem é quem, e o que já foi pago.
    ====================================================================== */
 const ATRACOES = [
-  {id:'catedral', nome:'Catedral de Pedra', cidade:'Canela', cat:'Passeio', gratis:true, nota:'Entrada gratuita. A subida à torre dos sinos é paga à parte (cerca de R$ 25).'},
-  {id:'lagonegro', nome:'Lago Negro', cidade:'Gramado', cat:'Passeio', gratis:true, nota:'Entrada gratuita. Pedalinho de cisne é opcional, cerca de R$ 40 por volta.'},
+  {id:'catedral', ig:'catedraldepedracanela', nome:'Catedral de Pedra', cidade:'Canela', cat:'Passeio', gratis:true, nota:'Entrada gratuita. A subida à torre dos sinos é paga à parte (cerca de R$ 25).'},
+  {id:'lagonegro', ig:'lagonegrogramado', nome:'Lago Negro', cidade:'Gramado', cat:'Passeio', gratis:true, nota:'Entrada gratuita. Pedalinho de cisne é opcional, cerca de R$ 40 por volta.'},
 
-  {id:'minimundo', nome:'Mini Mundo', cidade:'Gramado', cat:'Parque', ac:108, cc:58, ad:92, cd:49, nota:'Criança de 3 a 15 anos e 60+ pagam o valor reduzido.'},
-  {id:'papainoel', nome:'Vila do Papai Noel (Aldeia do Papai Noel)', cidade:'Gramado', cat:'Parque', ac:78, cc:48, ad:66, cd:41, nota:'Funciona o ano todo; na temporada de Natal Luz a tarifa sobe.'},
-  {id:'snowland', nome:'Snowland', cidade:'Gramado', cat:'Parque', ac:259, cc:179, ad:199, cd:129.50, nota:'R$ 259 no site oficial e R$ 199 no Laçador de Ofertas. Um dos ingressos mais caros da região.'},
-  {id:'dinossauros', fora:'Reprovado na pesquisa', nome:'Vale dos Dinossauros', cidade:'Canela', cat:'Parque', ac:99, cc:49.50, ad:84, cd:42, nota:'Está incluso no Passaporte Dreams (R$ 289,90 adulto / R$ 149,90 criança, 8 atrações).'},
-  {id:'florybal', nome:'Terra Mágica Florybal', cidade:'Canela', cat:'Parque', ac:150, cc:75, ad:128, cd:64, nota:'Ingresso inclui shows, brinquedos e estacionamento. Reserve meio dia.'},
-  {id:'space', fora:'Reprovado na pesquisa', nome:'Space Adventure', cidade:'Canela', cat:'Parque', ac:129.90, cc:64.95, ad:110, cd:55, nota:'Combo exposição da NASA + planetário. Separados saem por R$ 59,90 e R$ 39,90.'},
-  {id:'caracol', nome:'Parque do Caracol', cidade:'Canela', cat:'Passeio', ac:70, cc:35, ad:59, cd:30, nota:'Valor varia bastante por temporada; estacionamento R$ 30 à parte. O salto de pêndulo é pago separado.'},
-  {id:'bondinhos', nome:'Bondinhos Aéreos (Parques da Serra)', cidade:'Canela', cat:'Passeio', ac:120, cc:60, ad:102, cd:51, nota:'Criança de 6 a 12 anos paga meia. Melhor vista da Cascata do Caracol.'},
-  {id:'monica', nome:'Parque da Mônica (Vila da Mônica)', cidade:'Gramado', cat:'Parque', ac:199, cc:159, ad:159.90, cd:129, nota:'R$ 199 no oficial e R$ 159,90 no Laçador. Fim de semana e alta temporada sobem.'},
-  {id:'alpen', nome:'Alpen Park (trenó)', cidade:'Canela', cat:'Parque', ac:138.90, cc:67.50, ad:118, cd:57, nota:'Passaporte com 6 atrações liberadas, inclusive o trenó alpino. Estacionamento R$ 20.'},
-  {id:'bigland', fora:'Reprovado na pesquisa', nome:'Big Land', cidade:'Canela', cat:'Parque', ac:89.90, cc:69.90, ad:76, cd:59, nota:'Adulto a partir de 10 anos; 3 a 9 anos é o valor reduzido; até 2 anos não paga.'},
-  {id:'lugano', nome:'Mundo Lugano', cidade:'Gramado', cat:'Parque', ac:119, cc:119, ad:101, cd:101, nota:'Parque indoor em 3 andares. Há combo com rodízio de pizza por valor maior.'},
-  {id:'acqua', fora:'Reprovado na pesquisa', nome:'Acquamotion', cidade:'Gramado', cat:'Parque', ac:179, cc:104.50, ad:149.90, cd:95, nota:'Parque aquático coberto e climatizado. Até 17 anos paga o valor reduzido.'},
-  {id:'nba', fora:'Reprovado na pesquisa', nome:'NBA Park', cidade:'Gramado', cat:'Parque', ac:199, cc:124.50, ad:159, cd:110, nota:'Criança de 4 a 11 anos no valor reduzido; 60+ pagam bem menos.'},
-  {id:'skyglass', fora:'Retirado pelo grupo', nome:'Skyglass Canela', cidade:'Canela', cat:'Passeio', ac:165, cc:82.50, ad:139, cd:72.50, nota:'Só a plataforma de vidro. Com o monotrilho Abusado passa de R$ 215.'},
-  {id:'lumni', nome:'Lumni (parque de luzes)', cidade:'Gramado', cat:'Passeio', ac:139, cc:69.50, ad:99, cd:50, nota:'Só à noite, fora do centro. Pré-venda sai por volta de R$ 99. Estacionamento R$ 30.'},
-  {id:'rodacanela', nome:'Roda Canela', cidade:'Canela', cat:'Passeio', ac:80, cc:50, ad:68, cd:43, nota:'Fica no complexo do Mundo a Vapor. Cabine VIP e combo dia+noite custam mais.'},
-  {id:'vapor', fora:'Reprovado na pesquisa', nome:'Mundo a Vapor', cidade:'Canela', cat:'Parque', ac:179, cc:89.50, ad:152, cd:76, nota:'Reaberto em 2026 com complexo novo; o valor subiu bastante depois da reforma.'},
-  {id:'egipcio', fora:'Reprovado na pesquisa', nome:'Museu Egípcio', cidade:'Canela', cat:'Passeio', ac:60, cc:30, ad:51, cd:26, nota:'Visita guiada, cerca de 1 hora. Até 5 anos não paga; 6 a 16 anos pagam meia.'},
-  {id:'cera', fora:'Reprovado na pesquisa', nome:'Dreamland Museu de Cera', cidade:'Gramado', cat:'Passeio', ac:155, cc:77.50, ad:132, cd:66, nota:'Sai muito melhor dentro do Passaporte Dreams, que junta 8 atrações do grupo.'},
-  {id:'motorshow', fora:'Reprovado na pesquisa', nome:'Dreams Motor Show', cidade:'Gramado', cat:'Passeio', ac:99, cc:49.50, ad:84, cd:42, nota:'Museu de motos com bar temático. Também entra no Passaporte Dreams.'},
-  {id:'castelinho', fora:'Reprovado na pesquisa', nome:'Castelinho do Caracol', cidade:'Canela', cat:'Passeio', ac:20, cc:0, ad:20, cd:0, nota:'Casa de 1915. Até 10 anos não paga. Vale pelo apfelstrudel, cobrado à parte.'},
-  {id:'lejardin', nome:'Le Jardin (parque de lavandas)', cidade:'Gramado', cat:'Passeio', ac:30, cc:15, ad:26, cd:13, nota:'Preço baixo, visita curta. A floração cheia é entre novembro e janeiro.'},
-  {id:'olivas', nome:'Olivas de Gramado', cidade:'Gramado', cat:'Passeio', ac:119, cc:0, ad:101, cd:0, nota:'Criança até 11 anos não paga. Degustação sensorial de azeite é cobrada à parte.'},
-  {id:'jolimont', nome:'Vinícola Jolimont (tour)', cidade:'Canela', cat:'Passeio', ac:189, cc:75, ad:149, cd:60, nota:'R$ 189 na bilheteria e R$ 149 comprando antecipado. Tour Premium fica em R$ 290.'},
-  {id:'pecascata', fora:'Não coube no roteiro', nome:'Pé da Cascata Explorer', cidade:'Canela', cat:'Passeio', ac:188, cc:94, ad:160, cd:80, nota:'Trilha guiada até a base da cascata, com transporte e o Balanço Infinito inclusos.'},
-  {id:'mariafumaca', nome:'Maria Fumaça + visita à vinícola', cidade:'Bento Gonçalves', cat:'Passeio', ac:400, cc:200, ad:340, cd:170, nota:'O trem sozinho custa a partir de R$ 235. Com transporte saindo de Gramado, passa de R$ 400 e toma o dia todo.'},
+  {id:'minimundo', ig:'minimundogramado', nome:'Mini Mundo', cidade:'Gramado', cat:'Parque', ac:108, cc:58, ad:92, cd:49, nota:'Criança de 3 a 15 anos e 60+ pagam o valor reduzido.'},
+  {id:'papainoel', ig:'aldeiadopapainoel', nome:'Vila do Papai Noel (Aldeia do Papai Noel)', cidade:'Gramado', cat:'Parque', ac:78, cc:48, ad:66, cd:41, nota:'Funciona o ano todo; na temporada de Natal Luz a tarifa sobe.'},
+  {id:'snowland', ig:'snowlandgramado', nome:'Snowland', cidade:'Gramado', cat:'Parque', ac:259, cc:179, ad:199, cd:129.50, nota:'R$ 259 no site oficial e R$ 199 no Laçador de Ofertas. Um dos ingressos mais caros da região.'},
+  {id:'dinossauros', fora:'Reprovado na pesquisa', ig:'valedinocanela', nome:'Vale dos Dinossauros', cidade:'Canela', cat:'Parque', ac:99, cc:49.50, ad:84, cd:42, nota:'Está incluso no Passaporte Dreams (R$ 289,90 adulto / R$ 149,90 criança, 8 atrações).'},
+  {id:'florybal', ig:'parqueterramagicaflorybal', nome:'Terra Mágica Florybal', cidade:'Canela', cat:'Parque', ac:150, cc:75, ad:128, cd:64, nota:'Ingresso inclui shows, brinquedos e estacionamento. Reserve meio dia.'},
+  {id:'space', fora:'Reprovado na pesquisa', ig:'spaceadventurebr', nome:'Space Adventure', cidade:'Canela', cat:'Parque', ac:129.90, cc:64.95, ad:110, cd:55, nota:'Combo exposição da NASA + planetário. Separados saem por R$ 59,90 e R$ 39,90.'},
+  {id:'caracol', ig:'parquedocaracol', nome:'Parque do Caracol', cidade:'Canela', cat:'Passeio', ac:70, cc:35, ad:59, cd:30, nota:'Valor varia bastante por temporada; estacionamento R$ 30 à parte. O salto de pêndulo é pago separado.'},
+  {id:'bondinhos', ig:'bondinhoscanela', nome:'Bondinhos Aéreos (Parques da Serra)', cidade:'Canela', cat:'Passeio', ac:120, cc:60, ad:102, cd:51, nota:'Criança de 6 a 12 anos paga meia. Melhor vista da Cascata do Caracol.'},
+  {id:'monica', ig:'viladamonicagramado', nome:'Parque da Mônica (Vila da Mônica)', cidade:'Gramado', cat:'Parque', ac:199, cc:159, ad:159.90, cd:129, nota:'R$ 199 no oficial e R$ 159,90 no Laçador. Fim de semana e alta temporada sobem.'},
+  {id:'alpen', ig:'alpenpark', nome:'Alpen Park (trenó)', cidade:'Canela', cat:'Parque', ac:138.90, cc:67.50, ad:118, cd:57, nota:'Passaporte com 6 atrações liberadas, inclusive o trenó alpino. Estacionamento R$ 20.'},
+  {id:'bigland', fora:'Reprovado na pesquisa', ig:'biglandoficial', nome:'Big Land', cidade:'Canela', cat:'Parque', ac:89.90, cc:69.90, ad:76, cd:59, nota:'Adulto a partir de 10 anos; 3 a 9 anos é o valor reduzido; até 2 anos não paga.'},
+  {id:'lugano', ig:'mundolugano', nome:'Mundo Lugano', cidade:'Gramado', cat:'Parque', ac:119, cc:119, ad:101, cd:101, nota:'Parque indoor em 3 andares. Há combo com rodízio de pizza por valor maior.'},
+  {id:'acqua', fora:'Reprovado na pesquisa', ig:'acquamotion', nome:'Acquamotion', cidade:'Gramado', cat:'Parque', ac:179, cc:104.50, ad:149.90, cd:95, nota:'Parque aquático coberto e climatizado. Até 17 anos paga o valor reduzido.'},
+  {id:'nba', fora:'Reprovado na pesquisa', ig:'nbaparkgramado', nome:'NBA Park', cidade:'Gramado', cat:'Parque', ac:199, cc:124.50, ad:159, cd:110, nota:'Criança de 4 a 11 anos no valor reduzido; 60+ pagam bem menos.'},
+  {id:'skyglass', fora:'Retirado pelo grupo', ig:'skyglasscanela', nome:'Skyglass Canela', cidade:'Canela', cat:'Passeio', ac:165, cc:82.50, ad:139, cd:72.50, nota:'Só a plataforma de vidro. Com o monotrilho Abusado passa de R$ 215.'},
+  {id:'lumni', ig:'lumni.gramado', nome:'Lumni (parque de luzes)', cidade:'Gramado', cat:'Passeio', ac:139, cc:69.50, ad:99, cd:50, nota:'Só à noite, fora do centro. Pré-venda sai por volta de R$ 99. Estacionamento R$ 30.'},
+  {id:'rodacanela', ig:'parquemundoavapor', nome:'Roda Canela', cidade:'Canela', cat:'Passeio', ac:80, cc:50, ad:68, cd:43, nota:'Fica no complexo do Mundo a Vapor. Cabine VIP e combo dia+noite custam mais.'},
+  {id:'vapor', fora:'Reprovado na pesquisa', ig:'parquemundoavapor', nome:'Mundo a Vapor', cidade:'Canela', cat:'Parque', ac:179, cc:89.50, ad:152, cd:76, nota:'Reaberto em 2026 com complexo novo; o valor subiu bastante depois da reforma.'},
+  {id:'egipcio', fora:'Reprovado na pesquisa', ig:'museuegipcio', nome:'Museu Egípcio', cidade:'Canela', cat:'Passeio', ac:60, cc:30, ad:51, cd:26, nota:'Visita guiada, cerca de 1 hora. Até 5 anos não paga; 6 a 16 anos pagam meia.'},
+  {id:'cera', fora:'Reprovado na pesquisa', ig:'dreamlandgramado', nome:'Dreamland Museu de Cera', cidade:'Gramado', cat:'Passeio', ac:155, cc:77.50, ad:132, cd:66, nota:'Sai muito melhor dentro do Passaporte Dreams, que junta 8 atrações do grupo.'},
+  {id:'motorshow', fora:'Reprovado na pesquisa', ig:'dreamsmotorshowgramado', nome:'Dreams Motor Show', cidade:'Gramado', cat:'Passeio', ac:99, cc:49.50, ad:84, cd:42, nota:'Museu de motos com bar temático. Também entra no Passaporte Dreams.'},
+  {id:'castelinho', fora:'Reprovado na pesquisa', ig:'castelinhocaracoloficial', nome:'Castelinho do Caracol', cidade:'Canela', cat:'Passeio', ac:20, cc:0, ad:20, cd:0, nota:'Casa de 1915. Até 10 anos não paga. Vale pelo apfelstrudel, cobrado à parte.'},
+  {id:'lejardin', ig:'lejardinparquedelavanda', nome:'Le Jardin (parque de lavandas)', cidade:'Gramado', cat:'Passeio', ac:30, cc:15, ad:26, cd:13, nota:'Preço baixo, visita curta. A floração cheia é entre novembro e janeiro.'},
+  {id:'olivas', ig:'olivasdegramado', nome:'Olivas de Gramado', cidade:'Gramado', cat:'Passeio', ac:119, cc:0, ad:101, cd:0, nota:'Criança até 11 anos não paga. Degustação sensorial de azeite é cobrada à parte.'},
+  {id:'jolimont', ig:'jolimontvinicola', nome:'Vinícola Jolimont (tour)', cidade:'Canela', cat:'Passeio', ac:189, cc:75, ad:149, cd:60, nota:'R$ 189 na bilheteria e R$ 149 comprando antecipado. Tour Premium fica em R$ 290.'},
+  {id:'pecascata', fora:'Não coube no roteiro', ig:'pedacascatadocaracol', nome:'Pé da Cascata Explorer', cidade:'Canela', cat:'Passeio', ac:188, cc:94, ad:160, cd:80, nota:'Trilha guiada até a base da cascata, com transporte e o Balanço Infinito inclusos.'},
+  {id:'mariafumaca', ig:'giordani_turismo', nome:'Maria Fumaça + visita à vinícola', cidade:'Bento Gonçalves', cat:'Passeio', ac:400, cc:200, ad:340, cd:170, nota:'O trem sozinho custa a partir de R$ 235. Com transporte saindo de Gramado, passa de R$ 400 e toma o dia todo.'},
 
-  {id:'caradmau', nome:'Pizzaria Cara de Mau', cidade:'Gramado', cat:'Comida', ac:239.90, cc:119.95, ad:203, cd:102, nota:'Rodízio temático pirata, com sessões marcadas. Reserve com antecedência.'},
-  {id:'hector', nome:'Héctor Pizzaria (jantar)', cidade:'Gramado', cat:'Comida', ac:269.90, cc:135, ad:229, cd:115, nota:'R$ 269,90 na sessão com espetáculo; a versão Taverna, sem reserva, sai por R$ 209,90.'},
-  {id:'alice', nome:'Alice e o Chapeleiro (jantar)', cidade:'Gramado', cat:'Comida', ac:279, cc:139.50, ad:237, cd:119, nota:'Menu completo com shows. Bebidas e taxa de serviço não estão inclusas.'},
-  {id:'garfo', nome:'Garfo e Bombacha (almoço com show)', cidade:'Canela', cat:'Comida', ac:185, cc:92.50, ad:157, cd:79, nota:'A Noite Gaúcha, com jantar e espetáculo, chega a R$ 325. No Prime Gourmet vale a regra compre 1 leve 2.'},
-  {id:'grota', nome:'Churrascaria Fundo da Grota', cidade:'Canela', cat:'Comida', ac:159, cc:79.50, ad:135, cd:68, nota:'R$ 159 no jantar com Festa Gaúcha e R$ 129 no almoço sem show. 7 a 11 anos pagam meia.'},
-  {id:'belavista', nome:'Bela Vista Café Colonial', cidade:'Gramado', cat:'Comida', ac:139.90, cc:70, ad:119, cd:60, nota:'O primeiro café colonial do Brasil. Substitui uma refeição inteira, vá com fome.'},
-  {id:'rfvision', nome:'Restaurante Giratório RF Vision', cidade:'Gramado', cat:'Comida', ac:179, cc:89.50, ad:152, cd:76, nota:'Valor da sequência de fondue com show de neve. No almoço, cobra R$ 80 de reserva revertidos em consumo.'},
-  {id:'icebar', nome:'Ice Bar Mundo Gelado', cidade:'Canela', cat:'Comida', ac:99.90, cc:50, ad:74.90, cd:37, nota:'Inclui dois drinks e agasalho térmico. Só à noite; até 7 anos não paga.'}
+  {id:'caradmau', ig:'carademau', nome:'Pizzaria Cara de Mau', cidade:'Gramado', cat:'Comida', ac:239.90, cc:119.95, ad:203, cd:102, nota:'Rodízio temático pirata, com sessões marcadas. Reserve com antecedência.'},
+  {id:'hector', ig:'hectorpizzaria', nome:'Héctor Pizzaria (jantar)', cidade:'Gramado', cat:'Comida', ac:269.90, cc:135, ad:229, cd:115, nota:'R$ 269,90 na sessão com espetáculo; a versão Taverna, sem reserva, sai por R$ 209,90.'},
+  {id:'alice', ig:'aliceeochapeleiro', nome:'Alice e o Chapeleiro (jantar)', cidade:'Gramado', cat:'Comida', ac:279, cc:139.50, ad:237, cd:119, nota:'Menu completo com shows. Bebidas e taxa de serviço não estão inclusas.'},
+  {id:'garfo', ig:'garfoebombacha', nome:'Garfo e Bombacha (almoço com show)', cidade:'Canela', cat:'Comida', ac:185, cc:92.50, ad:157, cd:79, nota:'A Noite Gaúcha, com jantar e espetáculo, chega a R$ 325. No Prime Gourmet vale a regra compre 1 leve 2.'},
+  {id:'grota', ig:'fundodagrotachurrascaria', nome:'Churrascaria Fundo da Grota', cidade:'Canela', cat:'Comida', ac:159, cc:79.50, ad:135, cd:68, nota:'R$ 159 no jantar com Festa Gaúcha e R$ 129 no almoço sem show. 7 a 11 anos pagam meia.'},
+  {id:'belavista', ig:'belavistacafecolonialoficial', nome:'Bela Vista Café Colonial', cidade:'Gramado', cat:'Comida', ac:139.90, cc:70, ad:119, cd:60, nota:'O primeiro café colonial do Brasil. Substitui uma refeição inteira, vá com fome.'},
+  {id:'rfvision', ig:'restaurantegiratoriogramado', nome:'Restaurante Giratório RF Vision', cidade:'Gramado', cat:'Comida', ac:179, cc:89.50, ad:152, cd:76, nota:'Valor da sequência de fondue com show de neve. No almoço, cobra R$ 80 de reserva revertidos em consumo.'},
+  {id:'icebar', ig:'icebarmundogelado', nome:'Ice Bar Mundo Gelado', cidade:'Canela', cat:'Comida', ac:99.90, cc:50, ad:74.90, cd:37, nota:'Inclui dois drinks e agasalho térmico. Só à noite; até 7 anos não paga.'}
 ];
 
 const DIAS = [
@@ -511,10 +515,10 @@ const DIAS = [
      {"h": "08:00", "tipo": "drive", "nome": "Saída de Porto Alegre → Outlet Premium", "local": "Nova Santa Rita", "info": "2h30, incluindo deslocamento e compras rápidas", "mapa": "Outlet Premium Porto Alegre Nova Santa Rita"},
      {"h": "11:00", "tipo": "gratis", "nome": "Praça das Flores e Labirinto Verde", "local": "Nova Petrópolis", "info": "1h, ~30min de deslocamento do Outlet", "mapa": "Labirinto Verde Nova Petrópolis"}]},
     {t:"Tarde", itens:[
-     {"h": "12:15", "tipo": "att", "nome": "Parque Aldeia do Imigrante e Casa do Colono", "local": "Nova Petrópolis", "info": "1h45, museu vivo da imigração alemã. Ingresso entre R$ 20 e R$ 34 em 2025", "mapa": "Parque Aldeia do Imigrante Nova Petrópolis"},
+     {"h": "12:15", "tipo": "att", "nome": "Parque Aldeia do Imigrante e Casa do Colono", "local": "Nova Petrópolis", "info": "1h45, museu vivo da imigração alemã. Ingresso entre R$ 20 e R$ 34 em 2025", "mapa": "Parque Aldeia do Imigrante Nova Petrópolis", "ig": "parquealdeiadoimigrante"},
      {"h": "14:15", "tipo": "meal", "nome": "Almoço no caminho", "local": "Rota Romântica", "info": "1h15", "confirmar": true},
      {"h": "15:45", "tipo": "gratis", "nome": "Mirante da Torre", "local": "Nova Petrópolis", "info": "30min, parada rápida", "mapa": "Mirante da Torre Nova Petrópolis"},
-     {"h": "16:45", "tipo": "drive", "nome": "Chegada a Gramado e check-in no Pedras Altas", "local": "", "info": "Gramado", "mapa": "Laghetto Pedras Altas Gramado"}]},
+     {"h": "16:45", "tipo": "drive", "nome": "Chegada a Gramado e check-in no Pedras Altas", "local": "", "info": "Gramado", "mapa": "Laghetto Pedras Altas Gramado", "ig": "laghettohoteis"}]},
     {t:"Noite", itens:[
      {"h": "18:30", "tipo": "att", "nome": "Lumni", "local": "Gramado", "info": "1h30, parque de luzes", "prime": true, "calc": "lumni", "mapa": "Lumni Gramado"}]}]},
   {"data": "2027-10-26", "cor": "gramado", "base": "Gramado",
@@ -608,7 +612,7 @@ const DIAS = [
     {t:"Tarde", itens:[
      {"h": "", "tipo": "livre", "nome": "Livre", "local": "Gramado", "info": "Descanso, piscina do hotel, ou encaixe do Pé da Cascata — mas seria uma quarta ida a Canela"}]},
     {t:"Noite", itens:[
-     {"h": "19:30", "tipo": "meal", "nome": "Chalezinho", "local": "Gramado", "info": "1h30, rodízio de fondue suíço", "confirmar": true, "mapa": "Chalezinho Gramado"}]}]},
+     {"h": "19:30", "tipo": "meal", "nome": "Chalezinho", "local": "Gramado", "info": "1h30, rodízio de fondue suíço", "confirmar": true, "mapa": "Chalezinho Gramado", "ig": "chalezinhogramado"}]}]},
   {"data": "2027-11-04", "cor": "estrada", "base": "Estrada",
    nota:"Mesma estratégia da volta de 2025: parada para almoçar no caminho em vez de comer no aeroporto. Com o voo às 22:30, sobram cerca de 4h em Porto Alegre à tarde. Dá para sair de Gramado mais tarde ou encaixar um passeio na capital. A chegada em Recife é às 02:30 de sexta, 05/11.",
    blocos:[
@@ -678,6 +682,8 @@ const DIA_DE_HOJE = DIAS.find(d => d.data === HOJE) ? HOJE : null;
 
 /* =============================== ROTEIRO =============================== */
 const ICONE = {att:'●', meal:'◆', gratis:'○', drive:'▸', voo:'✈', livre:'—'};
+const IG_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>';
+const igLink = h => `<a class="mapa ig" href="https://www.instagram.com/${encodeURIComponent(h)}/" target="_blank" rel="noopener" aria-label="Instagram @${h}">${IG_SVG}Instagram</a>`;
 const PIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
 
 function renderRoteiro(){
@@ -699,6 +705,8 @@ function renderRoteiro(){
         const chips = [];
         if(i.local) chips.push(`<span class="tag">${esc(i.local)}</span>`);
         if(i.prime) chips.push('<span class="tag prime">PRIME</span>');
+        const ig = i.ig || (p && p.ig);
+        if(ig) chips.push(igLink(ig));
         if(i.mapa) chips.push(`<a class="mapa" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(i.mapa)}" target="_blank" rel="noopener">${PIN}Mapa</a>`);
         blocos += `<li class="it ${i.tipo}">
           <span class="hora">${i.h || '—'}</span>
@@ -839,7 +847,7 @@ function itemHTML(a){
   return `<div class="item${on?' on':''}" data-id="${a.id}">
     <div class="linha" role="checkbox" tabindex="0" aria-checked="${on}" data-alternar="${a.id}">
       <span class="check"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span>
-      <span class="meio"><span class="nome">${esc(a.nome)}</span>${indicador(a)}${a.gratis?`<span class="info">${esc(a.nota)}</span>`:''}</span>
+      <span class="meio"><span class="nome">${esc(a.nome)}</span>${indicador(a)}${a.ig ? `<span class="chips">${igLink(a.ig)}</span>` : ''}${a.gratis?`<span class="info">${esc(a.nota)}</span>`:''}</span>
       <span class="precos">${preco}</span>
     </div>${edicao}
   </div>`;
@@ -905,10 +913,12 @@ lista.addEventListener('click', e => {
   if(ed){ estado.aberto = estado.aberto === ed.dataset.editar ? null : ed.dataset.editar; renderLista(); return; }
   const rs = e.target.closest('[data-restaurar]');
   if(rs){ const o = POR_ID[rs.dataset.restaurar]; estado.precos[o.id] = {ac:o.ac, cc:o.cc, ad:o.ad, cd:o.cd}; renderLista(); atualizarTotais(); aviso('Preço original de volta'); return; }
+  if(e.target.closest('a')) return;
   const lin = e.target.closest('[data-alternar]');
   if(lin) alternar(lin.dataset.alternar);
 });
 lista.addEventListener('keydown', e => {
+  if(e.target.closest('a')) return;
   const lin = e.target.closest('[data-alternar]');
   if(lin && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); alternar(lin.dataset.alternar); }
 });
