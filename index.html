@@ -498,7 +498,6 @@ footer.rodape{font-size:13px;color:var(--cinza);padding:10px 0 20px;line-height:
 const ATRACOES = [
   {id:'catedral', ig:'catedraldepedracanela', nome:'Catedral de Pedra', cidade:'Canela', cat:'Passeio', gratis:true, nota:'Entrada gratuita. A subida à torre dos sinos é paga à parte (cerca de R$ 25).'},
   {id:'lagonegro', ig:'lagonegrogramado', nome:'Lago Negro', cidade:'Gramado', cat:'Passeio', gratis:true, nota:'Entrada gratuita. Pedalinho de cisne é opcional, cerca de R$ 40 por volta.'},
-
   {id:'minimundo', ig:'minimundogramado', nome:'Mini Mundo', cidade:'Gramado', cat:'Parque', ac:108, cc:58, ad:92, cd:49, nota:'Criança de 3 a 15 anos e 60+ pagam o valor reduzido.'},
   {id:'papainoel', ig:'aldeiadopapainoel', nome:'Vila do Papai Noel (Aldeia do Papai Noel)', cidade:'Gramado', cat:'Parque', ac:78, cc:48, ad:66, cd:41, nota:'Funciona o ano todo; na temporada de Natal Luz a tarifa sobe.'},
   {id:'snowland', ig:'snowlandgramado', nome:'Snowland', cidade:'Gramado', cat:'Parque', ac:259, cc:179, ad:199, cd:129.50, nota:'R$ 259 no site oficial e R$ 199 no Laçador de Ofertas. Um dos ingressos mais caros da região.'},
@@ -526,7 +525,6 @@ const ATRACOES = [
   {id:'jolimont', ig:'jolimontvinicola', nome:'Vinícola Jolimont (tour)', cidade:'Canela', cat:'Passeio', ac:189, cc:75, ad:149, cd:60, nota:'R$ 189 na bilheteria e R$ 149 comprando antecipado. Tour Premium fica em R$ 290.'},
   {id:'pecascata', fora:'Não coube no roteiro', ig:'pedacascatadocaracol', nome:'Pé da Cascata Explorer', cidade:'Canela', cat:'Passeio', ac:188, cc:94, ad:160, cd:80, nota:'Trilha guiada até a base da cascata, com transporte e o Balanço Infinito inclusos.'},
   {id:'mariafumaca', ig:'giordani_turismo', nome:'Maria Fumaça + visita à vinícola', cidade:'Bento Gonçalves', cat:'Passeio', ac:400, cc:200, ad:340, cd:170, nota:'O trem sozinho custa a partir de R$ 235. Com transporte saindo de Gramado, passa de R$ 400 e toma o dia todo.'},
-
   {id:'caradmau', ig:'carademau', nome:'Pizzaria Cara de Mau', cidade:'Gramado', cat:'Comida', ac:239.90, cc:119.95, ad:203, cd:102, nota:'Rodízio temático pirata, com sessões marcadas. Reserve com antecedência.'},
   {id:'hector', ig:'hectorpizzaria', nome:'Héctor Pizzaria (jantar)', cidade:'Gramado', cat:'Comida', ac:269.90, cc:135, ad:229, cd:115, nota:'R$ 269,90 na sessão com espetáculo; a versão Taverna, sem reserva, sai por R$ 209,90.'},
   {id:'alice', ig:'aliceeochapeleiro', nome:'Alice e o Chapeleiro (jantar)', cidade:'Gramado', cat:'Comida', ac:279, cc:139.50, ad:237, cd:119, nota:'Menu completo com shows. Bebidas e taxa de serviço não estão inclusas.'},
@@ -534,7 +532,8 @@ const ATRACOES = [
   {id:'grota', ig:'fundodagrotachurrascaria', nome:'Churrascaria Fundo da Grota', cidade:'Canela', cat:'Comida', ac:159, cc:79.50, ad:135, cd:68, nota:'R$ 159 no jantar com Festa Gaúcha e R$ 129 no almoço sem show. 7 a 11 anos pagam meia.'},
   {id:'belavista', ig:'belavistacafecolonialoficial', nome:'Bela Vista Café Colonial', cidade:'Gramado', cat:'Comida', ac:139.90, cc:70, ad:119, cd:60, nota:'O primeiro café colonial do Brasil. Substitui uma refeição inteira, vá com fome.'},
   {id:'rfvision', ig:'restaurantegiratoriogramado', nome:'Restaurante Giratório RF Vision', cidade:'Gramado', cat:'Comida', ac:179, cc:89.50, ad:152, cd:76, nota:'Valor da sequência de fondue com show de neve. No almoço, cobra R$ 80 de reserva revertidos em consumo.'},
-  {id:'icebar', ig:'icebarmundogelado', nome:'Ice Bar Mundo Gelado', cidade:'Canela', cat:'Comida', ac:99.90, cc:50, ad:74.90, cd:37, nota:'Inclui dois drinks e agasalho térmico. Só à noite; até 7 anos não paga.'}
+  {id:'icebar', ig:'icebarmundogelado', nome:'Ice Bar Mundo Gelado', cidade:'Canela', cat:'Comida', ac:99.90, cc:50, ad:74.90, cd:37, nota:'Inclui dois drinks e agasalho térmico. Só à noite; até 7 anos não paga.'},
+  {id:'casafigueira', ig:'restaurantecasafigueira', nome:'Casa Figueira (almoço)', cidade:'Gramado', cat:'Comida', ac:57, cc:28, ad:57, cd:28, nota:'Buffet livre de comida caseira com vista para o vale. Preço de 2026: R$ 57 adulto, R$ 28 de 5 a 10 anos e R$ 15 de 2 a 4 anos. Só almoço, em dias de semana, das 11h às 13h30.'}
 ];
 
 const DIAS = [
@@ -619,12 +618,12 @@ const DIAS = [
     {t:"Noite", itens:[
      {"h": "19:30", "tipo": "att", "nome": "Héctor Pizzaria", "local": "Gramado", "info": "1h30, jantar descontraído", "calc": "hector", "mapa": "Héctor Pizzaria Gramado"}]}]},
   {"data": "2027-11-01", "cor": "gramado", "base": "Gramado",
-   nota:"Dia mais leve, véspera de Finados. Segunda-feira: confirmar o funcionamento do Le Jardin e reservar o Alice e o Chapeleiro com antecedência.",
+   nota:"Dia mais leve, véspera de Finados. O almoço é na Casa Figueira, longe do centro cheio do feriado: reservar para 9 pessoas e chegar às 11:30, logo na abertura. Segunda-feira: confirmar o funcionamento da Casa Figueira e do Le Jardin, e reservar o Alice e o Chapeleiro com antecedência.",
    blocos:[
     {t:"Manhã", itens:[
-     {"h": "", "tipo": "livre", "nome": "Livre", "local": "Gramado", "info": "Manhã de descanso no feriado prolongado. O Parque da Mônica passou para 26/10"}]},
+     {"h": "", "tipo": "livre", "nome": "Livre", "local": "Gramado", "info": "Manhã de descanso no feriado prolongado. O Parque da Mônica passou para 26/10"},
+     {"h": "11:30", "tipo": "att", "nome": "Almoço na Casa Figueira", "local": "Gramado", "info": "1h30, buffet caseiro com vista para o vale, a ~7 km do centro. Chegar na abertura: a cozinha fecha às 13h30", "calc": "casafigueira", "mapa": "Restaurante Casa Figueira, Estrada Serra Grande, 3945, Gramado"}]},
     {t:"Tarde", itens:[
-     {"h": "13:00", "tipo": "meal", "nome": "Almoço", "local": "Gramado", "info": "1h30", "confirmar": true},
      {"h": "15:00", "tipo": "att", "nome": "Le Jardin", "local": "Gramado", "info": "1h30, jardim de lavandas", "calc": "lejardin", "mapa": "Le Jardin Gramado"}]},
     {t:"Noite", itens:[
      {"h": "19:00", "tipo": "att", "nome": "Alice e o Chapeleiro", "local": "Gramado", "info": "1h30, jantar temático aprovado pelas crianças", "calc": "alice", "mapa": "Alice e o Chapeleiro Gramado"}]}]},
@@ -683,7 +682,7 @@ const SUGESTOES = [
    custo:'A estrada é livre; almoço e degustações à parte', atencao:'Cada parada tem horário próprio: confirmar quem abre no domingo e se o pacote da Maria Fumaça já inclui almoço. Saindo às 16h, dá tempo para o Héctor às 19:30.',
    mapa:'Caminhos de Pedra Bento Gonçalves'},
   {id:'vale-quilombo', nome:'Tour cultural no Vale do Quilombo', local:'Gramado', dias:['2027-11-01','2027-11-03'],
-   quando:'Segunda, 01/11, manhã livre. Se não houver saída na segunda, quarta, 03/11, à tarde.',
+   quando:'Quarta, 03/11, à tarde. Na segunda, 01/11, só se a saída for cedo, antes do almoço das 11:30 na Casa Figueira.',
    porque:'Visita a famílias de origem italiana e alemã no interior de Gramado, com degustação de produtos coloniais. Mostra a Serra de verdade, longe dos parques.',
    custo:'Passeio guiado, consultar valor', atencao:'Confirmar se há saída na segunda-feira.',
    mapa:'Vale do Quilombo Gramado'},
@@ -884,7 +883,7 @@ function renderGastos(){
       <div class="parte est">
         <div class="parte-tit"><span class="ponto"></span>Estimado · ainda pode mudar</div>
         <dl>
-          <div class="lin"><dt>Atrações do roteiro${grupo?'':'<small>As 25 do roteiro, preços de ago/2026 com desconto</small>'}</dt><dd>≈ ${brl(x.atr)}</dd></div>
+          <div class="lin"><dt>Atrações do roteiro${grupo?'':`<small>As ${idsRoteiro.length} do roteiro, preços de 2026 com desconto</small>`}</dt><dd>≈ ${brl(x.atr)}</dd></div>
         </dl>
       </div>
       <div class="proporcao" role="img" aria-label="${Math.round((x.hospedagem + x.passagens) / x.total * 100)}% confirmado e ${100 - Math.round((x.hospedagem + x.passagens) / x.total * 100)}% estimado">
@@ -915,11 +914,19 @@ const estado = {
   a: Number.isInteger(salvo.a) ? salvo.a : TOTAL_ADULTOS,
   c: Number.isInteger(salvo.c) ? salvo.c : TOTAL_CRIANCAS,
   sel: new Set(Array.isArray(salvo.sel) ? salvo.sel.filter(id => POR_ID[id]) : Object.keys(NO_ROTEIRO)),
+  roteiroVisto: salvo.roteiro,
   precos: {},
   busca: '',
   aberto: null
 };
 ATRACOES.forEach(a => { if(!a.gratis) estado.precos[a.id] = {ac:a.ac, cc:a.cc, ad:a.ad, cd:a.cd}; });
+/* Quem já usou a calculadora guardou a seleção de antes. Se o roteiro ganhou atrações
+   desde então, elas entram marcadas. Saves antigos não guardavam o roteiro: a Casa Figueira
+   foi a primeira atração acrescentada depois disso. */
+if(Array.isArray(salvo.sel)){
+  const visto = new Set(Array.isArray(estado.roteiroVisto) ? estado.roteiroVisto : Object.keys(NO_ROTEIRO).filter(id => id !== 'casafigueira'));
+  Object.keys(NO_ROTEIRO).forEach(id => { if(!visto.has(id)) estado.sel.add(id); });
+}
 if(salvo.precos) for(const id in salvo.precos){ if(estado.precos[id]) Object.assign(estado.precos[id], salvo.precos[id]); }
 
 function salvar(){
@@ -928,7 +935,7 @@ function salvar(){
     const p = estado.precos[id], o = POR_ID[id];
     if(p.ac!==o.ac || p.cc!==o.cc || p.ad!==o.ad || p.cd!==o.cd) mudados[id] = p;
   }
-  gravar({a:estado.a, c:estado.c, sel:[...estado.sel], precos:mudados});
+  gravar({a:estado.a, c:estado.c, sel:[...estado.sel], precos:mudados, roteiro:Object.keys(NO_ROTEIRO)});
 }
 function precoMudou(id){ const p = estado.precos[id], o = POR_ID[id]; return p && (p.ac!==o.ac || p.cc!==o.cc || p.ad!==o.ad || p.cd!==o.cd); }
 
